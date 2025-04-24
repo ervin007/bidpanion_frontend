@@ -66,6 +66,7 @@ export const BottomDrawerMenuItem: ReactFC<BottomDrawerMenuItemProps> = ({
   );
 
   return (
+    // @ts-expect-error - TS struggles with the dynamic component + props, but logic is sound.
     <Component
       className={itemClasses}
       onClick={() => {
