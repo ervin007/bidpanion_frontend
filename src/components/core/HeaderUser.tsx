@@ -9,7 +9,7 @@ import {
 } from "./HeaderUserDropdownMenu";
 import { authClient } from "@/server/auth/client";
 import { useUserBillingStatus } from "@/hooks/useUserBillingStatus";
-import { Crown, LucideMenu } from "lucide-react";
+import { Crown, LucideLogIn, LucideMenu } from "lucide-react";
 import { SimpleDropdownMenu } from "@/components/SimpleDropdownMenu";
 import { CustomBadge } from "@/components/CustomBadge";
 import { AnimatePresence, motion } from "framer-motion";
@@ -18,6 +18,7 @@ import { useKitzeUI } from "@/components/KitzeUIContext";
 import { filterEnabledLinks } from "@/lib/linkUtils";
 import { useIsImpersonating } from "@/hooks/useIsImpersonating";
 import { SimpleTooltip } from "@/components/SimpleTooltip";
+import { CommonMenuSeparator } from "@/components/CommonMenuSeparator";
 
 interface AppHeaderUserProps {
   links: (LinkType | null | undefined)[] | undefined;
@@ -62,23 +63,32 @@ export function AppHeaderUser({ links }: AppHeaderUserProps) {
           key="login"
           {...motionProps}
         >
-          <CustomButton color="bg-zinc-800" variant="filled" href="/signin">
-            Login
-          </CustomButton>
           {isMobile && (
             <SimpleDropdownMenu
               mobileView="bottom-drawer"
-              content={enabledLinks.map((link) => (
-                <CommonMenuItem
-                  key={link.href}
-                  href={link.href}
-                  leftIcon={link.icon}
-                >
-                  {link.label}
-                </CommonMenuItem>
-              ))}
+              content={
+                <>
+                  {enabledLinks.map((link) => (
+                    <CommonMenuItem
+                      key={link.href}
+                      href={link.href}
+                      leftIcon={link.icon}
+                    >
+                      {link.label}
+                    </CommonMenuItem>
+                  ))}
+                  <CommonMenuSeparator />
+                  <CommonMenuItem leftIcon={LucideLogIn} href="/signin">
+                    Login
+                  </CommonMenuItem>
+                </>
+              }
             >
-              <CustomButton variant="ghost" leftIcon={LucideMenu} />
+              <CustomButton
+                variant="ghost"
+                color="bg-zinc-400"
+                leftIcon={LucideMenu}
+              />
             </SimpleDropdownMenu>
           )}
         </motion.div>
@@ -117,7 +127,11 @@ export function AppHeaderUser({ links }: AppHeaderUserProps) {
               >
                 <Avatar className="cursor-pointer">
                   {realUser?.profilePic && (
-                    <AvatarImage src={realUser.profilePic} alt="User Avatar" />
+                    <AvatarImage
+                      className="object-cover"
+                      src={realUser.profilePic}
+                      alt="User Avatar"
+                    />
                   )}
                   <AvatarFallback className="bg-gray-300 select-none dark:bg-gray-700">
                     {realUser?.name?.charAt(0) || "U"}

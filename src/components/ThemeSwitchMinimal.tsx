@@ -38,7 +38,7 @@ export const ThemeSwitchMinimal: ReactFC<ThemeSwitchMinimalProps> = ({
   return (
     <CustomButton
       variant="ghost"
-      color="zinc-600"
+      color="bg-zinc-400"
       className={cn("relative size-10 p-0", className, classNames.button)}
       onClick={() => {
         setTheme(isDark ? "light" : isSystem ? "dark" : "system");

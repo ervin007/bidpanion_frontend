@@ -3,6 +3,7 @@ import { ReactFC, cn } from "@/lib/utils";
 import { LucideIcon } from "lucide-react";
 import { HelpInfoCircle } from "@/components/HelpInfoCircle";
 import { useMenuContext } from "@/components/MenuContext";
+import Link from "next/link";
 
 export interface BottomDrawerMenuItemProps {
   children: React.ReactNode;
@@ -38,7 +39,7 @@ export const BottomDrawerMenuItem: ReactFC<BottomDrawerMenuItemProps> = ({
   closeOnClick = true,
 }) => {
   const { closeMenu } = useMenuContext();
-  const Component = href ? (external ? "a" : "a") : "button";
+  const Component = href ? (external ? "a" : Link) : "button";
   const linkProps = href
     ? {
         href,
