@@ -47,7 +47,6 @@
         "@types/node-cron": "^3.0.11",
         "@types/nodemailer": "^6.4.17",
         "@uploadthing/react": "^7.3.0",
-        "add": "^2.0.6",
         "ai": "^4.3.4",
         "better-auth": "1.2.8-beta.1",
         "bullmq": "^5.48.1",
@@ -68,7 +67,6 @@
         "next-themes": "^0.4.6",
         "node-cron": "^3.0.3",
         "nodemailer": "^6.10.0",
-        "nun": "^0.1.13",
         "nuqs": "^2.4.1",
         "prettier-plugin-prisma": "^5.0.0",
         "preview-email": "^3.1.0",
@@ -811,8 +809,6 @@
     "acorn": ["acorn@8.14.1", "", { "bin": { "acorn": "bin/acorn" } }, "sha512-OvQ/2pUDKmgfCg++xsTX1wGxfTaszcHVcTctW4UJB4hibJx2HXxxO5UmVgyjMa+ZDsiaf5wWLXYpRWMmBI0QHg=="],
 
     "acorn-jsx": ["acorn-jsx@5.3.2", "", { "peerDependencies": { "acorn": "^6.0.0 || ^7.0.0 || ^8.0.0" } }, "sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ=="],
-
-    "add": ["add@2.0.6", "", {}, "sha512-j5QzrmsokwWWp6kUcJQySpbG+xfOBqqKnup3OIk1pz+kB/80SLorZ9V8zHFLO92Lcd+hbvq8bT+zOGoPkmBV0Q=="],
 
     "ai": ["ai@4.3.9", "", { "dependencies": { "@ai-sdk/provider": "1.1.3", "@ai-sdk/provider-utils": "2.2.7", "@ai-sdk/react": "1.2.9", "@ai-sdk/ui-utils": "1.2.8", "@opentelemetry/api": "1.9.0", "jsondiffpatch": "0.6.0" }, "peerDependencies": { "react": "^18 || ^19 || ^19.0.0-rc", "zod": "^3.23.8" }, "optionalPeers": ["react"] }, "sha512-P2RpV65sWIPdUlA4f1pcJ11pB0N1YmqPVLEmC4j8WuBwKY0L3q9vGhYPh0Iv+spKHKyn0wUbMfas+7Z6nTfS0g=="],
 
@@ -2251,8 +2247,6 @@
     "nprogress-v2": ["nprogress-v2@1.1.10", "", {}, "sha512-MypWLNIPIM07SS0bAc/oac0vhVFz9vAHm7d1sj//Pnf3J03LQ3CuWrlDteIu6exq0fIvkDJ6tUDRWLaifsIt5w=="],
 
     "number-is-nan": ["number-is-nan@1.0.1", "", {}, "sha512-4jbtZXNAsfZbAHiiqjLPBiCl16dES1zI4Hpzzxw61Tk+loF+sBDBKx1ICKKKwIqQ7M0mFn1TmkN7euSncWgHiQ=="],
-
-    "nun": ["nun@0.1.13", "", {}, "sha512-KA3+EDNwfPje64RjYblnrTivEhSl4TIZh8EJnFnuuQx8WFk4PoOGgnbotiJpeT0gbTT4Lt8dfOcz6//P49vOew=="],
 
     "nuqs": ["nuqs@2.4.3", "", { "dependencies": { "mitt": "^3.0.1" }, "peerDependencies": { "@remix-run/react": ">=2", "next": ">=14.2.0", "react": ">=18.2.0 || ^19.0.0-0", "react-router": "^6 || ^7", "react-router-dom": "^6 || ^7" }, "optionalPeers": ["@remix-run/react", "next", "react-router", "react-router-dom"] }, "sha512-BgtlYpvRwLYiJuWzxt34q2bXu/AIS66sLU1QePIMr2LWkb+XH0vKXdbLSgn9t6p7QKzwI7f38rX3Wl9llTXQ8Q=="],
 
