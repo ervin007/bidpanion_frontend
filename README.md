@@ -2,4 +2,4 @@
 
 Docs: https://documents.zerotoshipped.com
 Demo: https://zts.server.kitze.io
-ENV generator: https://zts-env.vercel.app
+ENV generator: https://env.zerotoshipped.com/
