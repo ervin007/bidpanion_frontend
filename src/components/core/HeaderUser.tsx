@@ -63,6 +63,11 @@ export function AppHeaderUser({ links }: AppHeaderUserProps) {
           key="login"
           {...motionProps}
         >
+          {!isMobile && (
+            <CustomButton leftIcon={LucideLogIn} href="/signin">
+              Login
+            </CustomButton>
+          )}
           {isMobile && (
             <SimpleDropdownMenu
               mobileView="bottom-drawer"
