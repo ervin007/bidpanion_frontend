@@ -76,6 +76,7 @@ export default function UsersTable() {
             <TableRow>
               <TableHead>Name</TableHead>
               <TableHead>Email</TableHead>
+              <TableHead>Username</TableHead>
               <TableHead>Role</TableHead>
               <TableHead>Verified</TableHead>
               <TableHead>Status</TableHead>
@@ -91,6 +92,7 @@ export default function UsersTable() {
                 <TableRow key={user.id}>
                   <TableCell>{user.name}</TableCell>
                   <TableCell>{user.email}</TableCell>
+                  <TableCell>{user.username ?? ""}</TableCell>
                   <TableCell>{user.role ?? "User"}</TableCell>
                   <TableCell>
                     {user.emailVerified ? (
