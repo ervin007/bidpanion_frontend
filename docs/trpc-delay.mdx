@@ -1,0 +1,27 @@
+# tRPC Artificial Delay (Development)
+
+To help test loading states and simulate network latency during local development, an artificial delay is automatically added to all tRPC API calls.
+
+## How it Works
+
+- **Middleware**: A tRPC middleware (`timingMiddleware` in `src/server/api/trpc.ts`) wraps API calls.
+- **Condition**: It checks if the environment is development (`NODE_ENV !== 'production'`) AND if the `ENABLE_ARTIFICIAL_TRPC_DELAY` environment variable is set to `true`.
+- **Delay**: If both conditions are met, a **random delay between 100ms and 500ms** is added using `setTimeout`.
+- **Logging**: The actual execution time (including the delay) is logged to the server console.
+
+## Configuration
+
+This delay is **enabled by default** in development.
+
+To **disable** the artificial delay:
+
+1.  Open your `.env` file.
+2.  Set the `ENABLE_ARTIFICIAL_TRPC_DELAY` variable to `false`:
+
+    ```env
+    ENABLE_ARTIFICIAL_TRPC_DELAY=false
+    ```
+
+3.  Restart your development server (`npm run dev`).
+
+**Note**: This delay and the environment variable have no effect in production builds.

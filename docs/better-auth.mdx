@@ -1,0 +1,136 @@
+# Better Auth Integration
+
+This project uses [Better Auth](https://github.com/better-auth/better-auth) as its core authentication library. It provides a flexible foundation for handling user sessions, credentials, social logins, and more.
+
+## Core Concepts
+
+- **Adapter Pattern**: Better Auth uses adapters to connect to databases. This project utilizes the `prismaAdapter` configured in `src/server/auth/index.ts`.
+- **Plugins**: Functionality like admin features, username handling, and third-party integrations (like Polar) are added via plugins. This project uses:
+  - [`admin` plugin](https://www.better-auth.com/docs/plugins/admin): For user management, impersonation, etc.
+  - [`username` plugin](https://www.better-auth.com/docs/plugins/username): Allows sign-in/sign-up using a username in addition to email.
+  - [`openAPI` plugin](https://www.better-auth.com/docs/plugins/open-api): Generates an OpenAPI reference for auth routes at `/api/auth/reference`.
+  - [`polar` plugin](https://www.better-auth.com/docs/plugins/polar) (via `@polar-sh/better-auth`): Integrates Polar for payments and subscriptions.
+- **Procedures**: tRPC procedures (`publicProcedure`, `protectedProcedure`, `adminProcedure` in `src/server/api/trpc.ts`) leverage Better Auth's session context (`ctx.session`) to control API access.
+- **Configuration**: The main configuration happens within the `betterAuth({...})` call in `src/server/auth/index.ts`.
+
+## Configuration via Environment Variables
+
+Several aspects of Better Auth's behavior can be controlled via environment variables:
+
+**Required Core Variables:**
+
+- `BETTER_AUTH_SECRET`: A secret string used for signing session tokens. **Must be set** for production.
+- `NEXT_PUBLIC_APP_URL`: The absolute URL of your application (e.g., `https://yourapp.com`). This is used by Better Auth for constructing callback URLs. Defaults to `http://localhost:3000` if not set explicitly, but should be set for production.
+
+**Optional Feature Toggles (Defaults Shown):**
+
+- `NEXT_PUBLIC_AUTH_ENABLE_EMAIL_PASSWORD_AUTHENTICATION=true`: Enables or disables the standard email/password login and signup functionality.
+- `AUTH_ENABLE_CHANGE_EMAIL=false`: Enables or disables the built-in (but currently basic) flow for users to change their email address.
+- `AUTH_AUTO_SIGN_IN_AFTER_VERIFICATION=true`: If email verification is enabled (`NEXT_PUBLIC_AUTH_ENABLE_EMAIL_VERIFICATION=true`), setting this to `true` will automatically sign the user in after they successfully click the verification link. If set to `false`, they will need to sign in manually after verifying their email.
+- `NEXT_PUBLIC_AUTH_ENABLE_EMAIL_VERIFICATION=true`: Toggles whether email verification is required after signing up with email/password.
+
+These variables are defined in `src/env/schemas` and should be set in your `.env` file.
+
+## Server-Side Usage (tRPC)
+
+Better Auth integrates tightly with tRPC to provide authenticated procedures.
+
+### Public vs. Protected Procedures (`src/server/api/trpc.ts`)
+
+- **`publicProcedure`**: Use this for API endpoints accessible to anyone (logged in or not). Inside a public procedure, `ctx.session` might be `null`. Always check for `ctx.session?.user` before accessing user data.
+
+  ```typescript
+  // Example public procedure
+  publicProcedure.query(({ ctx }) => {
+    if (ctx.session?.user) {
+      // User is logged in
+      return `Hello ${ctx.session.user.email}`;
+    }
+    // User is not logged in
+    return "Hello guest!";
+  });
+  ```
+
+- **`protectedProcedure`**: Use this for endpoints that **require** a logged-in user. This procedure automatically verifies the session.
+
+  - If no valid session exists, it throws an `UNAUTHORIZED` TRPCError.
+  - Inside a protected procedure, `ctx.session.user` is **guaranteed** to exist and be non-nullable.
+  - **Accessing User ID**: Get the current user's ID directly via `ctx.session.user.id`.
+
+  ```typescript
+  // Example protected procedure
+  protectedProcedure
+    .input(z.object({ text: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      const userId = ctx.session.user.id;
+      // ... perform action requiring authentication ...
+      console.log(`Action by user ${userId} with input: ${input.text}`);
+      // ...
+    });
+  ```
+
+- **`adminProcedure`**: Extends `protectedProcedure` and adds a check to ensure `ctx.session.user.role === 'admin'`. Use this for admin-only actions.
+
+### Server-Side Session Helper (`src/server/auth/index.ts`)
+
+- **`getServerSession`**: A cached helper function (`cache` from React) to securely get the current session within Server Components or traditional Next.js API routes (outside of tRPC).
+
+  ```typescript
+  // Example in a Server Component
+  import { getServerSession } from "@/server/auth";
+
+  async function MyServerComponent() {
+    const session = await getServerSession();
+
+    return (
+      <div>
+        {session?.user ? `Logged in as ${session.user.email}` : "Not logged in"}
+      </div>
+    );
+  }
+  ```
+
+## Client-Side Usage
+
+### Fetching User Data (`src/hooks/useCurrentUser.ts`)
+
+- **`useCurrentUser()` Hook**: This is the **recommended** way to get the current user's _full_ data object (including preferences, role, custom fields) in client components.
+
+  - It internally calls the `api.user.getCurrentUser` tRPC query.
+  - It uses `authClient.useSession()` only to enable/disable the query (won't run if not logged in).
+  - **Advantage**: Leverages React Query for caching, background updates, and **cache invalidation**. If you update user data with a tRPC mutation, invalidating the `getCurrentUser` query will automatically update the data provided by this hook throughout your app.
+  - Returns `undefined` during initial loading, error states, or if the user is not logged in.
+
+  ```typescript
+  import { useCurrentUser } from "@/hooks/useCurrentUser";
+
+  function UserProfile() {
+    const user = useCurrentUser();
+
+    if (user === undefined) {
+      return <div>Loading...</div>; // Or appropriate loading/logged out state
+    }
+
+    return <div>Welcome, {user.name ?? user.email}! Your role is {user.role}.</div>;
+  }
+  ```
+
+### Basic Auth Actions (`src/server/auth/client.ts`)
+
+- **`authClient`**: Provides client-side functions for common authentication actions.
+  - `authClient.useSession()`: Hook to get basic session status (logged in/out) and minimal user data (e.g., email). Use this primarily for quickly checking authentication state, **not** for detailed user profile data (use `useCurrentUser` for that).
+  - `authClient.signIn.email({...})`: Sign in using email and password.
+  - `authClient.signUp.email({...})`: Sign up using email and password (and username if the plugin is active).
+  - `authClient.signOut()`: Log the user out.
+  - These are typically used within forms or UI components (e.g., `src/app/(landing)/(auth)/signin/signin-form.tsx`).
+
+## Key Files
+
+- `src/server/auth/index.ts`: The main Better Auth configuration file.
+- `src/server/api/trpc.ts`: Defines tRPC procedures that use the auth context.
+- `src/env.ts`: Defines environment variables related to authentication.
+- `.env.example`: Shows placeholders for auth-related environment variables.
+
+## Further Reading
+
+For more in-depth information on Better Auth's capabilities and configuration options, refer to the [official Better Auth documentation](https://github.com/better-auth/better-auth).

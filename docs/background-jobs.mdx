@@ -1,0 +1,36 @@
+# Background Jobs (BullMQ & Redis)
+
+**❗ Important: Using Redis and the BullMQ background job system is entirely optional.** The application is designed to function without it. Enable it only if you need to offload tasks to a background worker.
+
+This document outlines how background job processing is handled using BullMQ and Redis.
+
+## Overview
+
+If enabled, the application utilizes BullMQ, a robust Node.js library built on top of Redis, to manage background jobs. This allows deferring time-consuming or non-critical tasks (like sending emails, processing images, generating reports) to a separate process, preventing them from blocking the main application thread and improving responsiveness.
+
+## Getting Started with Redis
+
+Setting up Redis is required if you enable background jobs:
+
+- **Local Development**: Tools like [DBngin](https://dbngin.com/) provide a simple graphical interface to set up and manage a local Redis instance quickly.
+- **Hosted Platforms**: Most modern hosting platforms (e.g., [Railway](https://railway.app/), [Render](https://render.com/), [Coolify](https://coolify.io/), Vercel KV, Upstash) offer easy ways to provision a managed Redis database that you can connect your application to.
+
+## Initiation
+
+The background job worker process is started from the `instrumentation.ts` file during server initialization (`process.env.NEXT_RUNTIME === "nodejs"`).
+
+- **Enable Flag**: The primary control for enabling the background job system is the `NEXT_PUBLIC_ENABLE_BACKGROUND_JOBS` environment variable (defined in `src/env.ts`). This must be set to `true`.
+- **Redis Configuration**: Additionally, valid Redis connection details (`REDIS_HOST`, `REDIS_PORT`) must be provided in the environment variables.
+- **Conditional Start**: The `instrumentation.ts` file checks _both_ the enable flag and the presence of Redis config. If both conditions are met, the `startWorker` function (imported from `src/server/instrumentation/bull/worker.ts`) is called, which initializes and starts the BullMQ worker.
+
+## Implementation
+
+- **Worker Logic**: The core logic for processing jobs is defined in `src/server/instrumentation/bull/worker.ts`. This file sets up the BullMQ `Worker` instance, connecting it to the Redis queue and defining handlers for different job types.
+- **Queue Management**: Job queues are likely defined and managed within `src/server/instrumentation/bull/queues.ts` (or similar files in that directory).
+- **Adding Jobs**: Other parts of the application (e.g., API routes, server actions) can add jobs to the queue (using BullMQ's `Queue` class) to be picked up and processed by the worker.
+- **Usage Examples**: Currently, there are no specific examples within this boilerplate demonstrating how to add jobs to the queue. You would typically import a queue instance and call its `.add()` method.
+
+## Configuration
+
+- **Enable/Disable**: Set `NEXT_PUBLIC_ENABLE_BACKGROUND_JOBS` to `true` or `false` in your `.env` file (or environment variables) to enable or disable the background job system.
+- **Redis Connection**: If enabled (i.e., `NEXT_PUBLIC_ENABLE_BACKGROUND_JOBS` is `true`), ensure Redis connection details (`REDIS_HOST`, `REDIS_PORT`, etc.) are correctly configured in your environment variables for BullMQ to connect.

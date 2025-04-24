@@ -1,0 +1,52 @@
+# Nodemailer Local Development Setup
+
+This document explains the Nodemailer setup used for **local email development and testing**. This provider does **not** send emails to actual recipients; instead, it intercepts emails sent by the application and makes them available for viewing in a local email catching tool. The **recommended tool** for this is the official [NodemailerApp](https://nodemailer.com/app/), but alternatives exist.
+
+## Purpose
+
+- **Testing Emails**: Safely view how emails (e.g., verification, password reset) look and render without sending them externally or needing real provider API keys during development.
+- **Debugging**: Inspect email headers and content easily.
+
+## Configuration
+
+1.  **Provider Selection**: To use this local setup, set the `NEXT_PUBLIC_EMAIL_PROVIDER` environment variable to `"nodemailer-app"`. This can be done via the configuration UI (`/configure`) or directly in the `.env` file.
+
+2.  **Local Server Credentials**: Configure the connection details for your local email catching tool (like MailHog/Mailpit):
+
+    - `NODEMAILER_LOCAL_PORT`: The SMTP port your local tool listens on (Default: `1025`).
+    - `NODEMAILER_LOCAL_USER`: The username required by your local tool (if any).
+    - `NODEMAILER_LOCAL_PASS`: The password required by your local tool (if any).
+    - The configuration UI (`/configure`) displays inputs for these when "Nodemailer App" is selected.
+    - The configuration schema (`src/app/configure/schema.ts`) enforces these fields are provided if `NEXT_PUBLIC_EMAIL_PROVIDER` is set to "Nodemailer App".
+
+3.  **Environment Setup**:
+    - `src/env/schemas/email.ts`: Defines the `NEXT_PUBLIC_EMAIL_PROVIDER` enum option `"nodemailer-app"` and the corresponding `NODEMAILER_LOCAL_*` schema (`nodemailerLocalSchema`).
+
+## How it Works
+
+1.  **Email Router (`src/server/email/send-email.ts`)**: When `NEXT_PUBLIC_EMAIL_PROVIDER` is "nodemailer-app", this function routes the email details to the local Nodemailer transport.
+
+2.  **Local Transport (`src/server/email/transports/nodemailer-local-transport.ts`)**:
+    - Uses the standard `nodemailer` library.
+    - Creates a transport (`nodemailerAppTransport`) configured to connect to `127.0.0.1` using the `NODEMAILER_LOCAL_*` credentials from the environment.
+    - The `sendMail` method on this transport sends the email to your running local email catching tool.
+
+## Usage
+
+1.  **Start a Local Email Catcher**: Run MailHog, Mailpit, or a similar tool. Ensure it's listening on the port defined by `NODEMAILER_LOCAL_PORT`.
+2.  **Set Provider**: Configure `NEXT_PUBLIC_EMAIL_PROVIDER="nodemailer-app"` in your `.env` file or via the `/configure` page.
+3.  **Set Credentials**: Ensure `NODEMAILER_LOCAL_PORT`, `NODEMAILER_LOCAL_USER`, and `NODEMAILER_LOCAL_PASS` match your catcher tool's settings.
+4.  **Run Application**: Start the application (`npm run dev`).
+5.  **Trigger Email**: Perform an action in the app that sends an email (e.g., sign up if verification is enabled, request password reset).
+6.  **View Email**: Check the web UI of your local email catcher (e.g., `http://localhost:8025` for Mailpit/MailHog default) to see the intercepted email.
+
+**Note**: This setup is strictly for development and should **not** be used as the `NEXT_PUBLIC_EMAIL_PROVIDER` in production.
+
+## Alternative Tools
+
+While NodemailerApp is recommended, other popular local email catching tools can also be used with this setup:
+
+- [MailHog](https://github.com/mailhog/MailHog): A simple, Go-based email testing tool.
+- [Mailpit](https://github.com/axllent/mailpit): A modern, fast alternative to MailHog, also written in Go, with more features.
+
+Ensure you configure the `NODEMAILER_LOCAL_*` environment variables to match the SMTP settings of whichever tool you choose.

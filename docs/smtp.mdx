@@ -1,0 +1,53 @@
+# SMTP Integration
+
+This document explains how to configure the application to send emails using a standard SMTP (Simple Mail Transfer Protocol) server. This could be your own mail server or a third-party provider like Gmail, SendGrid (using SMTP relay), AWS SES (via SMTP), etc.
+
+## Configuration
+
+1.  **Provider Selection**: To use SMTP, set the `NEXT_PUBLIC_EMAIL_PROVIDER` environment variable to `"smtp"`. This can be done via the configuration UI (`/configure`) or directly in the `.env` file.
+
+2.  **SMTP Credentials**: You must provide the connection details for your SMTP server:
+
+    - `SMTP_HOST`: The hostname of your SMTP server (e.g., `smtp.gmail.com`).
+    - `SMTP_PORT`: The port number (e.g., `587` for TLS, `465` for SSL).
+    - `SMTP_USER`: The username for authentication.
+    - `SMTP_PASS`: The password or App Password for authentication.
+    - `SMTP_SECURE`: Whether to use a secure connection (TLS/SSL). Defaults to `true`. Set to `false` only if connecting to a non-secure server (uncommon).
+    - The configuration UI (`/configure`) displays inputs for these when "SMTP" is selected.
+    - The configuration schema (`src/app/configure/schema.ts`) enforces that `HOST` and `PORT` are provided and recommends `USER` and `PASS` if `NEXT_PUBLIC_EMAIL_PROVIDER` is set to "SMTP".
+
+3.  **Environment Setup**:
+    - `src/env.ts`: Defines the `NEXT_PUBLIC_EMAIL_PROVIDER` enum option `"smtp"` and the `SMTP_*` schema (`smtpSchema`).
+    - `.env.example`: Includes placeholders for these SMTP variables.
+
+## How it Works
+
+1.  **Email Router (`src/server/email/send-email.ts`)**: When `NEXT_PUBLIC_EMAIL_PROVIDER` is "smtp", this function routes the email details to the SMTP sending logic.
+
+2.  **SMTP Transport (`src/server/email/transports/nodemailer-smtp-transport.ts`)**:
+
+    - Uses the `nodemailer` library.
+    - Checks if all required `SMTP_*` variables are set (`isSmtpConfigured`).
+    - If configured, creates a Nodemailer transport (`smtpTransport`) using these credentials.
+    - Verifies the SMTP connection on application startup and logs the status.
+
+3.  **Sending Logic (`src/server/email/send-email-smtp.ts`)**:
+    - Uses the configured `smtpTransport`.
+    - Renders React email components to HTML.
+    - Calls `smtpTransport.sendMail()` to send the email via the configured SMTP server.
+    - Handles multiple recipients by sending individual emails in a loop.
+
+## Usage Examples
+
+When SMTP is configured as the provider, it's used by the core `sendEmail` function for actions like:
+
+- Sending email verification links.
+- Sending password reset links.
+- Sending email change confirmations (if enabled).
+
+## Considerations
+
+- **Deliverability**: Email deliverability with generic SMTP can be complex. Ensure your sending domain has proper SPF, DKIM, and DMARC records configured. Using a dedicated email service provider (like Resend, Plunk, SendGrid, etc.) often simplifies deliverability management.
+- **Rate Limits**: Be mindful of any sending limits imposed by your SMTP provider.
+- **Security**: Use secure connections (`SMTP_SECURE=true`) whenever possible. If using Gmail, you'll likely need an [App Password](https://support.google.com/accounts/answer/185833) instead of your regular account password.
+- **Production Check**: The application includes a check (`src/server/instrumentation/emailLogger.ts`) to prevent multiple production email providers (SMTP, Resend, Plunk) from being configured simultaneously.

@@ -1,0 +1,77 @@
+# Deployment Guide
+
+This guide outlines several recommended methods for deploying your application. We'll cover both traditional server-based deployments (recommended for full feature compatibility) and serverless options.
+
+## Platform Compatibility Overview
+
+| Platform | Deployment Type | PostgreSQL                | Redis / Background Jobs (BullMQ) |
+| :------- | :-------------- | :------------------------ | :------------------------------- |
+| Coolify  | Server          | ✅ Yes                    | ✅ Yes                           |
+| Railway  | Server          | ✅ Yes                    | ✅ Yes                           |
+| Render   | Server          | ✅ Yes                    | ⚠️ Yes (Valkey)                  |
+| Vercel   | Serverless      | ❌ No (Requires external) | ❌ No (Requires external)        |
+
+## Server Deployment (Recommended)
+
+Server-based deployments offer the most flexibility and ensure all features, including background jobs and cron tasks, function correctly. **Coolify is the recommended platform.** Here are a few recommended platforms:
+
+### Coolify
+
+Coolify offers both self-hosted and managed cloud solutions, providing granular control over your infrastructure.
+
+- **Hosting:** Deploy your Node.js server.
+- **Database:** Provision PostgreSQL databases.
+- **Background Jobs:** Easily add a Redis instance for background job processing.
+- **Note:** I (Kitze) am using the Coolify Cloud ($5/mo) hosted on Hetzner (~$50/mo) to manage _all_ of my applications and databases. I'm also self hosting Umami analytics (one click deployment), and I'm going to host Plunk for sending emails.
+
+[Explore Coolify](https://coolify.io)
+
+### Railway
+
+Railway provides a seamless experience for deploying full-stack applications.
+
+- **Hosting:** Supports deploying your Node.js server directly.
+- **Database:** Easily provisions a PostgreSQL database.
+- **Background Jobs:** Can host a Redis instance, which is required if you utilize background job processing (e.g., with BullMQ).
+
+[Deploy on Railway](https://railway.app)
+
+### Render
+
+Render is another excellent platform for deploying web applications and services.
+
+- **Hosting:** Supports deploying your Node.js server.
+- **Database:** Offers managed PostgreSQL databases.
+- **Background Jobs:** Render's native Key-Value store runs Valkey (a Redis 7.2.4 fork). While it _might_ work with BullMQ, compatibility isn't guaranteed. **Using it for BullMQ is experimental.** For reliable background jobs, use an external Redis provider (Upstash, Railway, Aiven, etc.).
+
+[Deploy on Render](https://render.com)
+
+## Serverless Deployment
+
+Serverless platforms can be a cost-effective way to host the application, but they come with limitations, particularly regarding long-running processes.
+
+### Vercel
+
+Vercel excels at deploying frontend applications and serverless functions.
+
+- **Hosting:** Deploys the application as serverless functions.
+- **Limitations:**
+  - Standard cron job patterns (like `node-cron`) will **not** work reliably due to the stateless Nnature of serverless functions. You might need to use Vercel Cron Jobs.
+  - Background job queues (like BullMQ) are **not suitable** for this environment as they require a persistent process. Consider Vercel's background tasks or external services if needed.
+- **Database:** A platform like Neon or Supabase is recommended for PostgreSQL. Remember to uncomment the `DIRECT_URL` variable in your `schema.prisma` file when using connection poolers like Supabase's PgBouncer.
+
+[Deploy on Vercel](https://vercel.com)
+
+Choose the deployment option that best suits your needs regarding feature requirements (especially background jobs), scalability, and management preferences.
+
+## Application URL Configuration
+
+The application needs to know its public-facing URL for various features like authentication callbacks and generating absolute links. The deployment URL is typically derived automatically based on environment variables provided by platforms like Vercel, Railway, Render, and Coolify.
+
+This derived URL is configured in `next.config.js` and passed to the application via the `NEXT_PUBLIC_APP_URL` environment variable.
+
+**Overriding the URL:**
+If the automatically derived URL is incorrect, or if you need to specify a different primary URL, you can manually set the `SERVER_URL` environment variable. This value will take precedence.
+
+**Handling Multiple Domains:**
+If your deployment platform supports multiple domains for a single deployment, be aware that relying on the automatically derived URL might lead to issues. The platform might provide a list of domains, causing problems for features expecting a single canonical URL (like authentication). The recommended approach is to create a separate deployment for each domain you want to serve. Each deployment should then have the `SERVER_URL` environment variable explicitly set to its corresponding domain.

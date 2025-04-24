@@ -1,0 +1,18 @@
+# Cron Jobs
+
+This document explains how scheduled tasks (cron jobs) are managed and initiated within the application.
+
+## Initiation
+
+Cron job scheduling is primarily initiated within the `instrumentation.ts` file. This file runs during the server startup process when `process.env.NEXT_RUNTIME` is `"nodejs"`, meaning it won't work if you host your app on a serverless platform like Vercel.
+
+- **Enable Flag**: The primary control for enabling cron jobs is the `NEXT_PUBLIC_ENABLE_CRON` environment variable (defined in `src/env/schemas/general.ts`). This must be set to `true` for cron jobs to be scheduled.
+- **Main Cron Function**: The function `startMainCron` (imported from `src/server/instrumentation/cron/scripts/main-cron.ts`) is responsible for setting up and scheduling the application's main cron jobs.
+- **Conditional Start**: Within `instrumentation.ts`, the call to `startMainCron()` is executed only if `NEXT_PUBLIC_ENABLE_CRON` is `true`, ensuring that the defined scheduled tasks begin running when the server starts.
+
+## Implementation
+
+- **Job Definitions**: The actual logic and scheduling for individual cron jobs are defined within the cron scripts directory, primarily starting with `src/server/instrumentation/cron/scripts/main-cron.ts`.
+- **Purpose**: Cron jobs are typically used for recurring tasks like database cleanup, sending scheduled reports, syncing data, etc.
+
+Refer to the files within `src/server/instrumentation/cron/` for specific job implementations and schedules.

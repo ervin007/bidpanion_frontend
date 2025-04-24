@@ -1,0 +1,53 @@
+# Middleware (`src/middleware.ts`)
+
+## Root Path Handling (`/`)
+
+A key function of the middleware is handling requests to the root path (`/`). Notably, there isn't a dedicated `page.tsx` file directly serving the `/` route.
+
+Instead, the middleware intercepts requests for `/` and performs the following logic:
+
+1.  It checks for the presence of the session cookie.
+2.  If a session cookie **exists**, it internally **rewrites** the URL to `/app`. The user sees the content from `/app` but the browser URL remains `/`.
+3.  If a session cookie **does not exist**, it internally **rewrites** the URL to `/home`.
+
+**Benefits & Implications:**
+
+- **Performance**: This URL rewriting is very fast, avoiding the need to load a root page component just to check authentication and then perform a client-side redirect. This prevents a flash of loading content or a spinner solely for the purpose of routing.
+- **Clear Separation**: The main application lives under the `/app` route group, and the public landing page lives under `/home`.
+- **Accessing Landing Page When Logged In**: Even when logged in, a user can explicitly navigate to `/home` to view the landing page content.
+
+---
+
+## Route Protection Logic
+
+Beyond the root path, the middleware primarily handles route protection based on authentication status and basic role checks.
+
+1.  **Session Check**: It checks for the existence of the session cookie using `getSessionCookie` from `better-auth/cookies`.
+2.  **Path Matching**: It identifies the current pathname and compares it against predefined lists:
+    - `authRoutes`: Pages like `/signin`, `/signup`.
+    - `passwordRoutes`: Pages like `/reset-password`.
+    - `adminRoutes`: Currently `/admin`.
+    - `alwaysAllowedRoutes`: Publicly accessible routes like `/home`, `/blog`.
+3.  **Redirection Logic**:
+    - **Root Path (`/`)**: Redirects to `/app` if logged in, or `/home` if not.
+    - **Always Allowed**: If the path matches `alwaysAllowedRoutes`, it allows the request (`NextResponse.next()`).
+    - **No Session**: If no session cookie exists:
+      - Allows access to auth/password routes.
+      - Redirects all other requests to `/signin`.
+    - **Active Session**: If a session cookie exists:
+      - Redirects away from auth/password routes back to the root (`/`).
+      - Checks if the route is an admin route (`/admin`).
+4.  **Admin Route Check**: If the route is `/admin` _and_ the user has a session:
+    - It makes an API call (`betterFetch`) to `/api/auth/get-session` to get the full session details, including the user's role.
+    - It checks if `session.user.role === 'admin'`.
+    - If the user is **not** an admin, it redirects to the root (`/`).
+    - If the user **is** an admin, it allows the request (`NextResponse.next()`).
+5.  **Default**: If none of the above conditions cause a redirect, the request is allowed (`NextResponse.next()`).
+
+## Admin Route Protection Clarification
+
+The check within the middleware for `/admin` routes (`if (isAdminRoute) { ... }`) serves as a **preliminary UI protection layer**. It prevents non-admin users from even _seeing_ the `/admin` page layout.
+
+However, the **true security enforcement** for admin-only actions happens within the tRPC backend using the `adminProcedure` (`src/server/api/trpc.ts`). Even if a non-admin user somehow bypassed the middleware (e.g., by directly calling an admin API endpoint), the `adminProcedure` would check `ctx.session.user.role === 'admin'` and throw an `UNAUTHORIZED` error, preventing the action.
+
+The middleware check is primarily for user experience and preventing unnecessary rendering/API calls from the admin UI for non-admins.

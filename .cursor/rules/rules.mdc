@@ -1,0 +1,24 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Do not ever ask me to start the server, assume that it's running.
+
+# Prisma
+- You should use the db:migrate script from package.json, never do db push
+
+
+# Dependencies
+- Use lodash utils when needed
+- For dates use date-fns
+- For icons ALWAYS use lucide icons
+- Assume framer motion, date-fns, lucuide, etc. is installed and don't try to install it again
+
+# Tailwind
+- Always use gap, never use margin.
+- Try to use "horizontal" and "vertical" from [globals.css](mdc:src/styles/globals.css) instead of flex
+
+# Components
+- When you need a loading state you use [Spinner.tsx](mdc:src/components/Spinner.tsx) 
+- When you need a button you use [CustomButton.tsx](mdc:src/components/CustomButton.tsx) which supports leftIcon={IconWhatever}, loading, and other extra props

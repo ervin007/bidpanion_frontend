@@ -1,0 +1,45 @@
+# Plunk Integration
+
+This document explains how the Plunk email service is integrated for sending transactional emails. Plunk can be a cost-effective alternative to other providers, leveraging Amazon SES under the hood, and offers self-hosting options.
+
+## Configuration
+
+1.  **Provider Selection**: To use Plunk, the `NEXT_PUBLIC_EMAIL_PROVIDER` environment variable must be set to `"plunk"`. This can be done via the configuration UI (`/configure`) or directly in the `.env` file.
+
+2.  **Secret Key**: The `PLUNK_SECRET_KEY` environment variable must contain a valid Secret Key obtained from your Plunk account or self-hosted instance.
+
+## Sending Emails
+
+1.  **Email Router (`src/server/email/send-email.ts`)**: This central function checks the `NEXT_PUBLIC_EMAIL_PROVIDER`. If it's "Plunk", it proceeds to use the Plunk-specific logic.
+
+2.  **Plunk Logic (`src/server/email/send-email-plunk.ts`)**:
+    - Uses the official `@plunk/node` SDK.
+    - Checks if `PLUNK_SECRET_KEY` is configured (`isPlunkConfigured`).
+    - Takes a standard `EmailPayload`.
+    - Renders React components to HTML using `@react-email/render`, as Plunk primarily uses the HTML body.
+    - Calls `plunk.emails.send` with `to`, `subject`, and `body` (HTML or text).
+    - Note: The `from` address is typically managed within your Plunk dashboard settings, not directly in the API call.
+    - Includes basic error handling.
+
+## Usage Examples
+
+Plunk is used by the core `sendEmail` function when selected as the provider. This function is called for:
+
+- Sending email verification links.
+- Sending password reset links.
+- Sending email change confirmations (if enabled).
+
+## Pricing & Considerations
+
+- **Cost-Effective**: Plunk often presents a cheaper alternative, especially when self-hosted or using their managed service built on AWS SES.
+- **Daily Sending Limit**: Plunk's free/basic tier often has a sending limit (e.g., potentially around **300 emails per day** - verify this with their current pricing). Similar to Resend's free tier, this might be insufficient for high user growth, especially if email verification is enabled.
+- **Self-Hosting**: Plunk can be self-hosted, giving you more control over your email infrastructure. Setup details are beyond this document; refer to official Plunk documentation.
+- **Limits & Features**: Check the official Plunk documentation or your self-hosted configuration for specific sending limits, features, and exact pricing details, as these can vary.
+
+**Important Considerations (Limits):**
+
+- If you anticipate high user growth or need to send more emails than the daily limit allows (e.g., for email verification upon signup), the limit might be reached quickly.
+- **Mitigation Strategies**:
+  - **Disable Email Verification**: In `src/env.ts` (or via the config UI), set `NEXT_PUBLIC_AUTH_ENABLE_EMAIL_VERIFICATION` to `false`. This removes the need to send a verification email on signup.
+  - **Rely on Social Logins**: Encourage or enforce login via social providers (like GitHub, if configured) which typically don't require separate email verification through your app.
+  - **Upgrade Plunk Plan / Adjust SES Limits**: If using Plunk's service, consider upgrading. If self-hosting on SES, ensure your SES sending limits are sufficient.
