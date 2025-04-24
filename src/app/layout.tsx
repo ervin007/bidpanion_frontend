@@ -24,6 +24,15 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
+// you can use this instead of <ThemeColorUpdater/>  if you want it to be set based on the OS system settings
+
+// export const viewport: Viewport = {
+//   themeColor: [
+//     { media: "(prefers-color-scheme: light)", color: "white" },
+//     { media: "(prefers-color-scheme: dark)", color: "black" },
+//   ],
+// };
+
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {

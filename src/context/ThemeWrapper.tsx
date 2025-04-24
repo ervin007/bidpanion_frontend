@@ -1,4 +1,5 @@
 import { ThemeProvider } from "next-themes";
+import { ThemeColorUpdater } from "@/components/ThemeColorUpdater";
 
 export const ThemeWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -10,6 +11,7 @@ export const ThemeWrapper = ({ children }: { children: React.ReactNode }) => {
       disableTransitionOnChange
     >
       {children}
+      <ThemeColorUpdater />
     </ThemeProvider>
   );
 };
