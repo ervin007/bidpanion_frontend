@@ -7,7 +7,7 @@ export const clientSchema = z.object({
     .string()
     .optional()
     .default("Your default app description"),
-  NEXT_PUBLIC_APP_URL: z.string().url(),
+  NEXT_PUBLIC_APP_URL: z.string().url().default("http://localhost:3000"),
   NODE_ENV: z
     .enum(["development", "test", "production"])
     .default("development"),
