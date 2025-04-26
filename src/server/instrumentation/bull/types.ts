@@ -1,4 +1,4 @@
-import { PrismaClient } from "@/generated/prisma";
+import { type PrismaClient } from "@/generated/prisma";
 
 export const WORKER_NAME = "zts-queue";
 
