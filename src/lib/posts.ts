@@ -1,4 +1,4 @@
-import { allPosts, Post } from "content-collections"; // Assuming Post type is exported from generated types
+import { allPosts, type Post } from "content-collections"; // Assuming Post type is exported from generated types
 
 export type { Post };
 
