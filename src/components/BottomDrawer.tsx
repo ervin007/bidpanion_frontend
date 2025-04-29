@@ -54,18 +54,13 @@ export const BottomDrawer: ReactFC<BottomDrawerProps> = ({
   const defaultHeader = (
     <>
       {handle}
-      <div className="mb-4 flex items-center justify-between">
-        {title && (
-          <div
-            className={cn(
-              "text-lg font-semibold text-zinc-900 dark:text-white",
-              classNames?.title,
-            )}
-          >
-            {title}
-          </div>
-        )}
-      </div>
+      <Drawer.Title className={cn(
+          "mb-4 text-lg font-semibold text-zinc-900 dark:text-white",
+          classNames?.title,
+          !title && "sr-only"
+        )}>
+        {title || "Drawer"}
+      </Drawer.Title>
     </>
   );
 
