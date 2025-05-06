@@ -1,7 +1,7 @@
 // @ts-check
 
 import { auth } from "@/server/auth";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@/generated/prisma";
 
 const prisma = new PrismaClient();
 

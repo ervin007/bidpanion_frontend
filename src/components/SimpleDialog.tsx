@@ -205,11 +205,11 @@ export const SimpleDialog = ({
         )}
         showCloseButton={showCloseButton}
       >
-        {title && (
-          <DialogHeader className={classNames.header}>
-            <DialogTitle className={classNames.title}>{title}</DialogTitle>
-          </DialogHeader>
-        )}
+        <DialogHeader className={classNames.header}>
+          <DialogTitle className={cn(classNames.title, !title && "sr-only")}>
+            {title || "Dialog"}
+          </DialogTitle>
+        </DialogHeader>
         <div className={cn("py-4", classNames.body)}>{children}</div>
         {footerContent && (
           <DialogFooter className={classNames.footer}>
