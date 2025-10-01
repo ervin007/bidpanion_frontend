@@ -13,6 +13,15 @@ import { SimpleSelect } from "@/components/SimpleSelect";
 import { authClient } from "@/server/auth/client";
 import { PlanCard, type PlanCardProps } from "./PlanCard";
 
+export const PRICING_FEATURES = [
+  "Access to all premium features",
+  "Priority support",
+  "Advanced analytics",
+  "Custom exports",
+  "API access",
+  "No feature limitations",
+];
+
 export default function PricingPlans() {
   const { isMobile } = useKitzeUI();
   const plans = getActivePaymentPlans();
@@ -41,15 +50,6 @@ export default function PricingPlans() {
         )
       : 0;
 
-  const features = [
-    "Access to all premium features",
-    "Priority support",
-    "Advanced analytics",
-    "Custom exports",
-    "API access",
-    "No feature limitations",
-  ];
-
   const planOptions = [
     { value: "monthly", label: "Monthly", icon: CalendarDays },
     { value: "annual", label: `Annual (Save ${savings}%)`, icon: CreditCard },
@@ -71,10 +71,10 @@ export default function PricingPlans() {
   if (monthlyPlan) {
     planConfigs.push({
       name: monthlyPlan.name,
-      description: monthlyPlan.description || "",
+      description: monthlyPlan.description ?? "",
       price: monthlyPlan.price,
       priceLabel: "/month",
-      features,
+      features: PRICING_FEATURES,
       actionUrl: getActionUrl(monthlyPlan.slug),
       isHighlighted: false,
     });
@@ -83,11 +83,11 @@ export default function PricingPlans() {
   if (annualPlan) {
     planConfigs.push({
       name: annualPlan.name,
-      description: annualPlan.description || "",
+      description: annualPlan.description ?? "",
       price: annualPlan.price,
       priceLabel: "/year",
       badge: "RECOMMENDED",
-      features,
+      features: PRICING_FEATURES,
       actionUrl: getActionUrl(annualPlan.slug),
       isHighlighted: true,
       savings,
@@ -97,10 +97,10 @@ export default function PricingPlans() {
   if (lifetimePlan) {
     planConfigs.push({
       name: lifetimePlan.name,
-      description: lifetimePlan.description || "",
+      description: lifetimePlan.description ?? "",
       price: lifetimePlan.price,
       priceLabel: "/lifetime",
-      features,
+      features: PRICING_FEATURES,
       extraFeatures: ["Lifetime access, pay once"],
       actionUrl: getActionUrl(lifetimePlan.slug),
       isHighlighted: false,
@@ -123,10 +123,10 @@ export default function PricingPlans() {
         {selectedPlan === "monthly" && monthlyPlan && (
           <PlanCard
             name={monthlyPlan.name}
-            description={monthlyPlan.description || ""}
+            description={monthlyPlan.description ?? ""}
             price={monthlyPlan.price}
             priceLabel="/month"
-            features={features}
+            features={PRICING_FEATURES}
             actionUrl={getActionUrl(monthlyPlan.slug)}
           />
         )}
@@ -134,11 +134,11 @@ export default function PricingPlans() {
         {selectedPlan === "annual" && annualPlan && (
           <PlanCard
             name={annualPlan.name}
-            description={annualPlan.description || ""}
+            description={annualPlan.description ?? ""}
             price={annualPlan.price}
             priceLabel="/year"
             badge="RECOMMENDED"
-            features={features}
+            features={PRICING_FEATURES}
             actionUrl={getActionUrl(annualPlan.slug)}
             isHighlighted={true}
             buttonColor="violet-600"
@@ -149,10 +149,10 @@ export default function PricingPlans() {
         {selectedPlan === "lifetime" && lifetimePlan && (
           <PlanCard
             name={lifetimePlan.name}
-            description={lifetimePlan.description || ""}
+            description={lifetimePlan.description ?? ""}
             price={lifetimePlan.price}
             priceLabel="/lifetime"
-            features={features}
+            features={PRICING_FEATURES}
             extraFeatures={["Lifetime access, pay once"]}
             actionUrl={getActionUrl(lifetimePlan.slug)}
           />
