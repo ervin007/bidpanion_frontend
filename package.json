@@ -7,7 +7,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "bun run dev.mjs",
     "build": "npx prisma generate && npx prisma validate && next build",
     "build:turbo": "npx prisma generate && npx prisma validate && next build --turbo",
     "db:generate": "prisma generate",
