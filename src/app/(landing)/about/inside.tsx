@@ -55,7 +55,7 @@ export default function AboutPageContent() {
     visible: {
       scale: 1,
       opacity: 1,
-      transition: { type: "spring", stiffness: 100 },
+      transition: { type: "spring" as const, stiffness: 100 },
     },
   };
 
