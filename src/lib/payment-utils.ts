@@ -1,30 +1,37 @@
-import { clientEnv } from "@/env/client";
-import { type PaymentPlan, getPaymentPlans } from "@/config/payment-plans";
+import {
+  type PaymentPlan,
+  getPaymentPlans,
+  getBasePlans,
+  type BasePlanInfo,
+} from "@/config/payment-plans";
 
 /**
- * Helper function to get the active plans based on environment
+ * Helper function to get the active plans with price IDs (server-side only)
  */
 export const getActivePaymentPlans = (): PaymentPlan[] => {
-  const environment =
-    clientEnv.NEXT_PUBLIC_POLAR_ENV === "production" ? "production" : "sandbox";
-  return getPaymentPlans(environment);
+  return getPaymentPlans();
 };
 
 /**
- * Type definition for simplified plan format used by Polar plugin
+ * Helper function to get base plans for client-side display
  */
-export type PolarProductFormat = {
-  productId: string;
-  slug: string;
+export const getBasePlansForDisplay = (): BasePlanInfo[] => {
+  return getBasePlans();
 };
 
-export const getPlansForPolarPlugin = (): PolarProductFormat[] => {
-  const environment =
-    clientEnv.NEXT_PUBLIC_POLAR_ENV === "production" ? "production" : "sandbox";
-  const plans = getPaymentPlans(environment);
+/**
+ * Type definition for simplified plan format used by Stripe plugin
+ */
+export type StripeProductFormat = {
+  priceId: string;
+  name: string;
+};
+
+export const getPlansForStripePlugin = (): StripeProductFormat[] => {
+  const plans = getPaymentPlans();
   return plans.map((plan) => ({
-    productId: plan.productId,
-    slug: plan.slug,
+    priceId: plan.priceId,
+    name: plan.slug,
   }));
 };
 
@@ -34,7 +41,7 @@ export const getPlansForPolarPlugin = (): PolarProductFormat[] => {
  * @returns The checkout URL for the given plan
  */
 export const getCheckoutUrl = (planSlug: string): string => {
-  return `/api/auth/checkout/${planSlug}`;
+  return `/api/auth/stripe/checkout?plan=${planSlug}`;
 };
 
 /**

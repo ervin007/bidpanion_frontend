@@ -56,7 +56,7 @@ export function SettingsModal({}: SettingsModalProps) {
       icon: Cpu,
       content: <SettingsTabAI />,
     },
-    clientEnv.NEXT_PUBLIC_ENABLE_POLAR && {
+    clientEnv.NEXT_PUBLIC_ENABLE_STRIPE && {
       value: "billing",
       label: "Billing",
       icon: CreditCard,

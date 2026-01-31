@@ -19,7 +19,7 @@ export interface BasePlanInfo {
 }
 
 interface BasePlanWithId extends BasePlanInfo {
-  productId: string;
+  priceId: string;
 }
 
 export interface SubscriptionPlan extends BasePlanWithId {
@@ -62,27 +62,27 @@ export const basePlans: BasePlanInfo[] = [
   },
 ];
 
-export const productIdsSandbox: Record<string, string> = {
-  "pro-monthly": "3cc391d0-128a-4a9f-bdad-7cfbfe673a91",
-  "pro-annual": "02255632-11ec-49cf-8620-790fa6893d00",
-  lifetime: "cd58e5e5-e55b-4029-8cbd-ac89e1aab3a3",
+// Price IDs are loaded from environment variables
+// Set these in your .env file with your Stripe price IDs
+export const getStripePriceIds = (): Record<string, string> => {
+  // These are accessed at runtime from serverEnv
+  // For client-side, we don't need the actual IDs - just the slugs
+  return {
+    "pro-monthly": process.env.STRIPE_PRICE_ID_PRO_MONTHLY || "",
+    "pro-annual": process.env.STRIPE_PRICE_ID_PRO_ANNUAL || "",
+    lifetime: process.env.STRIPE_PRICE_ID_LIFETIME || "",
+  };
 };
 
-export const productIdsProduction: Record<string, string> = {
-  "pro-monthly": "",
-  "pro-annual": "",
-  lifetime: "",
-};
-
-export const createPlansForEnv = (
-  productIds: Record<string, string>,
+export const createPlansWithPriceIds = (
+  priceIds: Record<string, string>,
 ): PaymentPlan[] => {
   return basePlans
     .map((basePlan: BasePlanInfo) => {
-      const productId = productIds[basePlan.slug];
-      if (!productId) {
+      const priceId = priceIds[basePlan.slug];
+      if (!priceId) {
         console.warn(
-          `Product ID not found for slug '${basePlan.slug}' in the current environment.`,
+          `Price ID not found for slug '${basePlan.slug}'. Make sure STRIPE_PRICE_ID_* env vars are set.`,
         );
         return null;
       }
@@ -96,14 +96,14 @@ export const createPlansForEnv = (
         }
         return {
           ...basePlan,
-          productId,
+          priceId,
           type: PlanType.Subscription,
           interval: basePlan.interval,
         } as SubscriptionPlan;
       } else {
         return {
           ...basePlan,
-          productId,
+          priceId,
           type: PlanType.OneTime,
         } as OneTimePlan;
       }
@@ -111,10 +111,11 @@ export const createPlansForEnv = (
     .filter((plan): plan is PaymentPlan => plan !== null);
 };
 
-export const getPaymentPlans = (
-  environment: "sandbox" | "production",
-): PaymentPlan[] => {
-  return environment === "production"
-    ? createPlansForEnv(productIdsProduction)
-    : createPlansForEnv(productIdsSandbox);
+export const getPaymentPlans = (): PaymentPlan[] => {
+  return createPlansWithPriceIds(getStripePriceIds());
+};
+
+// Get base plans without price IDs (for client-side display)
+export const getBasePlans = (): BasePlanInfo[] => {
+  return basePlans;
 };

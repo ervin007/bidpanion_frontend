@@ -90,7 +90,7 @@ export function HeaderUserDropdownMenu({ links }: HeaderUserDropdownMenuProps) {
 
       <AdminStatusMenuItem />
 
-      {!isPro && clientEnv.NEXT_PUBLIC_ENABLE_POLAR && (
+      {!isPro && clientEnv.NEXT_PUBLIC_ENABLE_STRIPE && (
         <CommonMenuItem leftIcon={Crown} onClick={openUpgradeDialog}>
           Upgrade to Pro
         </CommonMenuItem>

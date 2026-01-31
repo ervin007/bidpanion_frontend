@@ -3,7 +3,7 @@ import * as authSchemas from "./auth";
 import * as githubSchemas from "./github";
 import * as emailSchema from "./email";
 import * as generalSchemas from "./general";
-import * as polarSchemas from "./polar";
+import * as stripeSchemas from "./stripe";
 import * as uploadThingSchemas from "./uploadthing";
 import * as redisSchemas from "./redis";
 
@@ -14,7 +14,7 @@ export const clientSchema = z
   .merge(redisSchemas.clientSchema)
   .merge(emailSchema.clientSchema)
   .merge(generalSchemas.clientSchema)
-  .merge(polarSchemas.clientSchema)
+  .merge(stripeSchemas.clientSchema)
   .merge(uploadThingSchemas.clientSchema);
 
 export const clientEnvRaw: {
@@ -29,8 +29,9 @@ export const clientEnvRaw: {
   NEXT_PUBLIC_EMAIL_PROVIDER: process.env.NEXT_PUBLIC_EMAIL_PROVIDER,
   NEXT_PUBLIC_EMAIL_ENABLE_EMAIL_PREVIEW:
     process.env.NEXT_PUBLIC_EMAIL_ENABLE_EMAIL_PREVIEW,
-  NEXT_PUBLIC_ENABLE_POLAR: process.env.NEXT_PUBLIC_ENABLE_POLAR,
-  NEXT_PUBLIC_POLAR_ENV: process.env.NEXT_PUBLIC_POLAR_ENV,
+  NEXT_PUBLIC_ENABLE_STRIPE: process.env.NEXT_PUBLIC_ENABLE_STRIPE,
+  NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:
+    process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
   NEXT_PUBLIC_ENABLE_UPLOADTHING: process.env.NEXT_PUBLIC_ENABLE_UPLOADTHING,
   NEXT_PUBLIC_ENABLE_BACKGROUND_JOBS:
     process.env.NEXT_PUBLIC_ENABLE_BACKGROUND_JOBS,
@@ -56,7 +57,7 @@ export const serverSchema = clientSchema
   .and(emailSchema.serverSchema)
   .and(githubSchemas.serverSchema)
   .and(authSchemas.serverSchema)
-  .and(polarSchemas.serverSchema)
+  .and(stripeSchemas.serverSchema)
   .and(uploadThingSchemas.serverSchema)
   .and(redisSchemas.serverSchema)
   // 1a. Email Verification Check (Production)

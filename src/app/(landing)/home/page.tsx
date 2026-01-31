@@ -1,19 +1,15 @@
-import LandingHero from "./_components/LandingHero";
-import LandingFeatures from "./_components/LandingFeatures";
-import LandingTestimonials from "./_components/LandingTestimonials";
-import LandingFAQ from "./_components/LandingFAQ";
-import HomePageGradients from "./_components/HomePageGradients";
-import LandingPricing from "./_components/LandingPricing";
+import LandingHeroMinimal from "./_components/LandingHeroMinimal";
+import LandingFeaturesMinimal from "./_components/LandingFeaturesMinimal";
+import LandingPricingMinimal from "./_components/LandingPricingMinimal";
+import LandingFooterMinimal from "./_components/LandingFooterMinimal";
 
 export default function HomePage() {
   return (
-    <>
-      <HomePageGradients />
-      <LandingHero />
-      <LandingFeatures />
-      <LandingPricing />
-      <LandingTestimonials />
-      <LandingFAQ />
-    </>
+    <div className="flex min-h-screen flex-col">
+      <LandingHeroMinimal />
+      <LandingFeaturesMinimal />
+      <LandingPricingMinimal />
+      <LandingFooterMinimal />
+    </div>
   );
 }

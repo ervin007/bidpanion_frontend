@@ -1,5 +1,6 @@
 "use client";
 
+import { Menu } from "lucide-react";
 import { Logo } from "./Logo";
 import { AppHeaderUser } from "./HeaderUser";
 import { blogLink, chatLink, homeLink } from "@/config/links";
@@ -7,9 +8,12 @@ import { useKitzeUI } from "@/components/KitzeUIContext";
 import { ThemeSwitchMinimalNextThemes } from "@/components/ThemeSwitchMinimalNextThemes";
 import { HeaderCustomized } from "@/components/core/HeaderCustomized";
 import { HeaderLinks } from "@/components/core/HeaderLinks";
+import { useSidebar } from "@/components/sidebar";
+import { Button } from "@/components/ui/button";
 
 export default function AppHeader() {
   const { isMobile } = useKitzeUI();
+  const { openDrawer } = useSidebar();
 
   // Links are filtered inside the respective components
   const userLinks = [homeLink, blogLink];
@@ -21,8 +25,18 @@ export default function AppHeader() {
         root: "relative",
       }}
       leftSide={
-        <div className="horizontal gap-2">
-          <Logo />
+        <div className="horizontal center-v gap-2">
+          {isMobile && (
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={openDrawer}
+              className="md:hidden"
+            >
+              <Menu className="h-5 w-5" />
+            </Button>
+          )}
+          {isMobile && <Logo />}
         </div>
       }
       renderRightSide={() => (

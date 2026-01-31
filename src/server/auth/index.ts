@@ -2,12 +2,12 @@ import { EmailTemplateChangeEmail } from "@/email/templates/EmailTemplateChangeE
 import { EmailTemplateResetPassword } from "@/email/templates/EmailTemplateResetPassword";
 import EmailTemplateVerification from "@/email/templates/EmailTemplateVerification";
 import { serverEnv } from "@/env";
-import { getPlansForPolarPlugin } from "@/lib/payment-utils";
+import { getPlansForStripePlugin } from "@/lib/payment-utils";
 import { db } from "@/server/db";
 import { sendEmail } from "@/server/email/send-email";
 import { getDefaultPreferences } from "@/types/user-preferences";
-import { polar } from "@polar-sh/better-auth";
-import { Polar } from "@polar-sh/sdk";
+import { stripe as stripePlugin } from "@better-auth/stripe";
+import Stripe from "stripe";
 import {
   betterAuth,
   type BetterAuthOptions,
@@ -19,18 +19,11 @@ import { headers } from "next/headers";
 import { after } from "next/server";
 import { cache } from "react";
 
-let polarClient: Polar | undefined;
+let stripeClient: Stripe | undefined;
 
-if (serverEnv.NEXT_PUBLIC_ENABLE_POLAR) {
-  // Determine the correct environment (sandbox/production) based on IS_DEV and NEXT_PUBLIC_POLAR_ENV
-  const accessToken =
-    serverEnv.NEXT_PUBLIC_POLAR_ENV === "sandbox"
-      ? serverEnv.POLAR_ACCESS_TOKEN_SANDBOX
-      : serverEnv.POLAR_ACCESS_TOKEN_PROD;
-
-  polarClient = new Polar({
-    accessToken: accessToken,
-    server: serverEnv.NEXT_PUBLIC_POLAR_ENV,
+if (serverEnv.NEXT_PUBLIC_ENABLE_STRIPE) {
+  stripeClient = new Stripe(serverEnv.STRIPE_SECRET_KEY, {
+    apiVersion: "2025-01-27.acacia",
   });
 }
 
@@ -132,34 +125,22 @@ export const auth = betterAuth({
       username(),
     ];
 
-    if (serverEnv.NEXT_PUBLIC_ENABLE_POLAR && polarClient) {
-      const webhookSecret =
-        serverEnv.NEXT_PUBLIC_POLAR_ENV === "sandbox"
-          ? serverEnv.POLAR_WEBHOOK_SECRET_SANDBOX
-          : serverEnv.POLAR_WEBHOOK_SECRET_PROD;
-
-      const productsArray = getPlansForPolarPlugin();
+    if (serverEnv.NEXT_PUBLIC_ENABLE_STRIPE && stripeClient) {
+      const productsArray = getPlansForStripePlugin();
 
       plugins.push(
-        polar({
-          client: polarClient,
-          createCustomerOnSignUp: serverEnv.POLAR_CREATE_CUSTOMER_ON_SIGNUP,
-          enableCustomerPortal: serverEnv.POLAR_ENABLE_CUSTOMER_PORTAL,
-          checkout: {
-            enabled: serverEnv.POLAR_ENABLE_CHECKOUT,
-            products: productsArray,
-            successUrl: `${serverEnv.NEXT_PUBLIC_APP_URL}/checkout-success?checkout_id={CHECKOUT_ID}`,
+        stripePlugin({
+          stripeClient,
+          stripeWebhookSecret: serverEnv.STRIPE_WEBHOOK_SECRET,
+          createCustomerOnSignUp: true,
+          subscription: {
+            enabled: true,
+            plans: productsArray,
+            requireEmailVerification: false,
           },
-          ...(webhookSecret
-            ? {
-                webhooks: {
-                  secret: webhookSecret,
-                  onPayload: async (payload) => {
-                    console.log("Received Polar webhook payload:", payload);
-                  },
-                },
-              }
-            : {}),
+          onEvent: async (event) => {
+            console.log("Received Stripe webhook event:", event.type);
+          },
         }),
       );
     }

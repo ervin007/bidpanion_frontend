@@ -143,7 +143,7 @@ export function CommandPalette() {
             </CommandPaletteItem>
           )}
 
-          {!isPro && clientEnv.NEXT_PUBLIC_ENABLE_POLAR && (
+          {!isPro && clientEnv.NEXT_PUBLIC_ENABLE_STRIPE && (
             <CommandPaletteItem
               icon={Crown}
               onSelect={() => runCommand(openUpgradeDialog)}

@@ -91,39 +91,12 @@ export function logEnvConfigStatus() {
   console.log("\n🔌 Integrations");
   const integrationIndent = "  ";
   logVariable(
-    serverEnv.NEXT_PUBLIC_ENABLE_POLAR,
-    "Polar payments",
+    serverEnv.NEXT_PUBLIC_ENABLE_STRIPE,
+    "Stripe payments",
     integrationIndent,
   );
-  if (serverEnv.NEXT_PUBLIC_ENABLE_POLAR) {
-    logBooleanSetting(
-      serverEnv.POLAR_CREATE_CUSTOMER_ON_SIGNUP,
-      "Create customer on signup",
-      `${integrationIndent}|_  `,
-    );
-    logBooleanSetting(
-      serverEnv.POLAR_ENABLE_CUSTOMER_PORTAL,
-      "Customer portal",
-      `${integrationIndent}|_  `,
-    );
-    logBooleanSetting(
-      serverEnv.POLAR_ENABLE_CHECKOUT,
-      "Checkout",
-      `${integrationIndent}|_  `,
-    );
-
-    // Log environment (sandbox/prod) just before environment-specific settings
-    logSetting(
-      serverEnv.NEXT_PUBLIC_POLAR_ENV,
-      "Environment",
-      `${integrationIndent}|_  `,
-      "🌐",
-    );
-
-    const webhooksEnabled =
-      serverEnv.NEXT_PUBLIC_POLAR_ENV === "sandbox"
-        ? !!serverEnv.POLAR_WEBHOOK_SECRET_SANDBOX
-        : !!serverEnv.POLAR_WEBHOOK_SECRET_PROD;
+  if (serverEnv.NEXT_PUBLIC_ENABLE_STRIPE) {
+    const webhooksEnabled = !!serverEnv.STRIPE_WEBHOOK_SECRET;
     const webhookStatusIcon = webhooksEnabled ? "🟡" : "⚪️";
     console.log(
       `${integrationIndent}|_  ${webhookStatusIcon} Webhooks configured (optional)`,

@@ -4,7 +4,7 @@ import * as React from "react";
 import { CreditCard, RefreshCw, Crown } from "lucide-react";
 import { CustomButton } from "@/components/CustomButton";
 import { Spinner } from "@/components/Spinner";
-import { PolarActiveSubscriptions } from "./PolarActiveSubscriptions";
+import { StripeActiveSubscriptions } from "./StripeActiveSubscriptions";
 import { useUserBillingStatus } from "@/hooks/useUserBillingStatus";
 import { useUpgradeToProDialog } from "@/hooks/useUpgradeToProDialog";
 
@@ -14,7 +14,7 @@ export function SettingsTabBilling() {
   const { openUpgradeDialog } = useUpgradeToProDialog();
 
   const handleManageBilling = () => {
-    window.open("/api/auth/portal", "_blank");
+    window.open("/api/auth/stripe/portal", "_blank");
   };
 
   return (
@@ -36,15 +36,15 @@ export function SettingsTabBilling() {
       )}
 
       {!isLoading && !error && (
-        <PolarActiveSubscriptions
-          subscriptions={billingState?.activeSubscriptions || []}
+        <StripeActiveSubscriptions
+          subscriptions={billingState?.subscriptions || []}
         />
       )}
 
       {!isLoading &&
         !error &&
-        billingState?.activeSubscriptions &&
-        billingState.activeSubscriptions.length > 0 && <hr className="my-4" />}
+        billingState?.subscriptions &&
+        billingState.subscriptions.length > 0 && <hr className="my-4" />}
 
       {!isLoading && !error && (
         <div className="horizontal gap-2">

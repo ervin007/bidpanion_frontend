@@ -9,12 +9,12 @@ export function useUserBillingStatus({
     data: billingState,
     isLoading,
     error,
-  } = api.polar.getBillingState.useQuery(undefined, {
+  } = api.stripe.getBillingState.useQuery(undefined, {
     enabled,
   });
 
   const refresh = useCallback(() => {
-    void utils.polar.getBillingState.invalidate();
+    void utils.stripe.getBillingState.invalidate();
   }, [utils]);
 
   const isPro = billingState?.isPro ?? false;

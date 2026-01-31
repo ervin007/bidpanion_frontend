@@ -6,6 +6,7 @@ import {
 } from "@/components/BeautifulOnboarder";
 import { CommandPalette } from "@/components/CommandPalette";
 import { RegisterHotkeys } from "@/components/RegisterHotkeys";
+import { SidebarProvider, SidebarDrawer } from "@/components/sidebar";
 import { APP_NAME } from "@/config/config";
 import { userHotkeys } from "@/config/hotkeys";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
@@ -46,12 +47,13 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   const { isImpersonating } = useIsImpersonating();
   const showOnboarding = user && !user.onboarded && !isImpersonating;
   return (
-    <>
+    <SidebarProvider>
       {/* global hotkeys that apply only when user is logged in */}
       <RegisterHotkeys hotkeys={userHotkeys} />
       <CommandPalette />
+      <SidebarDrawer />
       {showOnboarding && <BeautifulOnboarder steps={onboardingSteps} />}
       {children}
-    </>
+    </SidebarProvider>
   );
 }
