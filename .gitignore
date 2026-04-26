@@ -24,3 +24,6 @@ yarn-error.log*
 .content-collections
 .content-collections/generated/index.js
 src/generated/prisma/
+
+# Figma export — reference only, not part of the Next.js app
+/Bidpanion/

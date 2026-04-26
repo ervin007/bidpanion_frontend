@@ -1,0 +1,134 @@
+{
+  "Contracting Authority": "Stadt Wien | MA 01 – Wien Digital",
+  "Project Description": "- Negotiated procedure to conclude multi-supplier framework agreements (per lot) for IT services (AUS23E015)\n- Lots: 18 (System Administration Server/Application Ops), 24 (Outputmanager Engineer), 31 (SAP Technology), 32 (SAP HCM/HXM Consulting & Development)\n- Term: 4 years + option 1 year; no purchase obligation; non-exclusive; mini-competitions/call-offs\n- Annual max call-off volumes (all roles): Lot 18: 22,000 PT; Lot 24: 500 PT; Lot 31: 3,000 PT; Lot 32: 2,000 PT\n- Framework partners: Lot 18: 5; Lots 24/31/32: 3 each\n- Language of procedure/performance: German; performance partly on-site in Vienna",
+  "Submission Deadline": "13.5.2024 (End of Erstangebotsfrist); 5.7.2024 (End of Letztangebotsfrist)",
+  "Important Dates": "- Questions deadline: 19.2.2024, 12:00\n- Participation request deadline: 11.3.2024, 12:00\n- Invite to first offers: 23.4.2024\n- Negotiations: Lot 18: 27.5.2024; Lots 24/31: 28.5.2024; Lot 32: 29.5.2024\n- Invite to final offers: 13.6.2024; Final-offer deadline: 5.7.2024\n- Concept presentations: Lot 18: 22.–23.7.2024; Lot 31: 5.–6.8.2024\n- Framework conclusion target: KW 37/2024",
+  "Scope & Requirements": {
+    "Scope & Requirements": "- Lot 18 — System Administrator Server & Application Operations:\n  - Deliverables: Install/upgrade/patching; secure config; OS (Windows/Linux) deployments; storage (SAN/NAS); central backup/restore/DR; fileservices; AD/Red Hat Directory; Microsoft Exchange; MDM; UC; DB ops; monitoring; incident/change/release mgmt; documentation (DE).\n  - Key requirements: On-site as needed; 7x24h on-call if required; German C1/B2 and English B2 (role-dependent); ITIL Foundation; scripting (PowerShell/Shell); VMware; security best practice; concept presentation by key person.\n  - Numeric/SLAs/tools: 7x24h readiness (if called off); concept max 8 pages; tools incl. Veeam/Commvault (nice-to-have), SQL Server, Automation Hub/containers.\n- Lot 24 — Outputmanager Engineer (Form design):\n  - Deliverables: Form development with Quadient Inspire; form implementation/operations; data intake (csv/xml); layouts (tables, page control, fields, graphics); duplex/media/tray control; handover to PrismaProduction; PDF with xml control; AFP output incl. NOP; OMR/Datamatrix for enveloping; invoices incl. payment slips; overlays; documentation (DE) in client system.\n  - Key requirements: On-site as needed; Quadient Inspire expertise; concept (max 8 pages, pdf) in final offer.\n  - Numeric/tools: Quadient Inspire; PrismaProduction; AFP/OMR/Datamatrix.\n- Lot 31 — SAP Technology:\n  - Deliverables: Architecture/design for SAP BTP; PI/PO/Integration Suite/Cell; MDG; SAP frontend dev (SAP BAS, SAPUI5, FIORI, CDS, ODATA, RAP, CAP); workflows; HANA dev; customizing (MM/PM/SD/SRM/CRM, GHT opt.); programming; lifecycle/quality/monitoring; docs.\n  - Key requirements: On-site as needed; German C1; senior consulting across SAP Cloud/OnPrem; concept (8-page limit) and presentation by key person.\n  - Tools: SAP BAS/Eclipse; SAP BTP/Cloud Services; Workflow; RAP/CAP; CDS/ODATA.\n- Lot 32 — SAP HCM/HXM Consulting & Development:\n  - Deliverables: SAP HR support; error/system analysis; customizing; roles/authorizations; ABAP support; CR development; solution scenarios; build HCM/HXM system; SuccessFactors projects; legacy requirements engineering; HR trainings.\n  - Key requirements: On-site as needed; German C1; concept (8-page limit) and presentation by key person.\n  - Tools: SAP S/4HANA; SAP SuccessFactors HXM Suite; ABAP.\n- Cross-cutting:\n  - Concept doc: max 8 pages (A4, pdf); K1–K4 qualitative evaluation; presentation 20+10 min by named key person only.\n  - Recency for references: not completed before 1.3.2021; thresholds in PT per lot/categories (see Technical & Professional Ability).",
+    "Contract Volume": "- Framework term: 4 years + 1-year option; no volume commitment; non-exclusive\n- Annual ceilings per lot (all roles): L18 22,000 PT; L24 500 PT; L31 3,000 PT; L32 2,000 PT\n- Framework partners: L18: 5; L24/L31/L32: 3; readiness time counts toward max volume per set %",
+    "Place of Performance": "Wien (Vienna), Austria; performance partly on-site per call-off",
+    "Standards & Certifications": "- Communication/documentation in German; audit rights; indexation clause (unnegotiable)\n- Compliance with EU Sanctions VO (EU) 2022/576 Art 5k (incl. >10% value for subs/suppliers)\n- Personnel skills: ITIL Foundation (Lot 18); German language levels B2/C1 as specified; SAP tech stack proficiency (Lots 31/32); Quadient Inspire (Lot 24)\n- Data protection: DSGVO notice provided",
+    "Subcontracting & Consortia": "- Joint tenders (Bewerbergemeinschaft) allowed; ARGE (GbR) on award; all members jointly liable; federführer to be named; changes not allowed post-submission\n- Subcontracting permitted; full pass-through prohibited; all intended subs (incl. sub-sub) to be disclosed per lot (B-XX-01) with share/value; changes/additions require prior written approval (deemed consent after 3 weeks if complete)",
+    "Forms & e-Submission": "- Electronic-only via ANKÖ Vergabeportal; qualified e-signature; no paper/email; server time applies; no executable files\n- Use provided forms: A-01, A-02 (if JV), A-03 (Russia sanctions); per-lot B-XX-01..07\n- Reference sheets per lot to upload as unprotected Excel (B-18-08/B-24-08/B-31-08/B-32-08)\n- Price sheet (Preisblatt) must be uploaded with offers; Concept (pdf, ≤8 pages) with final offer"
+  },
+  "Supplier Eligibility": {
+    "Offer Submission Documents": [
+      "A-01 Bewerbererklärungen (specify lots)",
+      "A-02 Bewerbergemeinschaft declaration (if JV)",
+      "A-03 EU Russia sanctions self-declaration (Art 5k)",
+      "B-XX-01 Subcontractor list (per lot)",
+      "B-XX-02 Subcontractor declaration (per sub/lot)",
+      "B-XX-03 Subcontractor solidarity guarantee (if relied upon)",
+      "B-XX-04 Patronatserklärung (affiliates/third parties)",
+      "B-XX-05 Erklärung Umsatzerlöse (avg 2020–2022)",
+      "B-XX-06 Liability insurance confirmation",
+      "B-XX-07 Key person (overall contact) form",
+      "Lot ref sheets: B-18-08/B-24-08/B-31-08/B-32-08 (Excel, unprotected)",
+      "Preisblatt (price sheet) with offer",
+      "Concept (pdf, ≤8 pages) with final offer"
+    ],
+    "List of Documents": [
+      "Current companies register extract (≤1 month; not for natural persons)",
+      "Social insurance account confirmation/WEBEKU (≤1 month)",
+      "Tax account/lastschrift/Rückstandsbescheinigung §229a BAO (≤1 month)",
+      "GISA extract (queried by CA) (≤1 month)",
+      "BMF AuslBG §28b and LSDB §35 evidences (≤6 months; CA queries)",
+      "Proof of liability insurance (≥EUR 100,000/500,000 per lot)",
+      "Language competence confirmation (DE B2/C1 as required)"
+    ],
+    "Economic & Financial Standing": {
+      "Minimum Turnover": "Avg net turnover 2020–2022 (per lot): Lot 18 ≥ EUR 1,500,000; Lot 24 ≥ EUR 100,000; Lot 31 ≥ EUR 700,000; Lot 32 ≥ EUR 500,000 (declare via B-XX-05).",
+      "Turnover in Comparable Services": "Declare in B-XX-05 (2020/2021/2022 and average); reliance allowed with B-XX-04; required subs must provide B-XX-03."
+    },
+    "Legal & Registration": {
+      "Trade/Professional Register Entry": "Provide register extract (≤1 month) or equivalent; CA queries GISA per §365e GewO.",
+      "Self-declarations (GWB §§123/124 or equivalent)": "BVergG §78 exclusion grounds self-declared in A-01; Russia sanctions Art 5k VO (EU) 2022/576 in A-03; CA may request criminal records (≤6 months).",
+      "Subcontractor Identification & Reliance": "Name all subs in B-XX-01; capacity reliance via B-XX-04; required subs sign B-XX-03; changes/additions only with prior approval (§363 BVergG)."
+    }
+  },
+  "Technical & Professional Ability": {
+    "Personnel Profiles": "- Lot 18 roles/skills:\n  - System Administrator Junior (≥4 FTE): DE B2/EN B2; ICT education; infra basics (HW/SW/net/storage/backup); security; Windows/Linux; VMware; scripting (PowerShell/Shell); DE documentation; ITIL Foundation; nice-to-have: monitoring, Veeam/Commvault, SQL Server, containers/Automation Hub, HA, UC.\n  - System Administrator Senior (≥2 FTE): ≥3y IT exp incl. ≥18m in one specialty (Directory, SAN/NAS, Exchange, DB, backup, UC); DE C1/EN B2; advanced planning/config/ops; VMware; scripting; security; ITIL Foundation.\n  - Functional-organizational Coordinator (≥1 FTE): ≥2y IT coordination; DE C1/EN B2; IT education; deployment; OS knowledge; security.\n- Lot 24 role:\n  - Form designer (≥1 FTE): ≥1y Quadient Inspire; solid Quadient Inspire skills; DE B2.\n- Lot 31 role:\n  - SAP Consultant (≥5 FTE): ≥5y SAP consulting; senior knowledge in PI/PO/Integration Suite, MDG, dev env & frontend (UI5/FIORI/RAP/CAP), HANA, SAP Cloud Services; training delivery; requirements elicitation; DE C1.\n- Lot 32 roles:\n  - Consultant/Developer (≥3 FTE): ≥5y SAP HR dev + ≥2y SAP SuccessFactors HXM; certified Junior SAP HR; SuccessFactors project exp; DE C1.\n  - Requirements Engineer (≥1 FTE): ≥5y requirements in HR; DE C1.\n  - 3rd Level Support (≥1 FTE): ≥5y SAP HR + ≥2y SuccessFactors HXM support; certified Junior SAP HR; DE C1.\n- Key person (overall contact): named with application; DE ≥B2; presents concept; no multiple nominations; lot-cross nomination allowed; changes only with CA consent.",
+    "Headcount / Staffing": "- Lot 18: 4 FTE Junior + 2 FTE Senior + 1 FTE Coordinator (simultaneously available)\n- Lot 24: 1 FTE Formulargestalter\n- Lot 31: 5 FTE SAP Consultants\n- Lot 32: 3 FTE Consultant/Developer + 1 FTE Requirements Engineer + 1 FTE 3rd Level Support",
+    "Reference Projects": "- General: All refs must meet requirements by participation deadline; not fully completed before 1.3.2021; bidder (or JV member/affiliate/third party) must have performed required share; use lot ref sheets; bidder-ability refs cannot be reused for selection unless permitted (Lot 31 allows add’l scoring from Eignungsrefs).\n- Lot 18 (Eignung):\n  - Cat A: Ops tasks (install/upgrade/patch/secure config/OS best practices/fault analysis/DE docs); ≥200 PT (≥150 PT by 1 FTE); client >500 staff.\n  - Cat B: OS/HW lifecycle support; install (phys/virt); control/monitor; automation analysis; incidents; DE docs; ≥150 PT (≥100 PT by 1 FTE); client >500 staff.\n  - Selection Cat C (max 2): in distinct specialties (Directory, SAN/NAS, Exchange, DB, backup, MDM, UC); ops/coord/config/incident handling/DE docs; ≥100 PT (≥70 PT by 1 FTE); client >500 staff."
+  },
+  "Company Referrals": "- Minimum references per lot (bidder/JV/affiliate/third party; provide on lot Excel sheets):\n  - Lot 18: ≥2 Eignungsrefs (Cat A & B) + up to 2 selection refs (Cat C); client size >500; PT thresholds 200/150/100; recency ≥1.3.2021.\n  - Lot 24: ≥1 Eignungsref (duration ≥6 months) + up to 2 selection refs; scope with Quadient Inspire/AFP/OMR etc.\n  - Lot 31: ≥4 Eignungsrefs (Cats A–D; public sector; ≥20 PT) + 1 selection ref (Cat E); additional scoring from Eignungsrefs via add-ons (PT bands/healthcare/high-availability/interfaces≥6).\n  - Lot 32: ≥3 Eignungsrefs (Cats A–C) + up to 2 selection refs (Cat D; S/4HANA+SuccessFactors; ≥10 PT; >1,000 employees).",
+  "Award Criteria": "- Two-stage procedure; per-lot selection caps to invite to offers: Lot 18: 7; Lots 24/31/32: 5.\n- Price (50/100 points): linear formula Points = (2 – GP/GPmin) × 50; offer ≥100% above cheapest = 0 points; price sheet must be uploaded and value entered in portal (price sheet prevails).\n- Quality – Concept (50/100 points total):\n  - K1 (10%): Concept preparation (compliance with formalities, structure clarity, look & feel).\n  - K2 (30%): Scaling & resource conservation (flex up/down; measures under limited client resources; knowledge transfer).\n  - K3 (30%): Quality & change management (QA measures; handling change; info exchange with other suppliers).\n  - K4 (30%): Controlling (methods for data capture/prep/doc for structured, complete, meaningful reporting).\n- Concept submission & presentation: pdf, max 8 pages (excl. cover/ToC/abbr.); presentation by named key person only (20 min + 10 min Q&A); graded by 3-person panel using 1–5 note→points mapping (1=50 … 5=0), weighted per K1–K4.\n- Tie-break: lower \"Gesamtpreis\" wins; frameworks: Lot 18 with 5 partners; Lots 24/31/32 with 3 partners each.",
+  "citations": [
+    {
+      "field": "Contracting Authority",
+      "locator": "A-00 p.2, p.5"
+    },
+    {
+      "field": "Project Description",
+      "locator": "A-00 p.2, p.5, p.9"
+    },
+    {
+      "field": "Submission Deadline",
+      "locator": "A-00 p.13 (2.4) — Erstangebote 13.5.2024; Letztangebote 5.7.2024"
+    },
+    {
+      "field": "Important Dates",
+      "locator": "A-00 p.2; p.13 (2.4)"
+    },
+    {
+      "field": "Scope & Requirements → Scope & Requirements",
+      "locator": "B-18-00 p.3–5; B-24-00 p.3; B-31-00 p.3–4; B-32-00 p.3"
+    },
+    {
+      "field": "Scope & Requirements → Contract Volume",
+      "locator": "A-00 p.9; p.27 (2.2)"
+    },
+    {
+      "field": "Scope & Requirements → Place of Performance",
+      "locator": "A-00 p.2; B-24-00 p.3; B-31-00 p.4; B-32-00 p.3"
+    },
+    {
+      "field": "Scope & Requirements → Standards & Certifications",
+      "locator": "B-18-00 p.8–9; A-00 p.9; A-03 (RussSank) p.1"
+    },
+    {
+      "field": "Scope & Requirements → Subcontracting & Consortia",
+      "locator": "A-00 p.6–8; p.44 (Sub changes §363)"
+    },
+    {
+      "field": "Scope & Requirements → Forms & e-Submission",
+      "locator": "A-00 p.2, p.14–15; B-18-08/B-24-08/B-31-08/B-32-08 (Excel notes)"
+    },
+    {
+      "field": "Supplier Eligibility → Offer Submission Documents",
+      "locator": "A-00 p.20–21; B-XX forms; B-24-00 p.9–11; B-31-00 p.12–15"
+    },
+    {
+      "field": "Supplier Eligibility → List of Documents",
+      "locator": "A-00 p.17–18; A-01; B-XX-06"
+    },
+    {
+      "field": "Supplier Eligibility → Economic & Financial Standing",
+      "locator": "B-18-00 p.6–7; B-24-00 p.4; B-31-00 p.5; B-32-00 p.4"
+    },
+    {
+      "field": "Supplier Eligibility → Legal & Registration",
+      "locator": "A-00 p.18–19; B-XX-02; A-03"
+    },
+    {
+      "field": "Technical & Professional Ability → Personnel Profiles",
+      "locator": "B-18-00 p.7–9; B-24-00 p.5–7; B-31-00 p.6–7; B-32-00 p.5–7"
+    },
+    {
+      "field": "Technical & Professional Ability → Headcount / Staffing",
+      "locator": "B-18-00 p.7–9; B-24-00 p.6; B-31-00 p.7; B-32-00 p.6"
+    },
+    {
+      "field": "Technical & Professional Ability → Reference Projects",
+      "locator": "B-18-00 p.10–13; B-24-00 p.7–8; B-31-00 p.8–12; B-32-00 p.7–10"
+    },
+    {
+      "field": "Company Referrals",
+      "locator": "B-18-08; B-24-08; B-31-08; B-32-08 (all sheets)"
+    },
+    {
+      "field": "Award Criteria",
+      "locator": "B-18-08 p.14–16; B-24-00 p.9–11; B-31-00 p.12–15; B-32-00 p.10–13"
+    }
+  ]
+}

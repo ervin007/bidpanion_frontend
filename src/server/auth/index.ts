@@ -2,12 +2,9 @@ import { EmailTemplateChangeEmail } from "@/email/templates/EmailTemplateChangeE
 import { EmailTemplateResetPassword } from "@/email/templates/EmailTemplateResetPassword";
 import EmailTemplateVerification from "@/email/templates/EmailTemplateVerification";
 import { serverEnv } from "@/env";
-import { getPlansForStripePlugin } from "@/lib/payment-utils";
 import { db } from "@/server/db";
 import { sendEmail } from "@/server/email/send-email";
 import { getDefaultPreferences } from "@/types/user-preferences";
-import { stripe as stripePlugin } from "@better-auth/stripe";
-import Stripe from "stripe";
 import {
   betterAuth,
   type BetterAuthOptions,
@@ -19,13 +16,6 @@ import { headers } from "next/headers";
 import { after } from "next/server";
 import { cache } from "react";
 
-let stripeClient: Stripe | undefined;
-
-if (serverEnv.NEXT_PUBLIC_ENABLE_STRIPE) {
-  stripeClient = new Stripe(serverEnv.STRIPE_SECRET_KEY, {
-    apiVersion: "2025-01-27.acacia",
-  });
-}
 
 interface SendVerificationEmailParams {
   user: { id: string; email: string; [key: string]: any }; // Add known user properties
@@ -124,26 +114,6 @@ export const auth = betterAuth({
       }),
       username(),
     ];
-
-    if (serverEnv.NEXT_PUBLIC_ENABLE_STRIPE && stripeClient) {
-      const productsArray = getPlansForStripePlugin();
-
-      plugins.push(
-        stripePlugin({
-          stripeClient,
-          stripeWebhookSecret: serverEnv.STRIPE_WEBHOOK_SECRET,
-          createCustomerOnSignUp: true,
-          subscription: {
-            enabled: true,
-            plans: productsArray,
-            requireEmailVerification: false,
-          },
-          onEvent: async (event) => {
-            console.log("Received Stripe webhook event:", event.type);
-          },
-        }),
-      );
-    }
 
     return plugins;
   })(),

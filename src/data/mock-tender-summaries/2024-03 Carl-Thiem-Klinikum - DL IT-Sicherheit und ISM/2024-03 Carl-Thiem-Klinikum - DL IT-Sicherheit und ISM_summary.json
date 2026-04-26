@@ -1,0 +1,175 @@
+{
+  "Contracting Authority": "Carl-Thiem-Klinikum Cottbus gGmbH",
+  "Project Description": "- Framework for consulting services in IT security and information security management (ISM)\n- 2 lots: Solution Architect IT-Sicherheit; Senior Experten – IT-Sicherheit\n- Topics: Netzwerksegmentierung/Zugangskontrolle, Assetmanagement, PAM, PKI, MFA, Table-Top, Enterprise Security Architektur, Härtung Client/Server/Netz, Schwachstellenmanagement, Secure Dev\n- Mini-competitions per lot; max 3 contractors/lot",
+  "Submission Deadline": "16/04/2024 09:00 (UTC+2)",
+  "Important Dates": "- Questions deadline: 06/04/2024 23:59\n- Additional info latest: 06/04/2024 00:00\n- Tender opening: 16/04/2024 09:01 (UTC+2)\n- Bid validity: 3 months\n- Publication (OJ S): 13/03/2024",
+  "Scope & Requirements": {
+    "Scope & Requirements": "- Lot 1 — Solution Architect IT-Sicherheit:\n  - Deliverables: Konzepte/Architekturen, Lastenhefte, Risikoanalysen, Übungen, strategische Handlungsempfehlungen; Unterstützung bei Umsetzung mit internen/externen Teams\n  - Key requirements: ≥8 Jahre Erfahrung (technische Informationssicherheit); IT-Projektmanagement; Konzeption, Implementierung/Integration, Analyse/Risikobewertung von IT-Sicherheitslösungen; Übungen; strategisch: Strategieberatung, Enterprise Security Architektur\n  - Language: Deutsch C1+/Muttersprachler (Nachweis)\n  - SLAs: Start dringlich ≤15h; Standardbeginn ≤3 AT; Antwort auf Anfragen ≤2–3 AT; Telefon Mo–Fr\n- Lot 2 — Senior Experten – IT-Sicherheit:\n  - Deliverables: Betrieb/Übergabe von Sicherheitslösungen (go-live), Monitoring, Incident-Analyse/Reporting/Containment, Richtlinienumsetzung, Härtungsmaßnahmen, Doku/Kommunikation\n  - Key requirements: ≥8 Jahre Betrieb/Administration von Security-Lösungen; Netzwerk-/Systemüberwachung; Richtlinienumsetzung; produktive Übergabe; Ableitung Härtung\n  - Language: Deutsch C1+/Muttersprachler (Nachweis)\n  - SLAs: Start dringlich ≤15h; Standardbeginn ≤3 AT; Antwort auf Anfragen ≤2–3 AT; Telefon Mo–Fr\n- Cross-lot musts:\n  - Provide ≥2 named persons per lot for the term (1 lead + 1 backup); available ≤2 Wochen nach Zuschlag; employed ≥3 Monate beim AN; Mindeststatus „Senior Berater“\n  - Personalaustausch nur mit vorheriger Zustimmung; Ersatz muss Qualifikation/Preisstufe erfüllen; Einarbeitung pauschal 10% der bisher geleisteten PT des Ausscheidenden (mind. 2 bis max. 20 PT) ohne Vergütung; Tätigkeiten vor Zustimmung nicht abrechenbar\n  - QS: interne QS Pflicht; monatliche Fortschrittsberichte; Abschlussbericht; Kick-off nach Zuschlag\n  - Standards in Leistung: ISO 27001, BSIG (§ 8), DSGVO-Kenntnis; KRITIS-Kontext",
+    "Contract Volume": "- Estimated need: 200 Tage (8h/Tag) bis 06.2026\n- Framework max: 1200 Personentage (48 Monate)\n- Personentag: ≥8 Stunden\n- Framework with mini-competitions; max 3 Vertragspartner/Los; nicht abrufverpflichtet",
+    "Place of Performance": "Cottbus, Kreisfreie Stadt (DE402), Deutschland; on-site und remote (Preisblatt: separate Tagessätze)",
+    "Standards & Certifications": "- Company: DIN EN ISO 9001:2015 (QM) or equivalent (eigenerklärt)\n- Applicable standards in delivery: ISO 27001, BSIG, DSGVO",
+    "Subcontracting & Consortia": "- Bietergemeinschaften zugelassen; gesamtschuldnerische Haftung; Vertreter benennen\n- Unterauftragnehmer zulässig; vorherige schriftliche Zustimmung; gleiche Eignung; Verantwortung verbleibt beim AN\n- Eignungsleihe: tech./berufl. nur via NU; wirtschaftl./finanz. nur mit gemeinsamer Haftung\n- BbgVergG Formulare 5.3/5.4 verpflichtend",
+    "Forms & e-Submission": "- Electronic submission only via Vergabemarktplatz Brandenburg (Textform); no variants; DE language\n- Use forms: F1 Angebotsformular; F3 je Los (Preisblatt); F2 Eigenerklärungen; F4 Referenzen; F8 Unternehmensdaten; Anlage 3.1/3.2 Profile; PPT (≤15 Folien) für Fachgespräch\n- Submission URL: https://vergabemarktplatz.brandenburg.de/VMPSatellite/notice/CXP9Y5C6X1U"
+  },
+  "Supplier Eligibility": {
+    "Offer Submission Documents": [
+      "Formblatt F1 Angebotsschreiben (unterzeichnet)",
+      "Formblatt F3 je Los (Preisblatt)",
+      "Anlage 2F2 Eigenerklärungen (Eignung/Versicherung/Antikorruption)",
+      "Eigenerklärung Mitarbeiteranzahl",
+      "Anlage 2F4 Referenzliste",
+      "Anlage 2F8 Unternehmensdaten",
+      "Anlage 3.1 Profile Los 1 (mind. 2, max. 4 bewertet)",
+      "Anlage 3.2 Profile Los 2 (mind. 2, max. 4 bewertet)",
+      "PowerPoint Präsentation Fachgespräch (max. 15 Folien)",
+      "Unterschriebener Vertragsentwurf (Anlage 5)",
+      "BbgVergG Formular 5.3 (Tariftreue/Mindestentgelt, unterschrieben)",
+      "Formular 5.4 für Nachunternehmer/Verleiher (falls zutreffend)",
+      "Nachunternehmer-/Eignungsleihe-Verpflichtungserklärungen (2F2.7/2F2.8)"
+    ],
+    "List of Documents": [
+      "Handels-/Berufsregisterauszug (≤6 Monate)",
+      "Eigenerklärung Umsatz letzte 3 GJ (vergleichbare Leistungen)",
+      "Eigenerklärung Berufs-/Betriebshaftpflicht (2×2.000.000 EUR; 2-fach p.a.)",
+      "Jahresabschlüsse/Auszüge (auf Anforderung)",
+      "DIN EN ISO 9001:2015 oder gleichwertig (Eigenerklärung)",
+      "§§123/124 GWB Selbstdeklarationen",
+      "MiLoG-Einhaltung (Eigenerklärung)",
+      "Antikorruptionserklärung",
+      "Gewerbezentralregisterauszug (falls vorhanden)",
+      "Erklärung Frauenförderverordnung (optional)",
+      "Eigenerklärung Russlandsanktionen (Art. 5k EU 833/2014)",
+      "Wettbewerbsregister-Abfrage durch AG ab 30.000 EUR (vor Zuschlag)"
+    ],
+    "Economic & Financial Standing": {
+      "Minimum Turnover": "≥0.5 Mio. EUR mit vergleichbaren Leistungen in den letzten 3 abgeschlossenen Geschäftsjahren",
+      "Turnover in Comparable Services": "Eigenerklärung zu Umsätzen der letzten 3 GJ bezogen auf Leistungsart"
+    },
+    "Legal & Registration": {
+      "Trade/Professional Register Entry": "Nachweis Registereintrag; mit Ablauf der Angebotsfrist nicht älter als 6 Monate",
+      "Self-declarations (GWB §§123/124 or equivalent)": "Eigenerklärungen zu zwingenden/fakultativen Ausschlussgründen; MiLoG; Antikorruption; Russlandsanktionen",
+      "Subcontractor Identification & Reliance": "Benennung Teilleistungen/NU; Eignungsleihe: tech./berufl. nur via NU; wirtschaftl./finanz. nur mit gemeinsamer Haftung; Verpflichtungserklärungen beilegen"
+    }
+  },
+  "Technical & Professional Ability": {
+    "Personnel Profiles": "- General:\n  - Deutsch C1+/Muttersprachler (Nachweis)\n  - ≥2 benannte Personen je Los (Lead + Backup); verfügbar ≤2 Wochen nach Zuschlag; seit ≥3 Monaten festangestellt; Mindeststatus „Senior Berater“\n  - KRITIS-/Klinikum-Kontextverständnis; Kenntnisse ISO 27001, BSIG, DSGVO; herstellerspezifische Schulungen/Zertifizierungen (z.B. Cisco, Microsoft, VMware, Check Point)\n- Los 1: Solution Architect IT-Sicherheit\n  - ≥8 Jahre technische Informationssicherheit\n  - IT-Projektmanagement; Konzeption von IT-Sicherheitslösungen; Implementierung/Integration; Analyse & Risikobewertung; Lastenhefte; Übungen\n  - Strategisch: Strategieberatung; Enterprise Security Architektur\n  - Bewertet (führt zu höherer Wertung): IT-Studium (BSc/MSc), KRITIS-KH Erfahrung; methodische Kompetenzen (Prozessoptimierung, Soll-Prozess, Maßnahmenplanung etc.)\n- Los 2: Senior Experte – IT-Sicherheit\n  - ≥8 Jahre Betrieb/Verwaltung von Security-Lösungen\n  - Incident-Analyse/Reporting/Containment; Netzwerk-/Systemüberwachung; operative Richtlinienumsetzung; produktive Übergabe; Härtungsmaßnahmen\n  - Bewertet: IT-Studium (BSc/MSc), KRITIS-KH Betriebserfahrung; methodische Kompetenzen (Implementierung/go-live, Analyse-Doku/Kommunikation)",
+    "Headcount / Staffing": "- Mindestbelegschaft: 15 Beschäftigte (Eigenerklärung)\n- Team je Los: ≥2 fest angestellte, namentlich benannte Personen (Lead + Backup)\n- Verfügbarkeit: Start dringlich ≤15h; Standardbeginn ≤3 AT; Erstreaktion ≤2–3 AT; Servicezeiten Mo–Fr",
+    "Reference Projects": "- Personal-/Profilnachweise per Anlage 3.1/3.2 (max. 4 Profile je Los bewertet)\n- Fachgespräch: PPT (≤15 Folien) zu vorab Fragen; Note→Punkte; Ausschluss <50% der Maximalpunkte in Quali/Interview"
+  },
+  "Company Referrals": "- Min. 3 vergleichbare Referenzen: Beratungsleistungen in Security-Operations-Projekten im deutschen Gesundheitswesen (1. Gesundheitsmarkt; stationär/nicht-stationär/Kostenträger/med. Dienstleister)\n- Mind. 1 Referenz: Beratung bei Klinikverbund oder Maximalversorger oder Universitätsklinik\n- Zeitrahmen-Hinweis: einzelne Muss-Referenzanforderung innerhalb der letzten 3 Jahre genannt\n- Angaben je Referenz: Art, Umfang, Empfänger, Ansprechpartner, Zeitraum, Wert",
+  "Award Criteria": "- Total 1000 Punkte\n- Preis – 50% (500 P): niedrigste Angebotssumme (brutto) = 500 P; übrige via inverser Dreisatz P=(Pmin/Pni)*Pmax; Rundung 1 Nachkommastelle; Grundlage Preisblatt F3 je Los (100 PT remote + 100 PT vor Ort + Zuschlagsstundensatz)\n- Qualifikation/Erfahrung des einzusetzenden Personals – 30% (300 P): Profile je Los (mind. 2; max. 4 bewertet). Bestes Angebot = 300 P; übrige proportional; Rundung 2 Nachkommastellen; Angebote <150 P (50%) werden ausgeschlossen. Vertragsstrafe, wenn gewertete MA später nicht verfügbar\n- Fachgespräch – 20% (200 P): 3 bekannte Fragen/Lot + 1 situativ; PPT ≤15 Folien mit Angebot; Notenskala 1 (best)–6; Punkte: P=(Pmax/Pni)*Pmax; Rundung 2 Nachkommastellen; Angebote <100 P (50%) werden ausgeschlossen\n- Rahmenabrufe (Miniwettbewerb): Zuschlag je Abruf an wirtschaftlichstes Angebot; Preis darf nicht höher als im Hauptangebot sein; Qualifikation aus Zuschlagskriterium Nr. 2 feststehend",
+  "citations": [
+    {
+      "field": "Contracting Authority",
+      "locator": "Carl_Tieme_Klinikum_bekanntmachung.pdf p.1"
+    },
+    {
+      "field": "Project Description",
+      "locator": "Anlage 1_Leistungsbeschreibung.pdf p.3-5"
+    },
+    {
+      "field": "Submission Deadline",
+      "locator": "Carl_Tieme_Klinikum_bekanntmachung.pdf p.17"
+    },
+    {
+      "field": "Important Dates",
+      "locator": "Anlage 0_Aufforderung zur Angebotsabgabe.pdf p.8-9,17"
+    },
+    {
+      "field": "Scope & Requirements → Scope & Requirements",
+      "locator": "Anlage 1_Leistungsbeschreibung.pdf p.5-11"
+    },
+    {
+      "field": "Scope & Requirements → Scope & Requirements",
+      "locator": "Anlage 5.0 Vertrag.pdf p.7-10"
+    },
+    {
+      "field": "Scope & Requirements → Contract Volume",
+      "locator": "Anlage 1_Leistungsbeschreibung.pdf p.3-4"
+    },
+    {
+      "field": "Scope & Requirements → Contract Volume",
+      "locator": "Anlage 2F 3.1/3.2 Preisblatt p.1"
+    },
+    {
+      "field": "Scope & Requirements → Place of Performance",
+      "locator": "Carl_Tieme_Klinikum_bekanntmachung.pdf p.1"
+    },
+    {
+      "field": "Scope & Requirements → Standards & Certifications",
+      "locator": "Anlage 0_Aufforderung zur Angebotsabgabe.pdf p.26"
+    },
+    {
+      "field": "Scope & Requirements → Standards & Certifications",
+      "locator": "Anlage 5.0 Vertrag.pdf p.10"
+    },
+    {
+      "field": "Scope & Requirements → Subcontracting & Consortia",
+      "locator": "Anlage 0_Aufforderung zur Angebotsabgabe.pdf p.15-17"
+    },
+    {
+      "field": "Scope & Requirements → Forms & e-Submission",
+      "locator": "Carl_Tieme_Klinikum_bekanntmachung.pdf p.16-17"
+    },
+    {
+      "field": "Supplier Eligibility → Offer Submission Documents",
+      "locator": "Anlage 0_Aufforderung zur Angebotsabgabe.pdf p.12-13"
+    },
+    {
+      "field": "Supplier Eligibility → List of Documents",
+      "locator": "Anlage 0_Aufforderung zur Angebotsabgabe.pdf p.23-27"
+    },
+    {
+      "field": "Supplier Eligibility → Economic & Financial Standing",
+      "locator": "Anlage 0_Aufforderung zur Angebotsabgabe.pdf p.22-23"
+    },
+    {
+      "field": "Supplier Eligibility → Legal & Registration",
+      "locator": "Anlage 0_Aufforderung zur Angebotsabgabe.pdf p.21-22"
+    },
+    {
+      "field": "Technical & Professional Ability → Personnel Profiles",
+      "locator": "Anlage 1_Leistungsbeschreibung.pdf p.5-11"
+    },
+    {
+      "field": "Technical & Professional Ability → Personnel Profiles",
+      "locator": "Anlage 3.1/3.2 QE Profile (Docs) p.1-3"
+    },
+    {
+      "field": "Technical & Professional Ability → Headcount / Staffing",
+      "locator": "Anlage 0_Aufforderung zur Angebotsabgabe.pdf p.25"
+    },
+    {
+      "field": "Technical & Professional Ability → Reference Projects",
+      "locator": "Anlage 0_Aufforderung zur Angebotsabgabe.pdf p.24,31-33"
+    },
+    {
+      "field": "Company Referrals",
+      "locator": "Carl_Tieme_Klinikum_bekanntmachung.pdf p.6"
+    },
+    {
+      "field": "Company Referrals",
+      "locator": "Anlage 2F 4 Referenzformular.docx p.1"
+    },
+    {
+      "field": "Award Criteria",
+      "locator": "Anlage 0_Aufforderung zur Angebotsabgabe.pdf p.29-33"
+    },
+    {
+      "field": "Award Criteria",
+      "locator": "Carl_Tieme_Klinikum_bekanntmachung.pdf p.15-16"
+    },
+    {
+      "field": "Important Dates",
+      "locator": "Carl_Tieme_Klinikum_bekanntmachung.pdf p.16-17"
+    },
+    {
+      "field": "Scope & Requirements → Scope & Requirements",
+      "locator": "Anlage 1_Leistungsbeschreibung.pdf p.7-9 (SLA/Reporting)"
+    },
+    {
+      "field": "Scope & Requirements → Subcontracting & Consortia",
+      "locator": "Anlage 5.1 Ergänzende Vergabebedingung BbgVergG.pdf p.1"
+    }
+  ]
+}

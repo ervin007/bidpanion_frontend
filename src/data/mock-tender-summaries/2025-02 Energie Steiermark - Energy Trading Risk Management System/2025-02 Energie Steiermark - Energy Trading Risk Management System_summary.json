@@ -1,0 +1,140 @@
+{
+  "Contracting Authority": "Energie Steiermark Business GmbH (awarding unit: Energie Steiermark AG), Leonhardgürtel 10, 8010 Graz",
+  "Project Description": "- Replacement of legacy Energy Trading Risk Management systems with a cloud-based standard ETRM solution (SaaS) incl. maintenance\n- Standard product (no custom-only build); must have ≥3 productive installations; integration with Azure; multicloud possible\n- Cover commodities: power, gas/biogas, EUAs, HKNs; spot and forward incl. gas storage products; DACH/central Europe\n- Full deal life cycle (Front/Middle/Back Office), confirmations, regulatory reporting (e.g., equias eCM/eRR), reporting for accounting/controlling\n- High availability (7x24 operations), state-of-the-art cybersecurity; DSGVO/Data Protection Act compliance\n- Interfaces to existing PFM/FPM kept; migrate legacy data; documentation & train-the-trainer; further development, maintenance & support\n- On-site work up to 20% effort; test access ≥14 calendar days in stage 2",
+  "Submission Deadline": "",
+  "Important Dates": "- Questions deadline: 2025-02-14 12:00 (receipt)\n- Request-to-participate deadline: 2025-03-04 12:00 (receipt)\n- Invitation to bid: ~end Mar 2025\n- Service start: ~end Q2 2025\n- Milestones: Go Live EUA/GoO: 2025-07-01; Go Live Gas: 2026-01-01; Go Live Power + overall acceptance: 2026-03-31",
+  "Scope & Requirements": {
+    "Scope & Requirements": "- Delivery, implementation, go-live of a cloud-based standard ETRM; customizing/add-ons as needed\n- Commodities: power, gas/biogas, EUAs, HKNs; spot & term; include gas storage products\n- Processes: full deal life cycle; confirmations; regulatory reporting via standard interfaces (e.g., equias eCM/eRR or equivalent)\n- Reporting: support accounting/controlling (e.g., MtM), ad-hoc queries\n- Architecture/security: validated design; meet common security standards; certifications/attestations for critical infrastructure operation\n- Operations: SaaS with 7x24 availability & Security Operations; SLAs; support & maintenance\n- Integration: Azure cloud services; interfaces to existing PFM/FPM (must remain untouched); import legacy data\n- Compliance: DSGVO/Data Protection Act; project language DE or EN\n- Delivery model: standard software (≥3 productive installs); no lots; no variants/alternatives; no part offers\n- On-site presence up to 20% of effort; documentation & train-the-trainer\n- Test access: provide demo for ≥14 calendar days in stage 2\n- Key milestones: 2025-07-01 (EUA/GoO), 2026-01-01 (Gas), 2026-03-31 (Power + acceptance)",
+    "Contract Volume": "Open-ended framework; bid price evaluated on TCO7 (7-year lifecycle) across: software, implementation services, maintenance, time & materials (as per vemap price list)",
+    "Place of Performance": "Austria",
+    "Standards & Certifications": "- DSGVO and Austrian Data Protection Act\n- Common architecture/security standards; certifications/attestations suitable for critical infrastructure\n- 7x24 SaaS operations; Azure integration",
+    "Subcontracting & Consortia": "- Subcontracting allowed for parts; entire contract or sub-subcontracting not allowed\n- All subs disclosed in Form 7; changes/additions only with prior written consent; invited bidder cannot be sub of another invited bidder\n- Consortia (ARGE) allowed; members jointly and severally liable; nominate empowered lead; membership changes prohibited during procedure",
+    "Forms & e-Submission": "- Electronic only via https://e-steiermark.vemap.com; qualified e-signature; trustDesk vemap; encrypted submission\n- No email/fax/paper; server time decisive; file names without special characters; no executable files\n- Fill online forms; upload completed annexes"
+  },
+  "Supplier Eligibility": {
+    "Offer Submission Documents": [
+      "Form 1 – Bidder/consortium declaration",
+      "Form 5 – Turnover declaration",
+      "Form 7 – List of subcontractors",
+      "Form 8 – Letter of comfort (patronage)",
+      "Form 10 – Data protection information",
+      "Form 11 – EU Sanctions Reg. Art. 5k declaration",
+      "Form 13 – Required enclosures checklist",
+      "Annex ./0.1 – Bidder declaration",
+      "Annex ./1 – Liability insurance/policy confirmation",
+      "Annex ./2 – Probability of default (rating)",
+      "Annex ./3 – Company references (eligibility)",
+      "Annex ./3 – Company references (selection)",
+      "Annex ./4 – Key staff and qualifications",
+      "Annex ./5 – Staffing levels",
+      "Annex ./6 – Key person IT Project Manager reference"
+    ],
+    "List of Documents": [
+      "Company register excerpt (≤1 month old) for bidder/consortium members/subcontractors/patrons",
+      "Social security clearance (≤3 months old) or equivalent",
+      "Tax clearance (§229a BAO) (≤3 months old) or equivalent",
+      "Proof of professional/trade authorization/licence",
+      "IT liability insurance policy (≥EUR 2,000,000) incl. data losses and loss of profit",
+      "KSV 1870 rating 399 or better, or PD <1.15% (Basel II) equivalence",
+      "If KSV 400–499 (PD <7.11%): bank guarantee ≥EUR 500,000, irrevocable/unconditional/abstract, EEA bank ≥Baa3/BBB-",
+      "Power of attorney (if signatory not statutorily authorized)",
+      "Subcontractor declaration (Annex A to Form 7)",
+      "Joint liability declaration for required subs (Annex B to Form 7)",
+      "Patronage letter (Form 8) when relying on third-party capacity",
+      "Criminal record certificates upon request (legal persons’ organs)",
+      "Register extract for associations upon request",
+      "Declaration of personnel availability/on-site readiness (Annex ./0.1)",
+      "Sanctions declaration Art. 5k (Form 11)"
+    ],
+    "Economic & Financial Standing": {
+      "Minimum Turnover": "Avg. annual net turnover (2021–2023) > EUR 1,500,000 (consolidate for groups; cumulate for consortia)",
+      "Turnover in Comparable Services": ""
+    },
+    "Legal & Registration": {
+      "Trade/Professional Register Entry": "Entry/proof of authorization at time of participation deadline; EU/EWR notifications per §373a GewO; Swiss deliveries ≤90 workdays/year",
+      "Self-declarations (GWB §§123/124 or equivalent)": "Non-exclusion per §249 BVergG; compliance with labour/social/environmental law; no conflicts of interest; Art. 5k EU 833/2014",
+      "Subcontractor Identification & Reliance": "Disclose all subs (Form 7); Annex A/B for required subs; reliance via Form 8; changes only with prior consent"
+    }
+  },
+  "Technical & Professional Ability": {
+    "Personnel Profiles": "- Key roles: 1 IT Project Manager; 1 Key Account Manager\n- Experience: each ≥3 years (IT PM in software implementation; KAM in client support for implemented software)\n- Language: German or English ≥B2 (CEFR); soft skills (communication, teamwork, problem-solving, reliability, travel readiness)\n- Presence: IT Project Manager must attend and actively participate in stage-2 hearings/presentation\n- No multiple assignments (no person covers multiple roles; no multiple people per one role)",
+    "Headcount / Staffing": "- Average headcount (2023 & 2024): ≥10 FTE (incl. key staff; includes defined categories; if younger company, since inception)\n- On-site capacity: up to 20% of effort",
+    "Reference Projects": "- Key person (IT Project Manager) references for selection: 1=100 pts; 2=150 pts; 3+=200 pts; must match company reference criteria; documented in Annex ./6\n- Timeframe: within last 5 years; successful production"
+  },
+  "Company Referrals": "- Minimum 2 company references (eligibility) within last 5 years; bidder (or consortium member/subcontractor) performed the work; no self/affiliated references\n- Each must cover: delivery, implementation, maintenance of a standard ETRM; markets incl. at least Power DE and Gas TTF; exchange access (EEX or ICE) for ≥1 of Power/Gas; ≥1 year support & maintenance; same standard product as to be offered (or all candidate products if undecided)\n- Up to 3 additional references for selection (100 pts each); extra scoring per reference features: DACH regionality; cloud instance; market coverage (Power DE, Gas TTF, EEX/ICE) for both Power & Gas; full deal life cycle (≥deal capture & confirmation); short-term/intraday trading (≥automatic trade ingestion & matching); risk mgmt (≥measurement/aggregation/reporting for market/counterparty/liquidity)",
+  "Award Criteria": "- Procedure: Negotiated, 2 stages; shortlist 9 to bid; after initial offers, shortlist to 5; may award on first offers\n- Award (stage 2) – 1,000 pts total:\n  - Total price (excl. VAT) – 500 pts; formula: (2 – offer/lowest) × 500; scope covers software, implementation, maintenance, T&M; TCO7 basis\n  - Functional concept – 100 pts (application examples 1–3; design incl. user/authorization, adaptability, extensibility)\n  - Technical concept – 100 pts (security 40; operations/7x24 SaaS 40; interfaces 20)\n  - Organizational concept – 100 pts (completeness 20; project plan & resource efficiency 20; client needs & collaboration 30; knowledge transfer 20; additional services 10)\n  - Presentation & Q&A – 200 pts (AE1 40: usability 20 + functionality 20; AE2 40; AE3 40; presentation/Q&A 80); IT PM attendance mandatory; points frozen for LABO\n- Selection (stage 1) – 1,000 pts total:\n  - Additional company references (max 3) – 300 pts (100 each)\n  - Additional reference features across eligibility+selection references – 500 pts (8 features ×62.5 each; proportional if fewer references)\n  - Key person IT Project Manager references – 200 pts (1=100; 2=150; 3+=200)",
+  "citations": [
+    {
+      "field": "Contracting Authority",
+      "locator": "Deckblatt p.1; TNU p.2, p.5"
+    },
+    {
+      "field": "Project Description",
+      "locator": "TNU p.7-9"
+    },
+    {
+      "field": "Important Dates",
+      "locator": "TNU p.2, p.10"
+    },
+    {
+      "field": "Scope & Requirements → Scope & Requirements",
+      "locator": "TNU p.8-10; p.9; p.36-37"
+    },
+    {
+      "field": "Scope & Requirements → Place of Performance",
+      "locator": "TNU p.2"
+    },
+    {
+      "field": "Scope & Requirements → Standards & Certifications",
+      "locator": "TNU p.9; p.36"
+    },
+    {
+      "field": "Scope & Requirements → Subcontracting & Consortia",
+      "locator": "TNU p.30-31; p.20, p.32"
+    },
+    {
+      "field": "Scope & Requirements → Forms & e-Submission",
+      "locator": "TNU p.14-15; Deckblatt p.2"
+    },
+    {
+      "field": "Supplier Eligibility → Offer Submission Documents",
+      "locator": "Deckblatt p.1; TNU p.40"
+    },
+    {
+      "field": "Supplier Eligibility → List of Documents",
+      "locator": "Beilage ./0.1 p.2-4; TNU p.19-23"
+    },
+    {
+      "field": "Economic & Financial Standing → Minimum Turnover",
+      "locator": "TNU p.22"
+    },
+    {
+      "field": "Economic & Financial Standing → Insurance/PD/Guarantee",
+      "locator": "TNU p.22-23"
+    },
+    {
+      "field": "Legal & Registration",
+      "locator": "TNU p.19-21; Beilage ./0.1 p.4-6"
+    },
+    {
+      "field": "Technical & Professional Ability → Personnel Profiles",
+      "locator": "TNU p.26-27; Beilage ./4"
+    },
+    {
+      "field": "Technical & Professional Ability → Headcount / Staffing",
+      "locator": "TNU p.27; Beilage ./5"
+    },
+    {
+      "field": "Company Referrals",
+      "locator": "TNU p.24-25; Beilage ./3"
+    },
+    {
+      "field": "Technical & Professional Ability → Reference Projects (key person)",
+      "locator": "TNU p.29; Beilage ./6"
+    },
+    {
+      "field": "Award Criteria",
+      "locator": "TNU p.32-39"
+    }
+  ]
+}

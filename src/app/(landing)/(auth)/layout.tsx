@@ -14,7 +14,7 @@ export default function AuthLayout({
 
   useEffect(() => {
     if (session.data?.user) {
-      router.push("/");
+      router.push("/app");
     }
   }, [session.data?.user]);
 

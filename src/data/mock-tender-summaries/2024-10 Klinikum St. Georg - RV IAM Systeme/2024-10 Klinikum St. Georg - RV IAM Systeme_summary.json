@@ -1,0 +1,214 @@
+{
+  "Contracting Authority": "Klinikum St. Georg gGmbH",
+  "Project Description": "- Procurement of an on‑premise Identity & Access Management (IAM) system for the St. Georg group\n- Scope: monitoring/administration of access rights for ~600 IT systems and ~2,800 users (all in AD)\n- Goals: centralized, GDPR‑compliant identity/permission management; support onboarding/crossboarding/offboarding; flexible self‑service portal; connect 3rd‑party systems; minimize downtime (KRITIS environment)\n- SaaS/Cloud excluded; operation in Klinikum virtual environment",
+  "Submission Deadline": "07.11.2024, 11:00 Uhr",
+  "Important Dates": "- Questions deadline (via DTVP): 28.10.2024\n- Product presentations/probestellung: 18.11.2024–26.11.2024\n- Award/binding period end: 22.01.2025\n- Implementation window: 27.01.2025–30.06.2025",
+  "Scope & Requirements": {
+    "Scope & Requirements": "- Deliverables:\n  - IAM software (perpetual) incl. installation, configuration, integration, testing, go‑live; AD/Exchange/Fileserver/Personal Office integration; operating manual; trainings; regular maintenance & support\n  - Project implementation concept; project mgmt, reporting, risk mgmt; knowledge transfer\n- Technical baseline (must):\n  - Users: ≥2,800 concurrently addressable; hybrid IT\n  - DB: Microsoft SQL Server 2019+; App server: Microsoft Server 2022+\n  - Web‑based UI (DE), AD SSO; no internet/VPN dependency; no component must be internet‑reachable\n  - VMware virtualization supported; backups/restore by Klinikum anytime\n  - Patching ≥ quarterly; critical vulns CVSS ≥7.5 updated without delay\n  - On‑premise only; SaaS/Cloud excluded\n- Functions:\n  - Workflows: graphical, flexible approval; escalations; role/permission requests; custom fields (incl. regex)\n  - Lifecycle: joiner/mover/leaver; role mining (scored); recertification (selectable intervals, AD groups, fileservers, auditor read‑only)\n  - Access mgmt: centralized, RBAC, field‑level permissions, org‑aligned rules, ease of use\n  - PAM: flag privileged accounts; restrict AD‑based access; rule‑based grant/revoke; approval for privileged rights\n  - Self‑service: resource/role requests; attribute self‑change; definable directory scope; password reset incl. AD (SAP optional, scored)\n  - Reporting/monitoring; central identity repositories; admin actions from separate instances only\n- Interfaces (must):\n  - AD: CRUD users, OU placement, home drive, attribute mapping, init passwords, anomaly analysis\n  - Fileserver (CIFS/SMBv2): AGDLP/AGP(A GGP)/AUP(A UUP); multi‑domain AGDLP; create/rename/delete dirs & groups; best‑practice ACL changes; owner rights; permission analysis; exports PDF/Excel/CSV\n  - Exchange (incl. hybrid/online): groups, mailbox lifecycle, permissions, analyzers; self‑service mailbox access\n  - IT helpdesk: Jira; Third‑party: open APIs (SOAP/REST/LDAP/SQL); MS/Citrix Terminal Services\n- Security/Compliance:\n  - Hardened per state of the art (incl. BSI Grundschutz); full audit trails of grants/changes and workflow steps\n- Trainings & Docs:\n  - 4 trainings (2× Admin, 2× key users/multipliers), DE; provide/update DE training materials\n  - Operating manual (DE) covering architecture, installation, config, ops, backup, incident, patch/change, contingency; editable electronic format\n- Service framework (EVB‑IT template):\n  - Service times: Mon–Fri 08:00–17:00; tickets via AG system; provision of patches/updates/upgrades/releases upon request & when available",
+    "Contract Volume": "- Framework: 4 years + 1‑year extension option\n- Licenses: min 2,800; max 4,500 users (for comparison)\n- One‑off: system readiness (pauschal)\n- Services: software maintenance/update/upgrade/releases per year for years 1–5 (year 5 optional)",
+    "Place of Performance": "Klinikum St. Georg gGmbH, Delitzscher Straße 141, 04129 Leipzig; on‑premise in Klinikum virtual environment; remote delivery for the 15 PT contingent",
+    "Standards & Certifications": "- ISO/IEC 27001 (or equivalent) – manufacturer (proof required)\n- DSGVO/GDPR; BDSG; SGB X; E‑Health‑Gesetz; KRITIS‑Verordnung\n- BSI Grundschutz (security hardening)\n- AVV (Art. 28 DSGVO) included",
+    "Subcontracting & Consortia": "- Consortia: allowed; declaration in text form; name all members; one authorized representative; joint and several liability\n- Subcontractors: FB235 required; prior written consent; same obligations (confidentiality, data protection); capacity reliance allowed; notify changes",
+    "Forms & e-Submission": "- Submit exclusively via www.dtvp.de in text form; German language; use client templates\n- Include filled LV and price sheet; Form 633 (signed)\n- Non‑portal submissions (email/fax/paper) lead to exclusion"
+  },
+  "Supplier Eligibility": {
+    "Offer Submission Documents": [
+      "Cover letter with contacts",
+      "Form 633 Angebotsschreiben (signed)",
+      "Leistungsverzeichnis (filled incl. evidence refs)",
+      "Price sheet (Preisblatt) (filled)",
+      "Project implementation concept",
+      "Self-declaration to Regulation (EU) 2022/576",
+      "Non-disclosure agreement (Anlage 2)",
+      "Formblatt LkSG",
+      "FB235 Subcontractor/capacity list (if applicable)",
+      "Formblatt Grunddaten Bieter",
+      "Formblatt Referenzen zu Punkt 1.9b"
+    ],
+    "List of Documents": [
+      "Trade/professional register excerpt or equivalent; Gewerbean-/ummeldung if no register duty",
+      "Liability insurance proof with coverage sums",
+      "Self-declaration reliability § 6 Abs. 5 VOL/A (signed)",
+      "FB Umsatz: manufacturer avg. annual turnover ≥ 2.0 Mio € (2023–2021) in comparable services",
+      "FB Personal: bidder ≥ 10 FTE (Ø last 3 yrs) directly on IAM; manufacturer ≥ 50 FTE (Ø last 3 yrs)",
+      "Access to ≥ 2 project managers",
+      "Project managers: ≥ 3 years experience in subject; anonymized evidence",
+      "ISO/IEC 27001 (or equivalent) certificate of manufacturer (copy)",
+      "References: 1× hospital (≥2800 employees) + 2× companies (>2800 employees); last 3 years; include project, client, c"
+    ],
+    "Economic & Financial Standing": {
+      "Minimum Turnover": "Manufacturer average annual turnover ≥ 2.0 Mio € (2023–2021)",
+      "Turnover in Comparable Services": "Prove turnover from comparable services as per FB Umsatz"
+    },
+    "Legal & Registration": {
+      "Trade/Professional Register Entry": "Register excerpt or equivalent; Gewerbean-/ummeldung if no register duty (copy)",
+      "Self-declarations (GWB §§123/124 or equivalent)": "Reliability self-declaration per § 6 Abs. 5 VOL/A",
+      "Subcontractor Identification & Reliance": "FB235 listing; prior consent; capacity reliance with same obligations"
+    }
+  },
+  "Technical & Professional Ability": {
+    "Personnel Profiles": "- Roles: Project Manager/Project Lead (≥3 years IAM project leadership); IAM consultants/engineers; trainers\n- Skills: AD/Exchange/Fileserver/SAP/Jira integration; workflow/role mining/recertification; RBAC; reporting; DE language for trainings/docs; BSI Grundschutz practices\n- Constraints: staff are bidder’s employees or via Eignungsleihe; provide anonymized proofs",
+    "Headcount / Staffing": "- Bidder: ≥10 FTE (Ø last 3 yrs) directly on IAM; Manufacturer: ≥50 FTE (Ø last 3 yrs)\n- Access to ≥2 Project Managers\n- Trainings: 2× Multipliers 0.5 d; 2× Admin 0.5 d (DE)\n- Service times: Mon–Fri 08:00–17:00; Install files delivery ≤ 10 working days after request; 15 PT remote reserved",
+    "Reference Projects": "- Key personnel: Project leadership experience ≥ 3 years in IAM scope (anonymized evidence)"
+  },
+  "Company Referrals": "- Provide references from the last 3 years:\n- Min. 1 hospital reference (≥2800 employees) + 2 references from other companies (>2800 employees)\n- For each: project name; client + address; client contact (email/phone); beds (for hospital); interface standard; in operation since\n- For consortia: indicate which member delivered the reference",
+  "Award Criteria": "- Most economically advantageous tender based on:\n- Price (60 points): lowest price = 60; linear interpolation up to 2× lowest price; 0.01× higher price = −0.6 pts; rounded to whole points\n- Functionality (40 points): based on up to 67 pts (LV criteria max 18 + probestellung matrix max 49); top score = 40; linear interpolation; 0.01 lower sum = −0.4 pts; rounded to whole points\n- Probestellung (49 pts) rating per item: 0.0 (insufficient) / 0.3 (adequate with limits) / 1.0 (fully meets)\n- Functional matrix (examples & weights): F1–F7 usability/design/overview/time (w=4 each), F8–F10 robustness/adaptability (w=3), F11 workflow adaptability (w=4), F12 genehmiger UX (w=2), F13 audit filters (w=4), F14 export ease (w=2)\n- Tie-break: higher Functionality score wins\n- AG may skip trials/visits if bidder cannot win even with max Functionality",
+  "citations": [
+    {
+      "field": "Contracting Authority",
+      "locator": "044 24 Anlage zur Aufforderung Angebotsabgabe 631.pdf, p.1"
+    },
+    {
+      "field": "Project Description",
+      "locator": "044 24 Anlage zur Aufforderung Angebotsabgabe 631.pdf, p.1"
+    },
+    {
+      "field": "Submission Deadline",
+      "locator": "044 24 Anlage zur Aufforderung Angebotsabgabe 631.pdf, p.2"
+    },
+    {
+      "field": "Important Dates",
+      "locator": "044 24 Anlage zur Aufforderung Angebotsabgabe 631.pdf, p.5 (Bindefrist 22.01.2025)"
+    },
+    {
+      "field": "Important Dates",
+      "locator": "044 24_Informationen_zum_LV-Kriterienkatalog.pdf, p.4-5 (Probestellung 18.11–26.11.2024)"
+    },
+    {
+      "field": "Important Dates",
+      "locator": "044 24 Anlage zur Aufforderung Angebotsabgabe 631.pdf, p.2 (Fragen bis 28.10.2024)"
+    },
+    {
+      "field": "Important Dates",
+      "locator": "044 24 Anlage zur Aufforderung Angebotsabgabe 631.pdf, p.1 (27.01.2025–30.06.2025)"
+    },
+    {
+      "field": "Scope & Requirements → Scope & Requirements",
+      "locator": "044 24_03_LV_03 Leistungsverzeichnis IAM Systeme.pdf, p.2-5"
+    },
+    {
+      "field": "Scope & Requirements → Scope & Requirements",
+      "locator": "044 24_Informationen_zum_LV-Kriterienkatalog.pdf, p.3-5"
+    },
+    {
+      "field": "Scope & Requirements → Contract Volume",
+      "locator": "044 24_02_LV_02 Preisblatt.pdf, p.1"
+    },
+    {
+      "field": "Scope & Requirements → Contract Volume",
+      "locator": "044 24_LV_Preisblatt_Verwaltung_Zugriffsrechte_IAM.xlsx – Sheet: Preisblatt"
+    },
+    {
+      "field": "Scope & Requirements → Contract Volume",
+      "locator": "044 24_Muster_EVB-IT-Systemvertrag.pdf, p.18-19"
+    },
+    {
+      "field": "Scope & Requirements → Place of Performance",
+      "locator": "044 24 Anlage zur Aufforderung Angebotsabgabe 631.pdf, p.1"
+    },
+    {
+      "field": "Scope & Requirements → Standards & Certifications",
+      "locator": "044 24 Formblatt Umsatz/Personal/Zertifizierungen; 044 24_03_LV_03, p.3-5 (BSI/DSGVO etc.)"
+    },
+    {
+      "field": "Scope & Requirements → Subcontracting & Consortia",
+      "locator": "044 24 FB632_Bewerbungsbedingungen.pdf, p.2"
+    },
+    {
+      "field": "Scope & Requirements → Subcontracting & Consortia",
+      "locator": "044 24 FB235_Verzeichnis der Leistung anderer Unternehmen.pdf, p.1"
+    },
+    {
+      "field": "Scope & Requirements → Forms & e-Submission",
+      "locator": "044 24 Anlage zur Aufforderung Angebotsabgabe 631.pdf, p.2"
+    },
+    {
+      "field": "Supplier Eligibility → Offer Submission Documents",
+      "locator": "044 24 Anlage zur Aufforderung Angebotsabgabe 631.pdf, p.4"
+    },
+    {
+      "field": "Supplier Eligibility → Offer Submission Documents",
+      "locator": "044 24 FB633_Angebotsschreiben.pdf, p.1"
+    },
+    {
+      "field": "Supplier Eligibility → List of Documents",
+      "locator": "044 24 Anlage zur Aufforderung Angebotsabgabe 631.pdf, p.3-4"
+    },
+    {
+      "field": "Supplier Eligibility → Economic & Financial Standing",
+      "locator": "044 24 Formblatt Umsatz.pdf, p.1"
+    },
+    {
+      "field": "Supplier Eligibility → Legal & Registration",
+      "locator": "044 24 Anlage zur Aufforderung Angebotsabgabe 631.pdf, p.3"
+    },
+    {
+      "field": "Technical & Professional Ability → Personnel Profiles",
+      "locator": "044 24 Anlage zur Aufforderung Angebotsabgabe 631.pdf, p.3 (1.7–1.8)"
+    },
+    {
+      "field": "Technical & Professional Ability → Personnel Profiles",
+      "locator": "044 24_Informationen_zum_LV-Kriterienkatalog.pdf, p.3 (min. experience); p.7 (project plan)"
+    },
+    {
+      "field": "Technical & Professional Ability → Headcount / Staffing",
+      "locator": "044 24 Formblatt Personal.pdf, p.1"
+    },
+    {
+      "field": "Technical & Professional Ability → Headcount / Staffing",
+      "locator": "044 24_03_LV_03 Leistungsverzeichnis IAM Systeme.pdf, p.2-4"
+    },
+    {
+      "field": "Technical & Professional Ability → Reference Projects",
+      "locator": "044 24 Anlage zur Aufforderung Angebotsabgabe 631.pdf, p.3 (1.8)"
+    },
+    {
+      "field": "Company Referrals",
+      "locator": "044 24 Referenzen zu Punkt 1.9b.pdf, p.1-4"
+    },
+    {
+      "field": "Award Criteria",
+      "locator": "044 24 Anlage zur Aufforderung Angebotsabgabe 631.pdf, p.5"
+    },
+    {
+      "field": "Award Criteria",
+      "locator": "044 24_Informationen_zum_LV-Kriterienkatalog.pdf, p.4-5"
+    },
+    {
+      "field": "Award Criteria",
+      "locator": "044 24_LV_Preisblatt_Verwaltung_Zugriffsrechte_IAM.xlsx – Sheet: Preisblatt/Werte (F1–F14)"
+    },
+    {
+      "field": "Security/Service times",
+      "locator": "044 24_Muster_EVB-IT-Systemvertrag.pdf, p.17-18"
+    },
+    {
+      "field": "AVV/Privacy",
+      "locator": "044 24_Muster_Vertrag_Auftragsverarbeitung.pdf (Version 2.0, 28.03.2024)"
+    },
+    {
+      "field": "No SaaS/Cloud",
+      "locator": "044 24 Anlage zur Aufforderung Angebotsabgabe 631.pdf, p.1"
+    },
+    {
+      "field": "System environment & thresholds",
+      "locator": "044 24_03_LV_03 Leistungsverzeichnis IAM Systeme.pdf, p.2"
+    },
+    {
+      "field": "Probestellung content",
+      "locator": "044 24_Informationen_zum_LV-Kriterienkatalog.pdf, p.4-5"
+    },
+    {
+      "field": "Service updates cadence and CVSS ≥7.5",
+      "locator": "044 24_03_LV_03 Leistungsverzeichnis IAM Systeme.pdf, p.2"
+    },
+    {
+      "field": "Training details",
+      "locator": "044 24_Informationen_zum_LV-Kriterienkatalog.pdf, p.6-7"
+    },
+    {
+      "field": "Preparatory 15 PT",
+      "locator": "044 24_Informationen_zum_LV-Kriterienkatalog.pdf, p.7"
+    }
+  ]
+}

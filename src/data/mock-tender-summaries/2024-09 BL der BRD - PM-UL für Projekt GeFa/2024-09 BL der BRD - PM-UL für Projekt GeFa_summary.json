@@ -1,0 +1,149 @@
+{
+  "Contracting Authority": "Länder des Entwicklungsverbundes (16 Bundesländer + Bund), vertreten durch den Freistaat Bayern, vertreten durch das Bayerische Staatsministerium der Justiz",
+  "Project Description": "- Support services for Project GeFa in the client's project management (PMO)\n- Roles: External Program Lead, PMO-Lead, Release-Train-Engineer, Release Manager, Scrum-Master (max. 4), PMO staff (max. 4)\n- Aim: develop a user-friendly, accessible, future-proof case management system for ordinary courts, public prosecutors and specialist jurisdictions across all 16 Länder and the Bund\n- Framework agreement without reopening competition; 6-year term",
+  "Submission Deadline": "07/10/2024 10:00 +02:00",
+  "Important Dates": "- Questions deadline: 30/09/2024 10:00 +02:00\n- Bid validity: 85 Tag\n- Preliminary award notice (§134 GWB): 28/10/2024\n- Binding period (internally stated): 31/12/2024",
+  "Scope & Requirements": {
+    "Scope & Requirements": "Lot 1 — Support services for Project GeFa PM (LOT-0001)\n- Deliverables:\n  - External Program Lead: overall program control (time, scope, budget), governance, escalations, reporting to PLA/StMJ, procurement execution\n  - PMO-Lead: admin & steering; planning/process mgmt; budget/controlling; reporting/monitoring (status, risk, progress)\n  - Release-Train-Engineer (SAFe): ART facilitation; Scrum of Scrums; PI planning/I&A moderation; impediment/risk mgmt; DoR/DoD evolution; cross-team coaching\n  - Release Manager: release/ deployment planning & execution; change/versioning; rollback capability; KPI reporting; stakeholder comms\n  - Scrum-Master (up to 4): team coaching; events moderation; impediment tracking; metrics; transparency across teams\n  - PMO staff (up to 4): execute PMO tasks under PMO-Lead\n- Key requirements & constraints:\n  - Language: fluent German C2 (GER) for all proposed consultants (KO; doubts for PL and deputy lead to exclusion)\n  - Education: at least Bachelor; MINT Bachelor required for External Program Lead & Release Manager\n  - Work location: services (incl. by subcontractors/tools ops) exclusively from GPA states (KO)\n  - Team availability: Mon–Fri 08:00–16:00; response to non‑ad‑hoc requests ≤3 working days\n  - Handover at contract end: up to 60 PT; service time Mon–Fri 08:00–16:00; response ≤8h within service time\n  - Tools/methods: SAFe; Scrum; JIRA/Confluence; PMO tools (MS Office, SharePoint, MS Project); Requirements Engineering tools (e.g., IBM Rational Jazz)\n  - Planning/Call-offs: rolling 3‑month planning; further call‑offs ≥3 months lead time; no minimum take-up; change requests for changes to call‑offs\n  - Travel/expenses: included in offered prices; travel time not remunerated\n  - Delivery mode: primarily remote or contractor site; occasional onsite at StMJ/Judiciary locations (mainly Munich)\n  - Personnel: one person max. one role; per role max. two part‑time resources per 1 FTE\n  - Staffing baseline: at least 20 employees with prior comparable project work (KO)\n  - Security/Confidentiality: formal commitment of non‑civil servants; GDPR AVV incl. TOMs mandatory; EVB‑IT Dienstleistungs‑AGB apply\n  - Subcontractors: prior consent; staffing agencies and chain sub‑contracting prohibited; submit contracts ≥4 weeks before use",
+    "Contract Volume": "- Max hours (6 years): Program Lead 6,336 h; PMO-Lead 10,560 h; RTE 8,624 h; Release Manager 9,328 h; Scrum-Master (≤4) 21,120 h; PMO staff (≤4) 42,240 h; 19% USt; no take-up obligation",
+    "Place of Performance": "- 80335 München (DE212)\n- Remote delivery permitted from GPA states; occasional onsite at Bavarian/other Länder justice locations",
+    "Standards & Certifications": "- Language: German C2 (GER)\n- Education: min. Bachelor; MINT Bachelor for External Program Lead & Release Manager\n- Project mgmt certs: IPMA Level D/C/B (or equivalent) expected\n- Agile certs: Scrum Master/Product Owner/RTE; SAFe\n- GDPR: AVV + TOMs submission with bid\n- EVB-IT Dienstleistungs-AGB 2.1 apply",
+    "Subcontracting & Consortia": "- Consortia allowed; joint and several liability; authorized representative required\n- Subcontractors need prior written consent; provide contracts ≥4 weeks pre‑use; must perform core work themselves\n- No personnel service providers; no chain subcontracting; work only from GPA states",
+    "Forms & e-Submission": "- Electronic submission required (German); Textform §126b BGB\n- Portals: https://www.auftraege.bayern.de and deeplink on eVergabe\n- Use provided forms/price items; attach TOMs and personnel profile forms"
+  },
+  "Supplier Eligibility": {
+    "Offer Submission Documents": [
+      "Eigenerklärung (GWB §123/§124 etc.)",
+      "Eigenerklärung RUS (Art. 5k VO (EU) 833/2014)",
+      "Informationen zu statistischen Angaben (Form)",
+      "Preisangaben je Rolle (Produkte/Leistungen im System)",
+      "Personalprofile für: Program Lead, PMO-Lead, RTE, Release Manager, Scrum-Master #1-#4",
+      "Anlage: TOMs (Technische und Organisatorische Maßnahmen)",
+      "Vorlage Referenzprojekte.docx (≥3 Referenzen)",
+      "Erklärung zu Unterauftragnehmern",
+      "Erklärung zur Eignungsleihe (falls zutreffend)",
+      "Erklärung zur Berufshaftpflichtversicherung",
+      "Erklärung zu gewerblichen Schutzrechten",
+      "Scientology-Erklärung (Form)",
+      "Vollmachten (falls erforderlich)",
+      "Bietergemeinschaft: Erklärung gesamtschuldnerische Haftung"
+    ],
+    "List of Documents": [
+      "Jahresabschlüsse der letzten 3 Geschäftsjahre (auf Anforderung)",
+      "Handels-/Berufsregisterauszug (oder Angaben dazu)",
+      "Wettbewerbsregister-Angaben (K4.2–K4.5)",
+      "Nachweis Berufshaftpflicht (≥2 Mio. EUR) oder Zusage vor Zuschlag",
+      "KMU-/Unternehmensgröße/NUTS (statistische Angaben)",
+      "Unterauftragnehmer-Eigenerklärungen + Verpflichtungserklärungen",
+      "Patronatserklärung/gesamtschuldnerische Haftung (Eignungsleihe wirtschaftlich)",
+      "Nachweise zu Zertifizierungen (auf Anforderung)",
+      "Kontakt des Referenzkunden (prüfbar)"
+    ],
+    "Economic & Financial Standing": {
+      "Minimum Turnover": "Mind. 5 Mio. EUR in Summe aus agilen/technischen Beraterrollen in den letzten 3 abgeschlossenen Geschäftsjahren (bei Bietergemeinschaft: kumulativ)",
+      "Turnover in Comparable Services": "Erklärung zu jährlichem Umsatz in agilen/technischen Beraterrollen für die letzten 3 Geschäftsjahre"
+    },
+    "Legal & Registration": {
+      "Trade/Professional Register Entry": "Registerangaben/HR-Auszug (in-/ausländisch) bzw. Gesellschafter/USt-IdNr.",
+      "Self-declarations (GWB §§123/124 or equivalent)": "Zwingende/fakultative Ausschlussgründe; Steuern/Abgaben/SV; MiLoG/AEntG/AÜG; LkSG; keine Wettbewerbsverstöße; Russland-Sanktionskonformität (>10% Drittanteile ausgeschlossen)",
+      "Subcontractor Identification & Reliance": "Benennung UAs; Eignungsleihe mit Nachweisen; UA-Verträge ≥4 Wochen vor Einsatz; GPA-Standortpflicht"
+    }
+  },
+  "Technical & Professional Ability": {
+    "Personnel Profiles": "- Roles (8 profiles): External Program Lead; PMO-Lead; Release-Train-Engineer; Release Manager; Scrum-Master #1–#4\n- Common musts: German C2 (GER); ≥Bachelor (MINT for Program Lead & Release Manager); one person max. one role; ≤2 part-time per FTE\n- Program Lead: last 5y leadership (IT), agile leadership, personnel responsibility; public IT project exp.; certs (IPMA D/C/B+); agile certs\n- PMO-Lead: years in PMO admin/steering; planning/process mgmt; budget/controlling; reporting/monitoring; PM certs; PMO tools (MS Office/SharePoint/Project); RE tools (JIRA/Confluence/IBM Rational Jazz)\n- RTE: years as SM/PO; Agile SW Requirements; agile estimating; moderate Scrum events; PI Planning/I&A; SAFe scaling; ART definition & 3+ PIs; QA/coaching history; agile certs\n- Release Manager: years as RM (last 10y); # of releases; Agile SW Requirements; PM & agile certs; tools (Office/SharePoint/Project); JIRA/Confluence; agile RM experience (Scrum/Kanban)\n- Scrum-Master: years as SM; Agile SW Requirements; agile estimating; event moderation; # SM projects; concepts to adapt process; QA; coaching; agile certs\n- Year counting: 1 year = ≥200 project days in the role; project counting thresholds: ≥100 PT (most); QA/coaching ≥50 PT",
+    "Headcount / Staffing": "- Min. 20 employees with comparable project experience (KO)\n- Team availability: Mon–Fri 08:00–16:00; response ≤3 working days\n- 3‑month rolling call‑offs; optional up to 4 Scrum-Masters & 4 PMO staff",
+    "Reference Projects": "- Provide per-person tables of projects/roles/periods; link publications where applicable\n- Counting rules: project credit ≥100 PT (general), ≥50 PT (QA/coaching)\n- Evidence: client verifiable; year = ≥200 PT in role"
+  },
+  "Company Referrals": "- Min. 3 reference projects with the bid (KO)\n- Each reference must meet: duration ≥3 Jahre; ≥3 consultants simultaneously and continuously; work in agile SW development\n- Use template ‘Vorlage Referenzprojekte.docx’; ~5 pages per reference; include client contact (name/phone/email); verifiable by contracting authority",
+  "Award Criteria": "- Price: 50%\n- Quality: 50% (Extended Richtwertmethode; 6% band; award to highest Leistung within band)\n- Quality breakdown:\n  - K4 Team organisation: 11.43%\n  - K5 Cooperative collaboration: 17.14%\n  - K6 Methodical/content approach (incl. onboarding): 21.43%\n  - K7 Qualifications & experience (personnel profiles): 50.00%\n    - Inter-profile weights: Program Lead 20%; PMO‑Lead 15%; RTE 20%; Release Manager 15%; Scrum‑Master #1–#4 each 7.5%\n    - Scoring per attribute: 0–5 points scale; weighted per criterion matrices\n- PMO staff not evaluated in K7",
+  "citations": [
+    {
+      "field": "Contracting Authority",
+      "locator": "Chunk 2 p.1; Chunk 36 p.8"
+    },
+    {
+      "field": "Project Description",
+      "locator": "Chunk 2 p.1–2"
+    },
+    {
+      "field": "Submission Deadline",
+      "locator": "Chunk 3 p.6; Chunk 5 p.9"
+    },
+    {
+      "field": "Important Dates",
+      "locator": "Chunk 3 p.6; Chunk 5 p.9"
+    },
+    {
+      "field": "Scope & Requirements → Scope & Requirements",
+      "locator": "Chunk 12 p.9–13; Chunk 11 p.3; Chunk 13 p.16–17"
+    },
+    {
+      "field": "Scope & Requirements → Contract Volume",
+      "locator": "Chunk 41 p.50–52"
+    },
+    {
+      "field": "Scope & Requirements → Place of Performance",
+      "locator": "Chunk 2 p.2; Chunk 30 p.12–13"
+    },
+    {
+      "field": "Scope & Requirements → Standards & Certifications",
+      "locator": "Chunk 6 p.6–7; Chunk 6 p.22–23; Chunk 6 p.27"
+    },
+    {
+      "field": "Scope & Requirements → Subcontracting & Consortia",
+      "locator": "Chunk 31 p.18–19; Chunk 32 p.19"
+    },
+    {
+      "field": "Scope & Requirements → Forms & e-Submission",
+      "locator": "Chunk 5 p.9–10; Chunk 3 p.6"
+    },
+    {
+      "field": "Supplier Eligibility → Offer Submission Documents",
+      "locator": "Chunk 10 p.62–64; Chunk 5 p.16; Chunk 11 p.64"
+    },
+    {
+      "field": "Supplier Eligibility → List of Documents",
+      "locator": "Chunk 9 p.47–49; Chunk 3 p.5"
+    },
+    {
+      "field": "Supplier Eligibility → Economic & Financial Standing → Minimum Turnover",
+      "locator": "Chunk 3 p.5; Chunk 10 p.60"
+    },
+    {
+      "field": "Supplier Eligibility → Economic & Financial Standing → Turnover in Comparable Services",
+      "locator": "Chunk 3 p.5"
+    },
+    {
+      "field": "Supplier Eligibility → Legal & Registration → Trade/Professional Register Entry",
+      "locator": "Chunk 3 p.5"
+    },
+    {
+      "field": "Supplier Eligibility → Legal & Registration → Self-declarations (GWB §§123/124 or equivalent)",
+      "locator": "Chunk 7 p.29–32"
+    },
+    {
+      "field": "Supplier Eligibility → Legal & Registration → Subcontractor Identification & Reliance",
+      "locator": "Chunk 5 p.11–13; Chunk 31 p.18–19"
+    },
+    {
+      "field": "Technical & Professional Ability → Personnel Profiles",
+      "locator": "Chunk 6 p.22–27; Chunks 21–23; 26; 38"
+    },
+    {
+      "field": "Technical & Professional Ability → Headcount / Staffing",
+      "locator": "Chunk 3 p.5; Chunk 12 p.15"
+    },
+    {
+      "field": "Technical & Professional Ability → Reference Projects",
+      "locator": "Chunk 21 p.21; Chunk 25 p.1 (template rules)"
+    },
+    {
+      "field": "Company Referrals",
+      "locator": "Chunk 3 p.5; Chunk 10 p.60; Chunk 25 p.1 (template)"
+    },
+    {
+      "field": "Award Criteria",
+      "locator": "Chunk 3 p.5–7; Chunk 6 p.20–27; Chunk 7 p.26"
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "Contracting Authority": "Deutsche Gesetzliche Unfallversicherung e.V. (DGUV)",
+  "Project Description": "- ITD-2024-002: EAM consulting framework (EVB-IT Dienstvertrag)\n- Deliver: EAM Grobkonzept; methodical support for EAM introduction and expansion\n- Phases:\n  • A: EAM rough concept (governance, stakeholders, tool requirements, roadmap, comms)\n  • B: Benefit-oriented EAM introduction: EA tool evaluation/introduction + training; 1st expansion (detail concept+pilot; rollout & anchoring); ≥1 further expansion\n- Onboarding at award; A ~6 weeks from mid-05/2024; B from ~end-06/2024 (~6 months for first stage)\n- Call-offs in text form; no minimum quantity; prices per price sheet",
+  "Submission Deadline": "17.04.2024, 10:00 Uhr",
+  "Important Dates": "- 12.03.2024: Notice dispatch\n- 03.04.2024: Questions deadline\n- 10.04.2024: Latest answers\n- vsl. 24.04.2024: Award/notifications\n- 11.06.2024: Offer binding period",
+  "Scope & Requirements": {
+    "Scope & Requirements": "- Subject matter: EAM Grobkonzept; consulting & support to introduce and scale EAM across DGUV\n- Key deliverables:\n  • A: Assess baseline & EAM maturity; stakeholders/goals; prioritized EAM targets/Q&As; EA governance (roles, responsibilities, committees, process integration); integration & tool requirements (for EA tool eval); recommendations & comms plan\n  • B: EA tool evaluation & introduction incl. training; 1st EAM expansion (detail concept+pilot; rollout & anchoring); ≥1 further expansion; final documentation per expansion (IST, SOLL, plan/milestones, follow-up, annex)\n- Execution:\n  • Primary remote or contractor premises; required presence at Berlin, St. Augustin, ggf. other DGUV sites\n  • Travel costs not reimbursed for DGUV-site work; staff outside EU only with prior DGUV consent\n  • Language: German (meetings, docs); extra translation effort at contractor’s cost\n  • Use DGUV PM guidelines; use DGUV-provided templates/tools; typical platforms: MS 365/Teams/SharePoint, Atlassian Jira/Confluence, OpenText\n- Roles (billing via price sheet roles): Senior EAM for VI.A and VI.B (≥5 yrs; ≥2 comparable projects in German statutory social insurance)\n- Call-offs: A auto-abruf at award; other services only after individual call-off\n- Collaboration: Align with EA-tool vendor/partner (e.g., Customer Success); cooperate with other DGUV vendors (coordination by DGUV)",
+    "Contract Volume": "- Price sheet volumes: 1× EAM Grobkonzept (pauschal); 30 PT Senior EAM; 45 PT EAM-Berater; 20 PT Projektleiter\n- No minimum call-off; ceiling guided by price sheet estimates; after exhaustion, framework ends\n- Billing rule: full PT only if ≥10h; ≤10h/day billable; fewer hours pro rata",
+    "Place of Performance": "- Primarily remote/contractor premises; on-site as needed at Berlin, St. Augustin, ggf. other DGUV sites; outside EU only with prior consent",
+    "Standards & Certifications": "- Contract model: EVB-IT Dienstvertrag (EVB-IT Dienstleistungs-AGB v2.0; contract v2.1 mod.)\n- Law: German law; CISG excluded\n- Data protection: DSGVO (Art. 6(1)(b),(c)); confidentiality obligations\n- Minimum liability insurance: ≥150.000 EUR per claim (persons/property/financial); 2× per year",
+    "Subcontracting & Consortia": "- JVs: members may not also bid individually; composition free until bid; JV possibly inadmissible if each member can perform alone\n- Subcontractors: list all; DGUV consent for use/changes; Eignungsleihe permitted with binding commitment\n- Key staff changes only with consent; replacements must be equally or better qualified",
+    "Forms & e-Submission": "- e-Submission via DTVP; text form (§126b BGB) or advanced/qualified e-signature\n- Communication exclusively via DTVP\n- Use latest DTVP documents; German language; no Nebenangebote; mixed calculations excluded"
+  },
+  "Supplier Eligibility": {
+    "Offer Submission Documents": [
+      "D. Eignungsbogen – completed & signed",
+      "G. Angebotsblatt – signed",
+      "H. Preisblatt – completed",
+      "Handels-/Berufsregisterauszug ≤6 Monate alt",
+      "Bei Bietergemeinschaft: E. Bietergemeinschaftserklärung – signed",
+      "Bei Bietergemeinschaft: D. Eignungsbogen je Mitglied – signed",
+      "Bei Bietergemeinschaft: Registerauszug je Mitglied ≤6 Monate",
+      "Bei UAN: F. Verpflichtungserklärung Unterauftragnehmer – signed",
+      "Bei UAN: D. Eignungsbogen je UAN (gem. Hinweise)",
+      "Bei UAN: Handels-/Berufsregisterauszug je UAN ≤6 Monate"
+    ],
+    "List of Documents": [
+      "Unbedenklichkeitsbescheinigung Krankenkasse(n)",
+      "Unbedenklichkeitsbescheinigung Finanzamt",
+      "Unbedenklichkeitsbescheinigung Berufsgenossenschaft",
+      "Negativbescheinigung Insolvenzsachen (AG)",
+      "Nachweis Betriebshaftpflicht (≥150.000 EUR je Schaden; 2-fach/Jahr)",
+      "Zuverlässigkeitserklärung §§123/124 GWB bzw. Selbstreinigung §125 GWB",
+      "Mitgliedschaft Berufsgenossenschaft oder Erklärung §192 SGB VII",
+      "Übersicht Unterauftragnehmer/Eignungsleihe (falls zutreffend)"
+    ],
+    "Economic & Financial Standing": {
+      "Minimum Turnover": "≥300.000 EUR (netto) avg. der letzten 3 GJ im Bereich EAM-Beratung",
+      "Turnover in Comparable Services": "≥300.000 EUR (avg. letzte 3 GJ) in EAM-Beratung"
+    },
+    "Legal & Registration": {
+      "Trade/Professional Register Entry": "Registerauszug (oder äquivalent) in Kopie; ≤6 Monate alt; oder Erklärung zur Nicht-Eintragungspflicht/-fähigkeit",
+      "Self-declarations (GWB §§123/124 or equivalent)": "Erklärung zu Ausschlussgründen; ggf. Selbstreinigungsmaßnahmen (§125 GWB) mit Nachweisen",
+      "Subcontractor Identification & Reliance": "UAN-Liste; Verpflichtungserklärung; bei Eignungsleihe: entsprechende Erklärungen je Kriterium"
+    }
+  },
+  "Technical & Professional Ability": {
+    "Personnel Profiles": "- Profil 1 Senior EAM-Berater:\n  • Abschluss: Diplom/Master (MINT) oder Digital Business Management\n  • Qualifikation: Framework-/Methodenkompetenz für Fach-/IT-Architektur\n  • Erfahrung: ≥5 Jahre Enterprise Architektur\n  • Umfeld: Leitende Rolle in ≥2 vergleichbaren Vorhaben in dt. gesetzl. Sozialversicherung innerhalb der letzten 8 Jahre\n  • Referenzen: 2 persönliche; je ≥30 PT/Jahr in genannter Leistungsart\n- Profil 2 EAM-Berater:\n  • Abschluss: Bachelor (MINT) oder Digital Business Management\n  • Qualifikation: Framework-/Methodenkompetenz für Fach-/IT-Architektur\n  • Erfahrung: ≥3 Jahre Enterprise Architektur\n  • Umfeld: Mitarbeit in ≥2 vergleichbaren Vorhaben in dt. gesetzl. Sozialversicherung innerhalb der letzten 8 Jahre\n  • Referenzen: 2 persönliche; je ≥30 PT/Jahr\n- Profil 3 Projektmanager/-leiter:\n  • Abschluss: Diplom/Master (MINT/Digital Business Management/Psychologie/BWL)\n  • Erfahrung: ≥3 Jahre Projektmanagement\n  • Referenzen: 2 persönliche; Leitung Projekt „digitales, softwaregestütztes Inventar/Katalog/Verzeichnis“; je ≥30 PT/Jahr\n- Zusatz:\n  • Benanntes Personal ist nach Zuschlag einzusetzen; Austausch nur mit gleich/mehr qualifiziertem Ersatz\n  • Sprache: Deutsch (Sitzungen/Dokumente)",
+    "Headcount / Staffing": "- Mindestens: 1 Senior EAM-Berater für VI.A und VI.B\n- Hauptansprechperson inkl. Vertretung benennen\n- Verfügbarkeit: Onboarding bei Zuschlag; A ~6 Wochen ab Mitte 05/2024; B ab ~Ende 06/2024 (~6 Monate erste Ausbaustufe)\n- Präsenz nach Bedarf in Berlin/St. Augustin",
+    "Reference Projects": "- Je Rolle: 2 persönliche Referenzen; Zeitraum: letzte 8 Jahre\n- Umfang: ≥30 PT/Jahr pro Referenz in der jeweiligen Leistungsart\n- Inhalte:\n  • Senior/EAM-Berater: Konzeption, Pilotierung, Einführung, Verankerung einer Enterprise Architektur (Fach- und IT-Architektur)\n  • Projektleiter: Leitung eines Projekts zu digitalem, softwaregestütztem Inventar/Katalog/Verzeichnis"
+  },
+  "Company Referrals": "",
+  "Award Criteria": "- Zuschlagswertung: Wirtschaftlichstes Angebot\n- Gewichtung:\n  • Preis: 50%\n  • Qualität: 50% = 18% Berufserfahrung in der Rolle + 20% Auftrag-/Arbeitgeber-Umfeld + 12% Leistungsumfang (PT/Jahr in Referenzen)\n- Preiswertung: Punkte = (niedrigster Preis × max. Punkte ungewichtet) / Angebotspreis Bieter\n- K1 Berufserfahrung (max. 18 Punkte = 18%):\n  • Senior EAM (Enterprise Architektur): >5–≤7 J: 4 P; >7–≤10 J: 6 P; >10 J: 10 P\n  • Projektmanager (Projektmanagement): >3–≤5 J: 2 P; >5–≤7 J: 4 P; >7 J: 8 P\n- K2 Auftrag-/Arbeitgeber-Umfeld (max. 20 Punkte = 20%; letzte 8 Jahre; Mehrfachantworten je Rolle möglich):\n  • Senior EAM: deutscher gesetzlicher Unfallversicherungsträger: 4 P\n  • EAM-Berater: deutscher gesetzlicher Unfallversicherungsträger: 4 P\n  • Projektleiter: deutscher gesetzlicher Unfallversicherungsträger: 2 P; deutsches gesetzliches Sozialversicherungswesen: 1 P\n- K3 Leistungsumfang je Referenzprojekt & Rolle (max. 12 Punkte = 12%; Einfachantwort je Referenz):\n  • Senior EAM / EAM-Berater / Projektleiter (je Rolle, je Referenz): >30–≤50 PT/Jahr: 1 P; >50–≤70 PT/Jahr: 1,5 P; >70 PT/Jahr: 2 P\n- Tie-breaker: Höhere Punktzahl in K2 entscheidet bei Punktgleichheit",
+  "citations": [
+    {
+      "field": "Contracting Authority",
+      "locator": "C. EVB-IT Dienstvertrag v2.1, p.2 (DGUV); A Allgemeine Hinweise EAM.pdf p.1"
+    },
+    {
+      "field": "Project Description",
+      "locator": "B. Leistungsbeschreibung EAM Version 01.pdf p.1-4"
+    },
+    {
+      "field": "Submission Deadline",
+      "locator": "A Allgemeine Hinweise EAM.pdf p.1"
+    },
+    {
+      "field": "Important Dates",
+      "locator": "A Allgemeine Hinweise EAM.pdf p.8"
+    },
+    {
+      "field": "Scope & Requirements → Scope & Requirements",
+      "locator": "B. Leistungsbeschreibung EAM Version 01.pdf p.2-4; D Eignungsbogen EAM.docx"
+    },
+    {
+      "field": "Scope & Requirements → Contract Volume",
+      "locator": "H Preisblatt Version 01.xlsx – Sheet Preisblatt; C. EVB-IT Dienstvertrag v2.1 p.5 (10h/Tagessatz)"
+    },
+    {
+      "field": "Scope & Requirements → Place of Performance",
+      "locator": "B. Leistungsbeschreibung EAM Version 01.pdf p.3"
+    },
+    {
+      "field": "Scope & Requirements → Standards & Certifications",
+      "locator": "C.1 EVB-IT Dienstleistungs-AGB (2).pdf p.6, p.11-12; A Allgemeine Hinweise EAM.pdf p.6; D Eignungsbogen EAM.docx (Versicherung)"
+    },
+    {
+      "field": "Scope & Requirements → Subcontracting & Consortia",
+      "locator": "B. Leistungsbeschreibung EAM Version 01.pdf p.7; D Eignungsbogen EAM.docx"
+    },
+    {
+      "field": "Scope & Requirements → Forms & e-Submission",
+      "locator": "A Allgemeine Hinweise EAM.pdf p.1, p.7-8; I Zusammenfassende Liste EAM.docx"
+    },
+    {
+      "field": "Supplier Eligibility → Offer Submission Documents",
+      "locator": "I Zusammenfassende Liste EAM.docx; G Angebotsblatt; D Eignungsbogen; E BG-Erklärung; F UAN-Verpflichtungserklärung"
+    },
+    {
+      "field": "Supplier Eligibility → List of Documents",
+      "locator": "C. EVB-IT Dienstvertrag v2.1 p.3; D Eignungsbogen EAM.docx (Nachweise)"
+    },
+    {
+      "field": "Supplier Eligibility → Economic & Financial Standing",
+      "locator": "A Allgemeine Hinweise EAM.pdf p.2; D Eignungsbogen EAM.docx"
+    },
+    {
+      "field": "Supplier Eligibility → Legal & Registration",
+      "locator": "D Eignungsbogen EAM.docx"
+    },
+    {
+      "field": "Technical & Professional Ability → Personnel Profiles",
+      "locator": "A Allgemeine Hinweise EAM.pdf p.2-3; D Eignungsbogen EAM.docx (Tab. 11-13)"
+    },
+    {
+      "field": "Technical & Professional Ability → Headcount / Staffing",
+      "locator": "B. Leistungsbeschreibung EAM Version 01.pdf p.2-4"
+    },
+    {
+      "field": "Technical & Professional Ability → Reference Projects",
+      "locator": "A Allgemeine Hinweise EAM.pdf p.2-3; D Eignungsbogen EAM.docx (Tab. 11-13)"
+    },
+    {
+      "field": "Award Criteria",
+      "locator": "A Allgemeine Hinweise EAM.pdf p.4-6; B. Leistungsbeschreibung EAM Version 01.pdf p.6"
+    }
+  ]
+}

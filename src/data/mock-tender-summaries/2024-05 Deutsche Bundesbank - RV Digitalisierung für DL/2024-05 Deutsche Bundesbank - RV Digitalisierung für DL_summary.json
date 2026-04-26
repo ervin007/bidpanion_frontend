@@ -1,0 +1,156 @@
+{
+  "Contracting Authority": "Deutsche Bundesbank, Zentralbereich Beschaffungen, Taunusanlage 5, 60329 Frankfurt am Main",
+  "Project Description": "- Framework agreement: “Digitalisation for services related to infrastructure and major projects” (VgV)\n- Up to 5 contractors; max. term 4 years; call-offs via mini-competitions\n- Advisory and implementation support across IT infrastructure layers (incl. Cloud), digital euro, genAI/LLM\n- Services: strategy, project evaluation/planning, architecture/design, implementation, QA/testing, documentation/training, post go‑live support\n- Pricing by day rates (Partner/Manager/Consultant); travel/expenses/time included in rates; work Mon–Fri 06:30–19:30",
+  "Submission Deadline": "27.05.2024, 11:00 (Frankfurt am Main)",
+  "Important Dates": "- Questions deadline: 14.05.2024 (cob/23:59)\n- Last answers: 17.05.2024\n- Bid binding period ends: 13.09.2024\n- Presentation window: (Mitte) KW 27 – (Ende) KW 30 2024",
+  "Scope & Requirements": {
+    "Scope & Requirements": "- Subject: Consulting to create IT preconditions for digitalisation in business/support areas; product-neutral\n- Deliverables:\n  • Project assessment/planning (feasibility, risk) and strategy\n  • Requirements/stakeholder/change mgmt; communications\n  • Design/architecture (network, data processing, infra components; scalability, security, efficiency)\n  • Implementation support (agile/classic), coordination/oversight\n  • QA (KPIs, testing/validation)\n  • Documentation; training internal staff\n  • Post go‑live support/optimisation (no Helpdesk SLAs)\n- Thematic focuses to address in concepts: digital euro, genAI/LLM, Cloud (public/private), digital sovereignty (Cloud not excluded)\n- Language: all comms/docs in German; CEFR B2 minimum\n- Operating window for services: Mon–Fri, 06:30–19:30; 1 PT = 8h (no pause)\n- Remote/onsite: at Bundesbank sites or contractor premises within EU; deviations not allowed; initial onboarding usually onsite\n- Security/data:\n  • EVB‑IT Dienstleistungs‑AGB apply; exclusive usage rights to client for results (pre‑existing works excluded)\n  • Art. 28 GDPR DPA template; AVV specifics per mini‑competition\n  • SÜG/Zuverlässigkeitsprüfung may be required before start\n  • Use of Bundesbank IT resources only; confidentiality/insider info undertakings\n- Mini‑competitions define: scope, tech stack, locations, volumes, profiles, key roles, tools, timelines, LPUG and evaluation schema",
+    "Contract Volume": "- Max. 64,400 PT over 4 years (initial 56,000 PT + optional 8,400 PT)\n- Mix (initial plan): Partner 5,500 PT (10%), Manager 20,000 PT (35%), Consultant 30,500 PT (55%)",
+    "Place of Performance": "- Bundesbank HQ Frankfurt a. M., nine Hauptverwaltungen (incl. Servicezentren/Filialen), Hochschule Hachenburg, Tagungszentrum Eltville; or contractor premises within EU (remote EU only)\n- Exact sites and remote options defined per mini‑competition",
+    "Standards & Certifications": "- EVB‑IT Dienstleistungs‑AGB; VOL/B (as referenced)\n- BSI IT‑Grundschutz principles for IT‑security\n- GDPR Art. 28 DPA; data processing EU/EEA only unless 44ff GDPR fulfilled\n- Insurance cover: ≥ EUR 3m/person+property (per event), EUR 6m/year; ≥ EUR 500k pecuniary (per event), EUR 1m/year\n- German language CEFR B2",
+    "Subcontracting & Consortia": "- Subcontracting/Eignungsleihe permitted (§47 VgV); list capacities in offer (Vordr. 11029 c); on request: commitments (Vordr. 11029 d); replacement if exclusion grounds\n- Joint bids (Vordr. 11031): name members, authorised rep; joint/several liability\n- Tools/positions by others must be disclosed; reliance entities jointly liable",
+    "Forms & e-Submission": "- Electronic submission via DTVP “Angebote” (text form/advanced/qualified e‑signature); optionally paper double‑envelope by deadline\n- Use client templates; German language; EUR prices (≤3 decimals); price sheet C4 fully filled\n- Upload 5 solution concepts per B3; questions via DTVP “Kommunikation”"
+  },
+  "Supplier Eligibility": {
+    "Offer Submission Documents": [
+      "C1 Angebotsschreiben (Vordr. 11021 I/II)",
+      "C2 Eigenerklärungen (Vordr. 11078 II)",
+      "C3 EVB-IT Dienstleistungsvertrag (mit Angaben)",
+      "C4 Anlage 2 Preisblatt (Tagessätze Partner/Manager/Consultant)",
+      "C5 Verzeichnis Leistungen anderer Unternehmen (Vordr. 11029 c)",
+      "C6 Erklärung Bieter-/Arbeitsgemeinschaft (Vordr. 11031)",
+      "C7 Eigenerklärung Bezug zu Russland",
+      "Fünf Lösungskonzepte L1.1.1–L1.1.5 (per B3)",
+      "Fragenkatalog",
+      "Roter Kennzettel/Adresszettel",
+      "Angaben gem. A3 Ausfüllhinweise und A4 Eignungsmatrix",
+      "EEE (alternativ zulässig) – optional"
+    ],
+    "List of Documents": [
+      "D1 Verpflichtungserklärung anderer Unternehmen (Vordr. 11029 d) – auf Verlangen",
+      "D2 Verpflichtung Nutzung IT-Ressourcen (Vordr. 11059-2) – vor Tätigkeitsbeginn",
+      "D3 EE Sicherheits-/Zuverlässigkeitsprüfung (Vordr. 11080) – bei Zuschlag/Erfordernis",
+      "D4 AVV Art. 28 DSGVO (Muster; konkret im Mini-Wettbewerb)",
+      "D5 Einwilligungs-/Verpflichtungserklärung Insiderinformationen",
+      "Handels-/Berufsregisterauszug (Amtsgericht, HR‑Nr.) – auf Verlangen",
+      "Nachweis Berufshaftpflicht/Betriebshaftpflicht (Deckungssummen)",
+      "Unbedenklichkeitsbescheinigung Finanzamt – auf Verlangen",
+      "Bescheinigung Berufsgenossenschaft – auf Verlangen",
+      "EEE für Kapazitätsgeber – falls Eignungsleihe"
+    ],
+    "Economic & Financial Standing": {
+      "Minimum Turnover": "Jahresumsatz vergleichbare Leistungen ≥ 50.000.000 € (netto), letzte 3 GJ (oder seit Bestehen) – Eigenerklärung C2 Nr.1",
+      "Turnover in Comparable Services": "≥ 50.000.000 € p.a. in vergleichbaren Leistungen (letzte 3 GJ); Mehrfachangaben in C2 Nr.1"
+    },
+    "Legal & Registration": {
+      "Trade/Professional Register Entry": "Angabe Amtsgericht/HR‑Nr. in C2; Erklärung keine Insolvenz/Liquidation; PQ‑Nr. falls vorhanden; BG-Mitgliedschaft angeben",
+      "Self-declarations (GWB §§123/124 or equivalent)": "Eigenerklärung zu Ausschlussgründen; Wettbewerbsregisterabfrage > 30.000 €; Steuern/Sozialabgaben ordnungsgemäß",
+      "Subcontractor Identification & Reliance": "Benennung Leistungen/Kapazitäten; Verpflichtungserklärung D1; Eignungsleihe §47 VgV mit gemeinsamer Haftung"
+    }
+  },
+  "Technical & Professional Ability": {
+    "Personnel Profiles": "- Rollen/Kategorien:\n  • Partner: ≥10 Jahre Berufserfahrung, davon ≥5 Jahre Beratung; Leitung Infra-/Großprojekte; öffentl. Sektor/Finanzindustrie\n  • Manager: ≥5 Jahre Berufserfahrung, davon ≥3 Jahre Beratung; Infra-/Großprojekte\n  • Consultant: ≥2 Jahre Technologiepraxis, davon ≥1 Jahr Beratung\n- Deutsch B2 (Wort/Schrift, inkl. technisches Vokabular)\n- SÜG/Zuverlässigkeitsprüfung ggf. vor Einsatz; Verpflichtung auf IT‑Ressourcen‑ und Insider‑Erklärungen",
+    "Headcount / Staffing": "- Mindestbelegschaft: ≥500 Beschäftigte (Durchschnitt letzte 3 Jahre, thematischer Bezug)\n- Hohe Erreichbarkeit während Projektlaufzeit\n- Angebotspräsentation: max. 5 Teilnehmer; Ansprechpersonen Manager- und Partnerebene über gesamte RV‑Laufzeit verfügbar",
+    "Reference Projects": "- Keine Personenprofile/CVs im Rahmenvertrag gefordert; Profile erst je Mini‑Wettbewerb falls verlangt\n- Bewertungs-/Nachweisanforderungen für Personalprofile je Einzelabruf"
+  },
+  "Company Referrals": "- Drei Referenzprojekte (je max. 3 Seiten; in Summe max. 9 Seiten); Referenzgeber mit Kontaktdaten verifizierbar\n- Ref 1: IT‑Grundsatzentscheidungen (Projektbewertung/-planung, ggf. projektbegleitend); Zeitraum: innerhalb letzter 3 Jahre; Laufzeit ≥4 Monate; Volumen ≥200.000 € netto; Auftraggeber: öffentl. Behörde/öffentl. Sektor\n- Ref 2: Vollumfängliche Implementierungsbegleitung (Konzeption/Design/Architektur, Implementierung, QA, Workflow‑Genehmigungen, Doku/Schulung); innerhalb letzter 5 Jahre; Laufzeit ≥1 Jahr; Volumen ≥500.000 € netto; öffentl. Sektor oder Finanzdienstleister\n- Ref 3: Wie Ref 2 inkl. IT‑Sicherheitsaspekte, Change‑Management; Fokus: Einführung mind. 1 neuer Technologie‑Komponente in bestehende Infrastruktur; innerhalb letzter 5 Jahre; Laufzeit ≥1 Jahr; Volumen ≥500.000 € netto; öffentl. Sektor oder Finanzdienstleister",
+  "Award Criteria": "- Zuschlag auf bis zu 5 wirtschaftlichste Angebote\n- Gewichtung:\n  • Qualität 70% (= 440 LP gesamt)\n    – Konzepte (Buchbewertung) 50% (max. 360 LP)\n      · L1.1.1 (Gew. 1) max. 40 LP; Mindest 50% je Kriterium\n      · L1.1.2 (Gew. 1) max. 40 LP; Mindest 50%\n      · L1.1.3 (Gew. 3) max. 120 LP; Mindest 50%\n      · L1.1.4 (Gew. 2) max. 80 LP; Mindest 50%\n      · L1.1.5 (Gew. 2) max. 80 LP; Mindest 50%\n    – Angebotspräsentation 20% (max. 80 LP); Mindest 40 LP (50%)\n  • Preis 30% (Vergleichspreis Tagessätze C4); günstigstes Angebot erhält 30%; ≥2× günstigstes: 0%\n- Mindestanforderungen (A‑Kriterien): Einreichung aller 5 Konzepte; gewichtete Mindestpunktzahl Buchbewertung ≥180; Unterschreiten eines 50%-LPUG in L1.1.x oder L1.2 führt zum Ausschluss\n- Bonus: Werkstätten für Behinderte +15% bei Wertungssumme; bei Gleichstand Zuschlag an höher bewertete Qualität",
+  "citations": [
+    {
+      "field": "Submission Deadline",
+      "locator": "A1_Aufforderung zur Abgabe eines Angebotes_23-2000021743.pdf p.1"
+    },
+    {
+      "field": "Important Dates",
+      "locator": "Beantwortung von Fragen im Offenen Verfahren 23-2000021743_final.pdf p.1"
+    },
+    {
+      "field": "Important Dates",
+      "locator": "A1_Aufforderung zur Abgabe eines Angebotes_23-2000021743.pdf p.1"
+    },
+    {
+      "field": "Project Description",
+      "locator": "B2_Vertrag EVB-IT Dienstleistung_Anlage 1 Leistungsbeschreibung_23-2000021743.pdf p.2"
+    },
+    {
+      "field": "Scope & Requirements",
+      "locator": "B3_Vertrag EVB-IT Dienstleistung_Anlage 3 Bewertungsmatrix_23-2000021743.xlsx p.3-5"
+    },
+    {
+      "field": "Scope & Requirements",
+      "locator": "A5_Zuschlagskriterien und Verfahrensablauf_V2_23-2000021743.pdf p.2-4"
+    },
+    {
+      "field": "Contract Volume",
+      "locator": "C3_Vertrag EVB-IT Dienstleistung_23-2000021743.docx p.7-10"
+    },
+    {
+      "field": "Contract Volume",
+      "locator": "C4_Vertrag EVB-IT Dienstleistung_Anlage 2 Preisblatt_23-2000021743.xlsx p.1"
+    },
+    {
+      "field": "Place of Performance",
+      "locator": "Beantwortung von Fragen..._final.pdf p.9"
+    },
+    {
+      "field": "Standards & Certifications",
+      "locator": "D4_Vertrag EVB-IT Dienstleistung_Anlage 7 AVV_23-2000021743.pdf p.3-7"
+    },
+    {
+      "field": "Standards & Certifications",
+      "locator": "C3_Vertrag EVB-IT Dienstleistung_23-2000021743.docx p.19-21"
+    },
+    {
+      "field": "Forms & e-Submission",
+      "locator": "A1_Aufforderung zur Abgabe eines Angebotes_23-2000021743.pdf p.3-4"
+    },
+    {
+      "field": "Subcontracting & Consortia",
+      "locator": "A2_Bewerbungsbedingungen_23-2000021743.pdf p.2"
+    },
+    {
+      "field": "Offer Submission Documents",
+      "locator": "A1_Aufforderung zur Abgabe eines Angebotes_23-2000021743.pdf p.1-2"
+    },
+    {
+      "field": "Offer Submission Documents",
+      "locator": "A3_Ausfüllhinweise_23-2000021743.pdf p.1-5"
+    },
+    {
+      "field": "List of Documents",
+      "locator": "A1_Aufforderung zur Abgabe eines Angebotes_23-2000021743.pdf p.2"
+    },
+    {
+      "field": "Economic & Financial Standing",
+      "locator": "A4_Eignungsmatrix_23-2000021743.xlsx Sheet: Eignungsmatrix"
+    },
+    {
+      "field": "Legal & Registration",
+      "locator": "C2_Eigenerklärungen_23-2000021743.docx p.1-3"
+    },
+    {
+      "field": "Personnel Profiles",
+      "locator": "B3_Vertrag EVB-IT Dienstleistung_Anlage 3 Bewertungsmatrix_23-2000021743.xlsx p.5"
+    },
+    {
+      "field": "Headcount / Staffing",
+      "locator": "A4_Eignungsmatrix_23-2000021743.xlsx Sheet: Eignungsmatrix"
+    },
+    {
+      "field": "Company Referrals",
+      "locator": "A4_Eignungsmatrix_23-2000021743.xlsx Sheet: Eignungsmatrix"
+    },
+    {
+      "field": "Award Criteria",
+      "locator": "A5_Zuschlagskriterien und Verfahrensablauf_V2_23-2000021743.pdf p.1-5"
+    },
+    {
+      "field": "Award Criteria",
+      "locator": "B3_Vertrag EVB-IT Dienstleistung_Anlage 3 Bewertungsmatrix_23-2000021743.xlsx Sheets L1.1/L1.2"
+    },
+    {
+      "field": "Award Criteria",
+      "locator": "A1_Aufforderung zur Abgabe eines Angebotes_23-2000021743.pdf p.3"
+    }
+  ]
+}

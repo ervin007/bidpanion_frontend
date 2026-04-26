@@ -7,23 +7,15 @@ import { getSessionCookie } from "better-auth/cookies";
 const authRoutes = ["/signin", "/signup", "/email-verified"];
 const passwordRoutes = ["/reset-password", "/forgot-password"];
 const adminRoutes = ["/admin"];
-const alwaysAllowedRoutes = [
-  "/home",
-  "/blog",
-  "/email-verified",
-  "/about",
-  "/contact",
-  "/pricing",
-  "/env-client",
-];
+const alwaysAllowedRoutes = ["/email-verified", "/env-client"];
 
 export default async function authMiddleware(request: NextRequest) {
   const sessionCookie = getSessionCookie(request);
   const pathName = request.nextUrl.pathname;
 
   if (pathName === "/") {
-    const redirectPath = sessionCookie ? "/app" : "/home";
-    return NextResponse.rewrite(new URL(redirectPath, request.url));
+    const redirectPath = sessionCookie ? "/app" : "/signin";
+    return NextResponse.redirect(new URL(redirectPath, request.url));
   }
 
   const isAuthRoute = authRoutes.includes(pathName);

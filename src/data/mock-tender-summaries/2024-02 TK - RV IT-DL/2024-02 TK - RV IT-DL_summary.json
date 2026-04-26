@@ -1,0 +1,207 @@
+{
+  "Contracting Authority": "Techniker Krankenkasse (TK)",
+  "Project Description": "- Non-open 2-stage procedure (23-07032) for a multi-supplier framework agreement on IT services across 8 lots\n- Call-offs as work packages via: direct call-offs (≤ lot thresholds) or mini-competitions (> thresholds or quality-critical)\n- Service delivery on-site (TK HQ Hamburg) and/or remote; standard service times: Mon–Fri 09:00–18:00\n- Semi-annual price mini-competitions set ranklists per lot for direct call-offs; invoicing via XRechnung (Leitweg-ID 992-80116-93)",
+  "Submission Deadline": "01.03.2024 — 12:00",
+  "Important Dates": "- Questions deadline: 21.02.2024; last answers: 23.02.2024\n- Invitation to submit offers (Phase 2): ~KW 16/2024; info §134 GWB: ~KW 19/2024; award: ~KW 20/2024\n- Binding period ends: 15.07.2024\n- Service start: mini-competitions may start immediately after award",
+  "Scope & Requirements": {
+    "Scope & Requirements": "- Lot 1 — Java development:\n  - Deliverables: design, new/continuous development of enterprise Java systems; test development/automation; test management\n  - Key requirements: Fullstack Java/JEE, Spring; BPMN; DB/SQL; Docker/Kubernetes/OpenShift; CoreMedia optional; agile (Scrum/Kanban)\n  - Thresholds/SLAs/tools: direct call-offs ≤30 PT; mini-competition >30 PT or quality-critical; respond to direct call-offs within 3 working days; service times Mon–Fri 09:00–18:00\n- Lot 2 — Agile consulting:\n  - Deliverables: agile coaching, Scrum Mastering, facilitation/training, team enablement\n  - Key requirements: proven coaching of software teams; Scrum/Kanban/scaled frameworks\n  - Thresholds/SLAs/tools: direct ≤10 PT; mini >10 PT or quality-critical; 3 working days accept/decline; 09:00–18:00\n- Lot 3 — IT project management:\n  - Deliverables: lead IT projects (focus software dev), goal tracking, risk/issue mgmt., stakeholder comms\n  - Key requirements: multi-year IT PM; agile (Scrum/Kanban)\n  - Thresholds/SLAs/tools: direct ≤20 PT; mini >20 PT or quality-critical; 3 working days; 09:00–18:00\n- Lot 4 — Process management:\n  - Deliverables: E2E process design, BPMN 2.0 modelling, optimization/standardization, workshops\n  - Key requirements: ≥3y consulting; BPMN 2.0; governance/KPIs; change methods; large orgs (>1,000 staff) preferred\n  - Thresholds/SLAs/tools: direct ≤10 PT; mini >10 PT or quality-critical; 3 working days; 09:00–18:00\n- Lot 5 — Native app dev iOS/Android:\n  - Deliverables: native feature development, refactoring, UI/unit tests, code reviews, integration, bugfixing\n  - Key requirements: Android: Kotlin, Android Studio/Gradle, Git; iOS: Swift, Xcode, UIKit/SwiftUI; testing: Espresso/JUnit/Mockito or XCTest; numeric: ≥600 days programming (each platform) within last 5 years\n  - Thresholds/SLAs/tools: direct ≤10 PT; mini >10 PT or quality-critical; 3 working days; 09:00–18:00\n- Lot 6 — Functional consulting:\n  - Deliverables: IT architecture (enterprise/software/solution), DBaaS (Postgres/MongoDB), Vinna/.NET, Python, KI/ML, Cloud Landing Zone\n  - Key requirements: senior expertise; PoCs/pilots; reviews/tech debt; DB specialists; Engineer Cloud (Decision Layer/Landing Zone)\n  - Thresholds/SLAs/tools: direct ≤10 PT; mini >10 PT or quality-critical; 3 working days; 09:00–18:00\n- Lot 7 — IT infrastructure & platform services:\n  - Deliverables: DevOps, containerization, CI/CD infra, monitoring/logging, infra ops (AD, firewall, storage, backup), solution architecture\n  - Key requirements: Linux admin; Docker; Kubernetes/OpenShift; scripting (Groovy/Python/PowerShell); GitHub/Jenkins/Nexus/Maven; architecture (SaaS/IaaS/PaaS, hybrid/multi-cloud)\n  - Thresholds/SLAs/tools: direct ≤10 PT; mini >10 PT or quality-critical; 3 working days; 09:00–18:00\n- Lot 8 — IT security:\n  - Deliverables: cyber security consulting, SOC/SIEM, vulnerability scanning services/processes, audits, KRITIS/ISO 27001, security architecture/network segmentation, ITIL support\n  - Key requirements: ISO 27001 (audit/implementation), BSI-Grundschutz/C5, LAN/WAN/DC/Enterprise network security, firewall/VPN/IDS/IPS/DDOS\n  - Thresholds/SLAs/tools: direct ≤10 PT; mini >10 PT or quality-critical; 3 working days; 09:00–18:00\n- General delivery:\n  - On-site TK HQ Hamburg or remote; TK provides VPN-enabled device if needed; TK-specified remote tools; German C1 (exceptions per call-off possible)",
+    "Contract Volume": "- Estimated PT per lot (framework term): L1 8,778; L2 720; L3 720; L4 240; L5 264; L6 2,382; L7 2,096; L8 966; total 16,166 PT\n- Per call-off: reimbursement capped at ≤+20% vs. TK-estimated PT in the call-off",
+    "Place of Performance": "- TK HQ: Bramfelder Straße 140, 22305 Hamburg (default for on-site)\n- Remote delivery allowed; phone availability during 09:00–18:00 (Mon–Fri, excl. federal holidays)",
+    "Standards & Certifications": "- EVB-IT Dienstleistungs-AGB v2.1; VOL/B\n- Security lots may require: ISO 27001, BSI-Grundschutz, C5; ITIL V3/4 expertise\n- Working language: German C1 (exceptions may be set per call-off)",
+    "Subcontracting & Consortia": "- Consortia allowed; joint and several liability in contract; BG declaration (E2) per lot\n- Subcontracting/Eignungsleihe: identify capacities and firms; E3 per firm; professional capacity reliance only if that firm performs that part; freelancers are exempt from E3\n- EU sanctions Art. 5k VO (EU) 833/2014: no participation of listed entities; >10% subcontract share ban",
+    "Forms & e-Submission": "- Electronic only via DTVP (Bietertool; .docx templates; max 500 MB); Textform (§126b BGB)\n- Submit per lot: Application (Anlage T), E1, E2 (if consortium), E3 (if third-party)\n- Questions via portal “Kommunikation”; use latest document package"
+  },
+  "Supplier Eligibility": {
+    "Offer Submission Documents": [
+      "Teilnahmeantrag je Los (Anlage T)",
+      "Eigenerklärung zur Eignung je Los inkl. Auswahlkriterien (Anlage E1)",
+      "Bietergemeinschaftserklärung je Los (Anlage E2, falls BG)",
+      "Verpflichtungserklärung Drittunternehmen je Los (Anlage E3; nicht für Einzelunternehmer/Freelancer)"
+    ],
+    "List of Documents": [
+      "Selbsterklärungen zu Ausschlussgründen (§§123/124 GWB)",
+      "Eigenerklärung EU-Sanktionspaket Art. 5k VO (EU) 833/2014 (10%‑Schwelle)",
+      "KMU-Erklärung (Empfehlung 2003/361/EG)",
+      "Datenschutz-Zustimmung zur Weitergabe personenbezogener Daten",
+      "Register-/Geschäftsnummer bzw. Registergericht (falls juristische Person) angeben"
+    ],
+    "Economic & Financial Standing": {
+      "Minimum Turnover": "- Los 6: ≥ 1,000,000 EUR (net, incl. third-party costs) in one of the last 3 FY (in one topic under E1 §3a)",
+      "Turnover in Comparable Services": "- For last 3 FY: declare total turnover and turnover in comparable services per lot (e.g., Anwendungsentwicklung, Agile Beratung, IT‑Projektmanagement, Prozessmanagement, App‑Entwicklung, IT‑Infrastruktur, IT‑Sicherheit)"
+    },
+    "Legal & Registration": {
+      "Trade/Professional Register Entry": "- Provide company register details where applicable (register court/number for juristic persons)",
+      "Self-declarations (GWB §§123/124 or equivalent)": "- Mandatory self-declarations on exclusion grounds; TK will also query Wettbewerbsregister",
+      "Subcontractor Identification & Reliance": "- Name intended subcontractors; E3 commitments; professional capacity reliance only if that firm also performs the relevant services"
+    }
+  },
+  "Technical & Professional Ability": {
+    "Personnel Profiles": "- General for all lots: German C1; high responsiveness; knowledge transfer; expert training; multi-year experience\n- Lot 1 roles: Fullstack Java/JEE dev; Test developer (≥3y test automation); Test manager; skills: Java, Spring, BPMN, SQL, Docker/Kubernetes/OpenShift; CoreMedia optional\n- Lot 2 roles: Agile Coach; Scrum Master; skills: Scrum/Kanban; scaled frameworks; coaching/training/mentoring\n- Lot 3 roles: IT Project Lead (software focus); skills: agile PM (Scrum/Kanban); certifications Prince2/PMI/IPMA valued\n- Lot 4 roles: Process management consultant; skills: BPMN 2.0, governance/KPIs, workshop moderation; ≥3y consulting; large-enterprise experience\n- Lot 5 roles: Android dev (Kotlin, Android Studio/Gradle, Git; UI/unit tests via Espresso/JUnit/Mockito; numeric: ≥600 days programming); iOS dev (Swift, Xcode, UIKit/SwiftUI; XCTest; numeric: ≥600 days in last 5 years); plus CI/Jenkins; Jetpack Compose/Combine optional\n- Lot 6 roles: IT Architect (enterprise/software/solution), DB specialists (Postgres/MongoDB), Vinna/.NET (HTML, C#, Java; .NET API/REST), Python (clean code), KI/ML consultant, Engineer Cloud (Landing Zone/Decision Layer)\n- Lot 7 roles: DevOps Engineer; IT‑Infrastructure Engineers; IT‑Architect Solution; skills: Linux admin, Docker, Kubernetes/OpenShift, scripting (Groovy/Python/PowerShell), CI/CD tooling (GitHub/Jenkins/Nexus/Maven), cloud (SaaS/IaaS/PaaS), AD/firewall/storage/backup\n- Lot 8 roles: IT‑Security Consultant (SOC/SIEM, audits, processes), IT‑Architect Security (LAN/WAN/DC/Enterprise), ITIL consultant, IT audit; standards: ISO 27001, BSI‑Grundschutz; vendor/security certs (e.g., AWS/Microsoft/GIAC/CompTIA) valued",
+    "Headcount / Staffing": "- Lot 1 (minimums): ≥250 Java developers (each ≥5y exp in last 5y); ≥50 Test developers/Test managers (each ≥5y/5y); ≥50 React developers (each ≥5y/5y)\n- Lot 3: ≥20 IT project leaders for software projects (each ≥5y/5y)\n- Lot 4: ≥10 process managers (each ≥5y/5y)\n- Lot 7: ≥50 IT‑infrastructure experts (each ≥5y/5y)",
+    "Reference Projects": ""
+  },
+  "Company Referrals": "- Timeframe: last 3 years before deadline; max 6 refs evaluated; use E1 tables; provide client name and period; contacts on request\n- Lot 1: ≥3 (≤6) refs; Java development; each ≥100 consultant days; describe scope; evaluation includes GKV/PKV/IT‑DL clients, size bands, specializations (React/CoreMedia/Testautomation), tasks (fullstack Java, jUnit5, process engine, agile)\n- Lot 2: ≥3 (≤6) refs; Agile methods (Scrum/Kanban) or agile team org in software dev; each ≥100 consultant days; tasks (moderation, agile methods, coaching, Scrum Master)\n- Lot 3: ≥3 (≤6) refs; IT PM (software); project size ≥500 PT; ≥100 consultant days as project lead; tasks (Java project leadership; agile env.)\n- Lot 4: ≥3 (≤6) refs; process mgmt with IT focus; each ≥50 consultant days; tasks (BPMN 2.0 modelling/automation; E2E transformation; agile env.)",
+  "Award Criteria": "- Phase 1 (selection to Phase 2): scoring per E1 matrices (per lot); max 6 refs scored; additional company metrics per lot\n- Tie-breakers (per lot):\n  - Lot 1: 1) % revenue from Java projects (highest); 2) # Java projects (last 5y) ≥30 BT at GKV/PKV/IT‑DL (highest); 3) draw\n  - Lot 2: 1) # Scrum Masters/Agile Coaches (last 5y) with ≥5y exp placed in software projects (highest); 2) % revenue from agile consulting (highest); 3) draw\n  - Lot 3: 1) # IT project leaders (software) with ≥5y exp placed to GKV/PKV/IT‑DL (last 5y) (highest); 2) # Prince2/PMI/IPMA certs (highest); 3) # IT project leaders ≥5y exp (highest); 4) draw\n  - Lot 4: 1) # process managers placed to GKV/PKV/IT‑DL (last 5y) (highest); 2) # process managers with ≥5y exp (highest); 3) # process managers with ≥5y exp available (highest); 4) draw\n  - Lot 5: 1) # app projects placed in last 5y (highest); 2) draw\n  - Lot 6: draw\n  - Lot 7: 1) % revenue in IT‑infrastructure projects per fields (highest); 2) draw\n  - Lot 8: 1) % revenue in IT‑security per fields (highest); 2) draw\n- Phase 2 (offer stage): no additional award criteria; eligible offers receive framework award; planned offer period 5 days (by agreement §16(6) VgV)\n- Call-offs:\n  - Direct call-offs: use semi-annual price ranking per lot profiles; 3 working days to accept; next ranked supplier if declined\n  - Mini-competitions: offer time 3–7 days (longer if complex); criteria announced per call-off: either 100% price or Price + Expert qualification/experience",
+  "citations": [
+    {
+      "field": "Submission Deadline",
+      "locator": "AAT+BWB (Phase 1) Anhang B, p.4: Teilnahmefrist 01.03.2024 - 12:00"
+    },
+    {
+      "field": "Important Dates",
+      "locator": "AAT+BWB Anhang B, p.4: Fragen 21.02.2024; Antworten 23.02.2024; Einladungen ~KW16; Info §134 ~KW19; Zuschlag ~KW20; Bindefrist 15.07.2024"
+    },
+    {
+      "field": "Project Description",
+      "locator": "Leistungsbeschreibung V2, p.5-6; AAT+BWB p.5; Vertrag §4"
+    },
+    {
+      "field": "Scope & Requirements — service times",
+      "locator": "Leistungskatalog L1, p.6; LB V2 p.6: Mo–Fr 09:00–18:00"
+    },
+    {
+      "field": "Scope & Requirements — thresholds per lot",
+      "locator": "L1/LB V2, p.8-10: Direct vs mini thresholds (L1 ≤30 PT; L3 ≤20 PT; others ≤10 PT)"
+    },
+    {
+      "field": "Scope & Requirements — direct call-off response SLA",
+      "locator": "L1, p.9: 3 working days accept/decline"
+    },
+    {
+      "field": "Scope & Requirements — Lot 1 content",
+      "locator": "L1, p.1-2; LB V2 p.3: Java dev/test roles & tech"
+    },
+    {
+      "field": "Scope & Requirements — Lot 2 content",
+      "locator": "L1, p.2; LB V2 p.4: Agile Coach/Scrum Master"
+    },
+    {
+      "field": "Scope & Requirements — Lot 3 content",
+      "locator": "L1, p.2; LB V2 p.4: IT PM (software)"
+    },
+    {
+      "field": "Scope & Requirements — Lot 4 content",
+      "locator": "L1, p.2; LB V2 p.4: Prozessmanagement/BPMN"
+    },
+    {
+      "field": "Scope & Requirements — Lot 5 numeric 600 days",
+      "locator": "L1, p.3; Ch.22: Android/iOS ≥600 Tage (letzte 5 Jahre für iOS)"
+    },
+    {
+      "field": "Scope & Requirements — Lot 6 content",
+      "locator": "L1, p.3-4; Ch.7: IT-Architekt/DB/Python/KI/Cloud"
+    },
+    {
+      "field": "Scope & Requirements — Lot 7 content",
+      "locator": "L1, p.4-6; Ch.7-8: DevOps/Kubernetes/Linux/etc."
+    },
+    {
+      "field": "Scope & Requirements — Lot 8 content",
+      "locator": "L1, p.6-7; Ch.8-9: SOC/SIEM/ISO27001/Network Security"
+    },
+    {
+      "field": "Contract Volume",
+      "locator": "L2/L3 Muster & LB V2 p.8: PT per lot; Vertrag §2: total 16,166 PT; §9: ≤+20% cap per call-off"
+    },
+    {
+      "field": "Place of Performance",
+      "locator": "LB V2 p.6; L1 p.6: TK Hamburg HQ; remote allowances"
+    },
+    {
+      "field": "Standards & Certifications",
+      "locator": "Vertrag p.2 (EVB-IT/VOL/B); L1 p.6-7; Ch.8: ISO/BSI/ITIL"
+    },
+    {
+      "field": "Forms & e-Submission",
+      "locator": "AAT+BWB p.1-3, p.14; LB V2 p.20-22: DTVP, Bietertool, .docx, 500 MB, Textform"
+    },
+    {
+      "field": "Subcontracting & Consortia",
+      "locator": "AAT+BWB p.8-10; E2/E3 forms; VO(EU) 833/2014 Art.5k notes (Ch.17)"
+    },
+    {
+      "field": "Supplier Eligibility — Offer docs",
+      "locator": "AAT+BWB Anhang A, p.2-3: Anlage T, E1, E2, E3"
+    },
+    {
+      "field": "Supplier Eligibility — Self-declarations",
+      "locator": "Teilnahmeantrag/E1 templates (Ch.16-19): §§123/124 GWB; Art.5k 833/2014; KMU; Datenschutz"
+    },
+    {
+      "field": "Economic & Financial — Lot 6 turnover",
+      "locator": "E1 Los 6, §1 (Ch.18/46): ≥1,000,000 EUR in one of last 3 FY"
+    },
+    {
+      "field": "Technical Ability — Personnel profiles (general)",
+      "locator": "L1 p.6-7; LB V2 p.6-7"
+    },
+    {
+      "field": "Technical Ability — Lot 5 numeric (600 days)",
+      "locator": "L1 p.3; Ch.22: iOS/Android requirements"
+    },
+    {
+      "field": "Headcount minimums — Lot 1",
+      "locator": "E1 Los 1 §4a (Ch.41): 250 Java; 50 Test Dev/Manager; 50 React; 100 Java projects (5y, ≥30 BT)"
+    },
+    {
+      "field": "Headcount minimums — Lot 3",
+      "locator": "E1 Los 3 §4a (Ch.44): ≥20 IT project leaders (software)"
+    },
+    {
+      "field": "Headcount minimums — Lot 4",
+      "locator": "E1 Los 4 (Ch.18/45): ≥10 process managers; ≥20 mediated process managers"
+    },
+    {
+      "field": "Headcount minimums — Lot 7",
+      "locator": "E1 Los 7 §4a (Ch.47/48): ≥50 IT infra experts; ≥50 projects ≥25 BT in last 5y"
+    },
+    {
+      "field": "Headcount minimums — Lot 8",
+      "locator": "E1 Los 8 §4a (Ch.50): ≥20 IT-security experts; ≥35 projects ≥15 BT in last 5y"
+    },
+    {
+      "field": "Company Referrals — Lot 1",
+      "locator": "E1 Los 1 §3 (Ch.41): ≥3–6 refs; each ≥100 BT; Java dev; details"
+    },
+    {
+      "field": "Company Referrals — Lot 2",
+      "locator": "E1 Los 2 §3 (Ch.42): ≥3–6 refs; Agile; each ≥100 BT"
+    },
+    {
+      "field": "Company Referrals — Lot 3",
+      "locator": "E1 Los 3 §3 (Ch.43): ≥3–6 refs; project ≥500 PT; ≥100 BT as PM"
+    },
+    {
+      "field": "Company Referrals — Lot 4",
+      "locator": "E1 Los 4 §3 (Ch.18/44): ≥3–6 refs; each ≥50 BT; BPMN/Process tasks"
+    },
+    {
+      "field": "Company Referrals — Lot 5",
+      "locator": "E1 Los 5 §3 (Ch.18/45): ≥3–6 refs; each ≥30 BT; UI & unit tests"
+    },
+    {
+      "field": "Company Referrals — Lot 6",
+      "locator": "E1 Los 6 §3 (Ch.18/46): ≥3–6 refs; each ≥10 BT; topics; German ≥C2"
+    },
+    {
+      "field": "Company Referrals — Lot 7",
+      "locator": "E1 Los 7 §3 (Ch.19/47): ≥3–6 refs; each ≥25 PT; ≥3 fields in sum; tasks list"
+    },
+    {
+      "field": "Company Referrals — Lot 8",
+      "locator": "E1 Los 8 §3 (Ch.19/49-50): ≥3–6 refs; each ≥15 PT; ≥2 fields in sum; tasks list"
+    },
+    {
+      "field": "Award Criteria — Phase 1 tie-breakers",
+      "locator": "AAT+BWB p.10-13; Ch.2-3/26: per-lot tie-break rules"
+    },
+    {
+      "field": "Call-off award rules",
+      "locator": "L1 p.8-10; L3 Muster p.3-6: 100% price or price+quality; offer time 3–7 days"
+    },
+    {
+      "field": "Invoicing standard",
+      "locator": "Vertrag §10 p.9; L2/L3 Muster: XRechnung; Leitweg-ID 992-80116-93; BT-56/BT-11/BT-12"
+    }
+  ]
+}

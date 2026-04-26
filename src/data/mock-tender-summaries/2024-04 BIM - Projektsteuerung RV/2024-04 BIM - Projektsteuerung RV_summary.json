@@ -1,0 +1,150 @@
+{
+  "Contracting Authority": "Bundesimmobiliengesellschaft m.b.H (BIG)",
+  "Project Description": "- Framework agreement: BIM project management (BIM‑Projektsteuerung) services for BIG and verbundenen Unternehmen (ARE, ARE DEV)\n- Scope: AG‑seitige Unterstützung PL; projektbezogene Anpassung AIA/BAP; CDE aufbauen/strukturieren; Prüfregeln erstellen; Monitoring BGK/Koordination; Modell‑ und Datenprüfungen; Freigaben; asBuilt‑Prüfung/Übergabe\n- Laufzeit: 4 Jahre + Option 2 Jahre; Abschluss RV mit vorauss. 5 Bietern; Leistungsbeginn vorauss. Q3/2024\n- Erfüllungsort: Österreich",
+  "Submission Deadline": "30.04.2024, 12.00 Uhr (Einlangen)",
+  "Important Dates": "- Anfragenfrist: 16.04.2024, 12.00 Uhr (Einlangen)\n- Präsentationstermine (Qualitätsbewertung): 05.–06.06.\n- Zweite Stufe: Zweitangebote (Preis) nach Verhandlungen; Qualitätspunkte werden „eingefroren“\n- Leistungsbeginn: voraussichtlich 3. Quartal/2024",
+  "Scope & Requirements": {
+    "Scope & Requirements": "- Leistungen BIM‑Projektsteuerung (AG‑seitig):\n  - Projektstart: BIM‑Workshops organisieren/dokumentieren; CDE (Common Data Environment) einrichten/strukturieren; projektbezogene AIA/BAP anpassen/prüfen\n  - Laufend: Koordination/Monitoring BGK & BFK; Prüfregeln/Model Checks (FCC/QCC/ICC/MCC) festlegen, validieren, Issues als .BCF; Berichte/Statustracking; Datenlieferungen prüfen/freigeben\n  - Vergabe/Bau: Prüfung modellbasierter Bieterdaten (optional); W+M‑Planung verifizieren/freigeben; Rückkoppelung Baustelle→Planung überwachen\n  - Abschluss: asBuilt‑Dokumentation prüfen/freigeben; OFM‑Übergabe\n- Kollaboration/Koordination:\n  - Mittlerer Abstimmungsfall: Koordinationssitzung mind. 1× monatlich\n  - Bereitstellung IFC‑Modelle spätestens 3 Werktage vor Sitzung; Dateibenennung gem. BAP (Projektcode_FM_…)\n- Datenformate/Schnittstellen:\n  - Digitale Modelle: IFC 2x3 Coordination View 2.0 oder IFC 4 Add2 TC1 (RV/DTV); BCF 2.0; DXF (AutoCAD 2010); PDF; XLS/XLSX; Punktwolken .e57\n  - UK (Übertragungskonfigurationen) u.a.: UK1 Prüfmodell; UK2/4 AR‑Koordination/Auswertung; UK3 AR‑Rohbau; UK5 TP‑Rohbau; UK6 Durchbruchsmodell (ProvisionForVoid); UK7 G‑Koordination\n- Qualitätsmanagement (zwingend):\n  - PK1 (wöchentlich intern): ACC, PCC\n  - PK2 (vor Koordination): FCC, QCC, ICC, MCC → Quality Gate: X<25% nicht bestanden; 25%≤X<90% bedingt; X≥90% bestanden\n  - PK3 (Phasenende/Datenlieferung): ACC, PCC, FCC, QCC, ICC → Quality Gate: X<75% nicht; 75%≤X<99% bedingt; X≥99% bestanden\n- Datenlieferungen/Pläne:\n  - Pläne (PDF/DXF) müssen geprüft/freigegebenem IFC‑Stand entsprechen; 2D darf IFC nicht widersprechen\n- asBuilt‑Dokumentation (Bau‑IST):\n  - Punktwolke .e57 (max. Punktabstand 5mm) je Phase; 360°/300° Panoramabilder (≥12 MP) innen/außen\n  - Toleranzen Prüfbericht (Beispiel): Abstand Punktwolke–Modell ≥20mm (Auflager), ≥30mm (verformter Bereich)\n- Enddokumentation (Übergabe):\n  - Bereitzustellen: AR‑Modell (nativ/IFC) mit IFC‑Referenzen; alle Fachmodelle (nativ/IFC, MVD RV/DTV); letzte bestandene Prüfberichte (PDF/BCF); Raum‑ & Anlagenbuch (XLS); asBuilt (e57, .tiff); Software-/Umgebungsdoku\n- Normen/Einheiten/LOI/LOG:\n  - Einheitliche Benennung (BauteilCode, GeschoßCode, NutzungsartBIGCode); LOI/LOG phasenabhängig je Fachmodell; Modell-/Elementeinheiten gem. IFC Measure Values",
+    "Contract Volume": "- Rahmenvereinbarung: 4 Jahre + Option 2 Jahre\n- Abschluss mit vorauss. fünf (5) Bietern; Abrufe gemäß RV",
+    "Place of Performance": "Österreich",
+    "Standards & Certifications": "- IFC ISO 16739:2018; ÖNORM A6241 Serie; DSGVO (2018); ÖNORM DIN 18202; ÖNORM EN 13501‑1/‑2; ÖNORM A 2063‑1/‑2; ÖNORM B 1801‑1; BIG Stammcodeverzeichnis\n- BIM‑Applikationen: gültige buildingSMART‑Zertifizierung für definierte IFC‑Schnittstelle erforderlich",
+    "Subcontracting & Consortia": "- Bewerbergemeinschaften zulässig (max. 2 Mitglieder); ARGE solidarisch haftend; Wechsel/nachträgliche Bildung unzulässig\n- Subunternehmer zulässig (Gesamtweitergabe unzulässig); nur für Eignungsnachweis zu benennen; Verfügbarkeitsnachweis (Formblatt 3); Wechsel nur mit vorheriger Zustimmung AG",
+    "Forms & e-Submission": "- Teilnahmeantrag ausschließlich elektronisch via ANKÖ Vergabeportal; qualifiziert elektronisch signieren\n- Sprache: Deutsch; E‑Mail/Fax/Hardcopy unzulässig\n- Nur vorgesehene Formblätter ausfüllen; Fristen strikt einhalten"
+  },
+  "Supplier Eligibility": {
+    "Offer Submission Documents": [
+      "Formblatt 1 – Erklärung Bewerbergemeinschaft (falls zutreffend)",
+      "Formblatt 2 – Liste Subunternehmer (falls erforderlich)",
+      "Formblatt 3 – Subunternehmererklärung/Verfügbarkeitsnachweis",
+      "Formblatt 4 – Benennung Schlüsselperson „BIM‑Projektsteuerung“",
+      "Formblatt 5 – Eignungs‑Unternehmensreferenz (BIM‑Projektsteuerung)",
+      "Formblatt 6 – Schlüsselperson Referenzprojekt Nr. 1",
+      "Formblatt 7 – Schlüsselperson Referenzprojekt Nr. 2",
+      "Formblatt 8 – Schlüsselperson Referenzprojekt Nr. 3",
+      "Angabe ANKÖ‑Mitgliedsnummer (sofern genutzt)",
+      "AIA der BIG (beigefügt)",
+      "BIM Abwicklungsplan (BAP) der BIG (beigefügt)"
+    ],
+    "List of Documents": [
+      "Strafregisterbescheinigung (GF/Vorstand) – auf Aufforderung (Frist ≥3 WT)",
+      "Firmenbuchauszug und GISA‑Auskunft (nicht bei natürlichen Personen)",
+      "Unbedenklichkeitsbescheinigung Sozialversicherung (letztgültig)",
+      "Rückstandsbescheinigung §229a BAO (letztgültig)",
+      "Nachweis Befugnis/Handels‑/Berufsregister",
+      "EU/EWR/CH: ggf. Dienstleistungsanzeige/Anerkennungs‑ bzw. Gleichhaltungsbescheid",
+      "Versicherungsbestätigung Berufshaftpflicht (Deckungssumme ≥ EUR 100.000,–)",
+      "Erklärung: Keine Ausschlussgründe gem. §78 Abs 1 BVergG",
+      "Erklärung Russland‑Sanktionsausschluss (inkl. Nachweise auf Verlangen)"
+    ],
+    "Economic & Financial Standing": {
+      "Minimum Turnover": "",
+      "Turnover in Comparable Services": ""
+    },
+    "Legal & Registration": {
+      "Trade/Professional Register Entry": "Eintragung im Berufs‑/Handelsregister (AT: GISA/Firmenbuch) nachweisen",
+      "Self-declarations (GWB §§123/124 or equivalent)": "Erklärung: Keine Ausschlussgründe gem. §78 BVergG; Russland‑Sanktionsklausel (keine betroffenen Personen/Einrichtungen; Nachweis auf Aufforderung)",
+      "Subcontractor Identification & Reliance": "Formblätter 2+3; tatsächliche Verfügbarkeit nachweisen; Sub‑Wechsel nur mit vorheriger schriftlicher Zustimmung AG"
+    }
+  },
+  "Technical & Professional Ability": {
+    "Personnel Profiles": "- Schlüsselperson: „BIM‑Projektsteuerung“ (natürliche Person)\n  - Deutschkenntnisse in Wort und Schrift\n  - Präsentation des Qualitätsangebots in Stufe 2 (Termine 05.–06.06.)\n  - Aufgaben: AIA/BAP‑Prüfung/Anpassung; CDE‑Einrichtung; Prüfregeln/Modelchecks (FCC/QCC/ICC/MCC); Monitoring BGK/BFK; Daten‑/Modellfreigaben; asBuilt‑Übergabe\n  - Einsatz als Sub zulässig (außer Organ), dann als Sub zu benennen\n  - Austausch nur auf Forderung bzw. mit Zustimmung AG; Mehrfachnennung unzulässig",
+    "Headcount / Staffing": "- Erforderlich: benannte Schlüsselperson „BIM‑Projektsteuerung“ als zentraler Ansprechpartner („Tagesgeschäft“)\n- Präsenz für Präsentation/Verhandlungen; Ersatz nur mit AG‑Zustimmung",
+    "Reference Projects": "- Schlüsselperson‑Referenzen (Auswahlkriterium): max. 3 Projekte\n  - Muss: Baukosten ≥ EUR 10 Mio. (ÖN B 1801‑1:2022‑03, o. USt); openBIM von Projektbeginn bis Einreichung; Fachmodelle AR/HKLS(=TGA)/ET/TP + Gesamtmodell\n  - Bewertete Leistungen (je Ref., Punkte):\n    - Projektvorbereitung–Vorentwurf: AIA/BAP‑Anpassung (2); Prüfung Grundlagemodelle (2); Start‑Workshops (2); Monitoring BGK inkl. Eigenprüfungen (2)\n    - Entwurf: Prüfung Anwendungsfälle lt. AIA/BAP (2); Phasenende‑Freigaben inkl. Protokoll/Abschlussbericht (2)\n    - Errichtung: Überwachung Rückkoppelung Baustelle→Planung (3)"
+  },
+  "Company Referrals": "- Mindestanforderung: 1 Unternehmensreferenz BIM‑Projektsteuerung (AG‑seitig) inkl. Leistungen: PL‑Unterstützung; AIA/BAP‑Anpassung; BIM‑Workshops; CDE; Prüfregeln; Monitoring BGK; Modellprüfungen; Freigabe asBuilt\n- Eckdaten: Hochbau; Baukosten ≥ EUR 10 Mio.; openBIM bis Einreichung mit AR/TGA/TP + Gesamtmodell; Einreichunterlagen bei Baubehörde zum Stichtag\n- ARGE: nur wertbar, wenn der Bewerber mind. 50% Auftragswertanteil hatte",
+  "Award Criteria": "- Verhandlungsverfahren (2 Stufen)\n- Auswahl (Stufe 1 – max. 10 Bewerber): Referenzen der Schlüsselperson (max. 3 Projekte; max. 30 Pkt. je Ref.; gesamt max. 90 Pkt.). Punkte gemäß erfüllten Eckpunkten/Leistungen (Hochbau; openBIM; HKLS/ET/TP vorhanden; Leistungen in PV–VE, Entwurf, Errichtung)\n- Zuschlag (Stufe 2 – voraussichtlich):\n  - Preis: 40 Pkt.\n  - Konzept (konzeptionelle Darstellung der Herangehensweise): 30 Pkt.\n  - Präsentation des Konzepts durch den Bieter (Schlüsselperson): 30 Pkt.\n  - Ablauf: Erstangebote (Qualität+Preis) → Qualitätspunkte werden „eingefroren“ → Zweitangebote (Preis) → Addition Preis + „eingefrorene“ Qualitätspunkte\n- RV‑Abschluss mit voraussichtlich fünf (5) Bestgereihten",
+  "citations": [
+    {
+      "field": "Submission Deadline",
+      "locator": "Teilnahmeantrag p.2: Ende der Teilnahmefrist 30.04.2024, 12.00 Uhr"
+    },
+    {
+      "field": "Important Dates",
+      "locator": "Teilnahmeantrag p.2: Anfragenfrist 16.04.2024, 12.00 Uhr"
+    },
+    {
+      "field": "Important Dates",
+      "locator": "Teilnahmeunterlagen p.5: Präsentationstermine 05.–06.06."
+    },
+    {
+      "field": "Project Description",
+      "locator": "Teilnahmeantrag p.2: Leistungsgegenstand, Laufzeit, Erfüllungsort, Leistungsbeginn"
+    },
+    {
+      "field": "Scope & Requirements → Scope & Requirements",
+      "locator": "Teilnahmeunterlage p.3–6: Leistungsbild BIM‑Projektsteuerung (BPS)"
+    },
+    {
+      "field": "Scope & Requirements → Scope & Requirements",
+      "locator": "AIA/BAP (BAP Vorlage) p.15–17: Koordinationsplan/Datenlieferungsplan; UK/PK"
+    },
+    {
+      "field": "Scope & Requirements → Scope & Requirements",
+      "locator": "AIA/BAP (AIA) p.21–25: PK1/PK2/PK3 und Quality Gates"
+    },
+    {
+      "field": "Scope & Requirements → Scope & Requirements",
+      "locator": "AIA p.38–40: asBuilt Anforderungen (e57 5mm; 12MP; Toleranzen)"
+    },
+    {
+      "field": "Scope & Requirements → Scope & Requirements",
+      "locator": "AIA p.28: Enddokumentation – zu übergebende Unterlagen"
+    },
+    {
+      "field": "Scope & Requirements → Standards & Certifications",
+      "locator": "AIA p.9: Normative Grundlage (ISO 16739:2018, ÖNORMen, DSGVO)"
+    },
+    {
+      "field": "Scope & Requirements → Standards & Certifications",
+      "locator": "BAP p.29: buildingSMART Zertifizierung der BIM‑Applikationen"
+    },
+    {
+      "field": "Scope & Requirements → Forms & e-Submission",
+      "locator": "Teilnahmeantrag p.2, p.13: ANKÖ‑Portal, qual. Signatur, Sprache/Unzulässige Übermittlung"
+    },
+    {
+      "field": "Scope & Requirements → Subcontracting & Consortia",
+      "locator": "Teilnahmeunterlage p.13–14: BG/ARGE; Subunternehmerregeln"
+    },
+    {
+      "field": "Supplier Eligibility → Offer Submission Documents",
+      "locator": "Teilnahmeantrag p.4–5: Beigeschlossene Unterlagen/Formblätter 1–8, AIA, BAP"
+    },
+    {
+      "field": "Supplier Eligibility → List of Documents",
+      "locator": "Teilnahmeantrag p.3–4: Nachzureichende Unterlagen (Strafregister, Firmenbuch, GISA, SV, BAO, Befugnis)"
+    },
+    {
+      "field": "Supplier Eligibility → Economic & Financial Standing",
+      "locator": "Teilnahmeunterlage p.8: Berufshaftpflicht Deckungssumme mind. EUR 100.000,–"
+    },
+    {
+      "field": "Supplier Eligibility → Legal & Registration",
+      "locator": "Teilnahmeunterlage p.7–8: Befugnis/Registrierung; §78 BVergG Selbst­erklärungen; Russland‑Klausel"
+    },
+    {
+      "field": "Technical & Professional Ability → Personnel Profiles",
+      "locator": "Teilnahmeunterlage p.9, p.12: Schlüsselperson „BIM‑Projektsteuerung“, Deutsch, Austauschregeln"
+    },
+    {
+      "field": "Technical & Professional Ability → Reference Projects",
+      "locator": "Teilnahmeunterlage p.10–12: Anforderungen/Scoring Referenzen Schlüsselperson (≥ EUR 10 Mio.; openBIM; HKLS/ET/TP)"
+    },
+    {
+      "field": "Company Referrals",
+      "locator": "Teilnahmeunterlage p.9–10: Eignungs‑Unternehmensreferenz BIM‑Projektsteuerung; ARGE ≥50%"
+    },
+    {
+      "field": "Award Criteria",
+      "locator": "Teilnahmeunterlage p.4–6: Zuschlagskriterien (Preis 40 / Konzept 30 / Präsentation 30); Ablauf Zweitangebote"
+    },
+    {
+      "field": "Scope & Requirements → Scope & Requirements",
+      "locator": "BAP p.14–16: UK1–UK7 Übertragungskonfigurationen"
+    },
+    {
+      "field": "Scope & Requirements → Scope & Requirements",
+      "locator": "AIA p.11–13: Schnittstellen (IFC/BCF/DXF/PDF/XLS/e57)"
+    }
+  ]
+}
