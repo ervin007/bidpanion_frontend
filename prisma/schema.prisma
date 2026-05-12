@@ -53,6 +53,17 @@ model User {
 
   onboarded Boolean @default(false)
 
+  // Bidpanion
+  workspaceMemberships WorkspaceMember[]
+  ownedWorkspaces      Workspace[]       @relation("WorkspaceOwner")
+  ownedTenders         Tender[]          @relation("TenderOwner")
+  authoredComments     TenderComment[]
+  authoredActivity     ActivityEntry[]
+  assignedTasks        TenderTask[]      @relation("TaskAssignee")
+  uploadedDocuments    TenderDocument[]  @relation("DocUploader")
+  verifiedBriefFields  BriefField[]      @relation("BriefFieldVerifier")
+  reviewedChecklist    ChecklistItem[]   @relation("ChecklistReviewer")
+
   @@unique([username])
   @@map("users")
 }
@@ -114,4 +125,434 @@ model UTImage {
 
   @@index([userId])
   @@map("ut_images")
+}
+
+// ──────────────────────────────────────────────────────────────────────────
+// Bidpanion domain
+// ──────────────────────────────────────────────────────────────────────────
+
+enum WorkspaceRole {
+  ADMIN
+  BID_MANAGER
+  ANALYST
+  VIEWER
+}
+
+enum WorkspaceMemberStatus {
+  ACTIVE
+  PENDING
+  DEACTIVATED
+}
+
+enum TenderStatus {
+  DRAFT
+  NEW
+  IN_REVIEW
+  BID
+  NO_BID
+  SUBMITTED
+  WON
+  LOST
+}
+
+enum BoardColumn {
+  BACKLOG
+  SCREENING
+  GO_NO_GO
+  DRAFTING
+  REVIEW
+  SUBMITTED
+  WON
+  LOST
+}
+
+enum TenderProcessingStatus {
+  QUEUED
+  PROCESSING
+  COMPLETED
+  FAILED
+  PASSWORD_PROTECTED
+}
+
+enum TenderSource {
+  TED
+  DTVP
+  ANKO
+  SIMAP
+  VERGABE24
+  ETENDERING
+  MANUAL
+}
+
+enum Recommendation {
+  BID
+  REVIEW
+  NO_BID
+}
+
+enum DocumentStatus {
+  UPLOADED
+  PROCESSING
+  PROCESSED
+  FAILED
+  PASSWORD_PROTECTED
+}
+
+enum ChecklistStatus {
+  MISSING
+  UPLOADED
+  VERIFIED
+}
+
+enum TaskStatus {
+  TODO
+  IN_PROGRESS
+  DONE
+}
+
+enum TaskPriority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum TaskType {
+  COMPLIANCE
+  AI_GENERATED
+  CUSTOM
+}
+
+enum ActivityType {
+  SYSTEM
+  COMMENT
+  STATUS_CHANGE
+  DOCUMENT
+  TASK
+}
+
+enum FitStatus {
+  MATCHED
+  PARTIAL
+  UNMATCHED
+  NA
+}
+
+enum AnalysisJobStatus {
+  QUEUED
+  PARSING
+  CHUNKING
+  SUMMARIZING
+  COMPLETED
+  FAILED
+}
+
+model Workspace {
+  id        String   @id @default(cuid())
+  name      String
+  ownerId   String
+  owner     User     @relation("WorkspaceOwner", fields: [ownerId], references: [id], onDelete: Restrict)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  members        WorkspaceMember[]
+  tenders        Tender[]
+  companyProfile CompanyProfile?
+  invitations    WorkspaceInvitation[]
+
+  @@index([ownerId])
+  @@map("workspaces")
+}
+
+model WorkspaceMember {
+  id           String                @id @default(cuid())
+  workspaceId  String
+  workspace    Workspace             @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  userId       String
+  user         User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role         WorkspaceRole         @default(ANALYST)
+  status       WorkspaceMemberStatus @default(ACTIVE)
+  lastActiveAt DateTime?
+  createdAt    DateTime              @default(now())
+  updatedAt    DateTime              @updatedAt
+
+  @@unique([workspaceId, userId])
+  @@index([workspaceId])
+  @@index([userId])
+  @@map("workspace_members")
+}
+
+model WorkspaceInvitation {
+  id          String        @id @default(cuid())
+  workspaceId String
+  workspace   Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  email       String
+  role        WorkspaceRole @default(ANALYST)
+  invitedById String
+  token       String        @unique
+  expiresAt   DateTime
+  acceptedAt  DateTime?
+  createdAt   DateTime      @default(now())
+
+  @@unique([workspaceId, email])
+  @@index([token])
+  @@map("workspace_invitations")
+}
+
+model Tender {
+  id               String                 @id @default(cuid())
+  workspaceId      String
+  workspace        Workspace              @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  title            String
+  authority        String
+  source           TenderSource           @default(MANUAL)
+  sourceUrl        String?
+  country          String                 @default("DE")
+  cpvCode          String?
+  noticeType       String?
+  value            String?
+  description      String?
+  deadline         DateTime?
+  uploadDate       DateTime               @default(now())
+  status           TenderStatus           @default(NEW)
+  boardColumn      BoardColumn?
+  processingStatus TenderProcessingStatus @default(QUEUED)
+  fitScore         Int?
+  recommendation   Recommendation?
+  watching         Boolean                @default(false)
+  ownerId          String?
+  owner            User?                  @relation("TenderOwner", fields: [ownerId], references: [id], onDelete: SetNull)
+  deletedAt        DateTime?
+  createdAt        DateTime               @default(now())
+  updatedAt        DateTime               @updatedAt
+
+  documents     TenderDocument[]
+  briefSections BriefSection[]
+  fitCategories FitCategory[]
+  tasks         TenderTask[]
+  checklist     ChecklistItem[]
+  comments      TenderComment[]
+  activity      ActivityEntry[]
+  analysisJobs  AnalysisJob[]
+  summary       TenderSummary?
+
+  @@index([workspaceId, deletedAt])
+  @@index([workspaceId, boardColumn])
+  @@index([ownerId])
+  @@map("tenders")
+}
+
+model TenderDocument {
+  id           String         @id @default(cuid())
+  tenderId     String
+  tender       Tender         @relation(fields: [tenderId], references: [id], onDelete: Cascade)
+  name         String
+  sizeBytes    Int
+  pages        Int?
+  isPrimary    Boolean        @default(false)
+  status       DocumentStatus @default(UPLOADED)
+  progress     Int?
+  storageKey   String?
+  uploadedById String?
+  uploadedBy   User?          @relation("DocUploader", fields: [uploadedById], references: [id], onDelete: SetNull)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  @@index([tenderId])
+  @@map("tender_documents")
+}
+
+model BriefSection {
+  id       String       @id @default(cuid())
+  tenderId String
+  tender   Tender       @relation(fields: [tenderId], references: [id], onDelete: Cascade)
+  slug     String
+  title    String
+  order    Int          @default(0)
+  fields   BriefField[]
+
+  @@unique([tenderId, slug])
+  @@index([tenderId])
+  @@map("brief_sections")
+}
+
+model BriefField {
+  id            String       @id @default(cuid())
+  sectionId     String
+  section       BriefSection @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  label         String
+  value         String
+  citationDoc   String?
+  citationPage  Int?
+  needsReview   Boolean      @default(false)
+  userVerified  Boolean      @default(false)
+  verifiedValue String?
+  verifiedById  String?
+  verifiedBy    User?        @relation("BriefFieldVerifier", fields: [verifiedById], references: [id], onDelete: SetNull)
+  order         Int          @default(0)
+
+  @@index([sectionId])
+  @@map("brief_fields")
+}
+
+model FitCategory {
+  id             String    @id @default(cuid())
+  tenderId       String
+  tender         Tender    @relation(fields: [tenderId], references: [id], onDelete: Cascade)
+  slug           String
+  label          String
+  weight         Int
+  score          Int
+  status         FitStatus
+  details        String?
+  matchedItems   String[]
+  unmatchedItems String[]
+  order          Int       @default(0)
+
+  @@unique([tenderId, slug])
+  @@index([tenderId])
+  @@map("fit_categories")
+}
+
+model TenderTask {
+  id          String        @id @default(cuid())
+  tenderId    String
+  tender      Tender        @relation(fields: [tenderId], references: [id], onDelete: Cascade)
+  title       String
+  description String?
+  assigneeId  String?
+  assignee    User?         @relation("TaskAssignee", fields: [assigneeId], references: [id], onDelete: SetNull)
+  dueDate     DateTime?
+  status      TaskStatus    @default(TODO)
+  priority    TaskPriority  @default(MEDIUM)
+  type        TaskType      @default(CUSTOM)
+  effort      String?
+  subtasks    TaskSubtask[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([tenderId])
+  @@index([assigneeId])
+  @@map("tender_tasks")
+}
+
+model TaskSubtask {
+  id        String     @id @default(cuid())
+  taskId    String
+  task      TenderTask @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  title     String
+  completed Boolean    @default(false)
+  order     Int        @default(0)
+
+  @@index([taskId])
+  @@map("task_subtasks")
+}
+
+model ChecklistItem {
+  id         String          @id @default(cuid())
+  tenderId   String
+  tender     Tender          @relation(fields: [tenderId], references: [id], onDelete: Cascade)
+  section    String
+  label      String
+  reference  String?
+  status     ChecklistStatus @default(MISSING)
+  documentId String?
+  reviewerId String?
+  reviewer   User?           @relation("ChecklistReviewer", fields: [reviewerId], references: [id], onDelete: SetNull)
+  notes      String?
+  order      Int             @default(0)
+  createdAt  DateTime        @default(now())
+  updatedAt  DateTime        @updatedAt
+
+  @@index([tenderId])
+  @@map("checklist_items")
+}
+
+model TenderComment {
+  id        String   @id @default(cuid())
+  tenderId  String
+  tender    Tender   @relation(fields: [tenderId], references: [id], onDelete: Cascade)
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  content   String
+  mentions  String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([tenderId])
+  @@index([authorId])
+  @@map("tender_comments")
+}
+
+model ActivityEntry {
+  id          String       @id @default(cuid())
+  tenderId    String
+  tender      Tender       @relation(fields: [tenderId], references: [id], onDelete: Cascade)
+  type        ActivityType
+  actorId     String?
+  actor       User?        @relation(fields: [actorId], references: [id], onDelete: SetNull)
+  description String
+  metadata    Json?
+  createdAt   DateTime     @default(now())
+
+  @@index([tenderId, createdAt])
+  @@map("activity_entries")
+}
+
+model TenderSummary {
+  id        String   @id @default(cuid())
+  tenderId  String   @unique
+  tender    Tender   @relation(fields: [tenderId], references: [id], onDelete: Cascade)
+  payload   Json
+  language  String?
+  profile   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("tender_summaries")
+}
+
+model AnalysisJob {
+  id           String            @id @default(cuid())
+  tenderId     String?
+  tender       Tender?           @relation(fields: [tenderId], references: [id], onDelete: SetNull)
+  workspaceId  String
+  status       AnalysisJobStatus @default(QUEUED)
+  language     String?
+  profile      String?
+  progress     Int?
+  resultId     String?
+  errorCode    String?
+  errorMessage String?
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+
+  @@index([workspaceId, status])
+  @@index([tenderId])
+  @@map("analysis_jobs")
+}
+
+model CompanyProfile {
+  id          String                  @id @default(cuid())
+  workspaceId String                  @unique
+  workspace   Workspace               @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  sections    CompanyProfileSection[]
+  createdAt   DateTime                @default(now())
+  updatedAt   DateTime                @updatedAt
+
+  @@map("company_profiles")
+}
+
+model CompanyProfileSection {
+  id        String         @id @default(cuid())
+  profileId String
+  profile   CompanyProfile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  slug      String
+  label     String
+  data      Json           @default("{}")
+  order     Int            @default(0)
+  updatedAt DateTime       @updatedAt
+
+  @@unique([profileId, slug])
+  @@index([profileId])
+  @@map("company_profile_sections")
 }

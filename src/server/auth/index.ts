@@ -4,6 +4,7 @@ import EmailTemplateVerification from "@/email/templates/EmailTemplateVerificati
 import { serverEnv } from "@/env";
 import { db } from "@/server/db";
 import { sendEmail } from "@/server/email/send-email";
+import { createDefaultWorkspaceForUser } from "@/server/bidpanion/workspace-setup";
 import { getDefaultPreferences } from "@/types/user-preferences";
 import {
   betterAuth,
@@ -86,6 +87,8 @@ export const auth = betterAuth({
               preferences: defaultPreferences,
             },
           });
+
+          await createDefaultWorkspaceForUser(user.id, user.name, user.email);
 
           /* uncomment this ONLY if you decide to disable email verification, because that also
           sends another email, and you don't want to spam users with 2 emails when they sign up

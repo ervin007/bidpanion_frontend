@@ -19,13 +19,6 @@ export const hotkeys: Hotkey[] = [
 // User-specific hotkeys
 export const userHotkeys: Hotkey[] = [
   {
-    id: "openAiChat",
-    title: "Open AI Chat",
-    keys: "alt+c",
-    description: "Open the AI Chat dialog",
-    group: "App",
-  },
-  {
     id: "toggleCommandPalette",
     title: "Toggle Command Palette",
     keys: "meta+k",

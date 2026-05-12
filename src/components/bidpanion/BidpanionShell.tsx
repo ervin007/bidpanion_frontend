@@ -7,20 +7,17 @@ import {
   LayoutDashboard,
   Building2,
   Users,
-  Palette,
   ChevronDown,
   LogOut,
   Settings,
-  Bell,
   Menu,
   X,
   Shield,
-  ChevronRight,
   Kanban,
   Sparkles,
-  Sliders,
 } from "lucide-react";
 import { authClient } from "@/server/auth/client";
+import { api } from "@/trpc/react";
 
 interface NavItem {
   label: string;
@@ -37,9 +34,20 @@ const NAV_ITEMS: NavItem[] = [
 
 const SETTINGS_NAV_ITEMS: NavItem[] = [
   { label: "Team & Users", path: "/app/team", icon: <Users size={14} /> },
-  { label: "General", path: "/app/settings", icon: <Sliders size={14} /> },
-  { label: "Design System", path: "/app/design-system", icon: <Palette size={14} /> },
 ];
+
+const BREADCRUMB_LABELS: Record<string, string> = {
+  "/app": "Dashboard",
+  "/app/board": "Board",
+  "/app/quick-analysis": "Quick Analysis",
+  "/app/company-profile": "Company Profile",
+  "/app/team": "Team & Users",
+};
+
+function breadcrumbFor(pathname: string): string {
+  if (pathname.startsWith("/app/tenders/")) return "Tender Detail";
+  return BREADCRUMB_LABELS[pathname] ?? "Dashboard";
+}
 
 function NavItemLink({
   item,
@@ -78,12 +86,14 @@ export function BidpanionShell({ children }: { children: React.ReactNode }) {
 
   const { data: session } = authClient.useSession();
   const user = session?.user;
+  const workspace = api.workspace.current.useQuery(undefined, {
+    enabled: !!user,
+  });
+  const isWorkspaceAdmin = workspace.data?.role === "ADMIN";
   const displayName = user?.name ?? user?.email ?? "—";
-  const displayRole =
-    (user as { role?: string } | undefined)?.role === "admin"
-      ? "Admin"
-      : "Member";
-  const isAdmin = (user as { role?: string } | undefined)?.role === "admin";
+  const displayRole = workspace.data?.role
+    ? workspace.data.role.replace(/_/g, " ").toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase())
+    : "Member";
   const initials = displayName
     .split(" ")
     .map((n: string) => n[0])
@@ -146,7 +156,7 @@ export function BidpanionShell({ children }: { children: React.ReactNode }) {
             />
           ))}
 
-          {isAdmin && (
+          {isWorkspaceAdmin && (
             <>
               <div className="h-px bg-slate-800 my-3" />
               <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider px-3 mb-2">
@@ -186,10 +196,14 @@ export function BidpanionShell({ children }: { children: React.ReactNode }) {
           )}
         </nav>
 
-        <div className="px-3 py-2 mx-3 mb-2 rounded-md bg-slate-800 border border-slate-700">
-          <p className="text-slate-400 text-xs font-medium">Workspace</p>
-          <p className="text-slate-200 text-sm font-semibold truncate">Acme GmbH</p>
-        </div>
+        {workspace.data && (
+          <div className="px-3 py-2 mx-3 mb-2 rounded-md bg-slate-800 border border-slate-700">
+            <p className="text-slate-400 text-xs font-medium">Workspace</p>
+            <p className="text-slate-200 text-sm font-semibold truncate">
+              {workspace.data.name}
+            </p>
+          </div>
+        )}
 
         <div className="px-3 pb-4 relative">
           <button
@@ -223,14 +237,6 @@ export function BidpanionShell({ children }: { children: React.ReactNode }) {
               role="menu"
             >
               <button
-                className="w-full flex items-center gap-2 px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-700 text-sm transition-colors"
-                role="menuitem"
-              >
-                <Settings size={14} />
-                Settings
-              </button>
-              <div className="h-px bg-slate-700 my-1" />
-              <button
                 className="w-full flex items-center gap-2 px-3 py-2 text-red-400 hover:text-red-300 hover:bg-slate-700 text-sm transition-colors"
                 onClick={handleSignOut}
                 role="menuitem"
@@ -255,42 +261,11 @@ export function BidpanionShell({ children }: { children: React.ReactNode }) {
             </button>
             <nav aria-label="Breadcrumb">
               <ol className="flex items-center gap-1 text-sm">
-                <li>
-                  <Link
-                    href="/app"
-                    className="text-slate-400 hover:text-slate-600 transition-colors"
-                  >
-                    Dashboard
-                  </Link>
+                <li className="text-slate-700 font-medium">
+                  {breadcrumbFor(pathname)}
                 </li>
               </ol>
             </nav>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <button
-              className="relative p-2 rounded-md text-slate-500 hover:text-slate-900 hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-blue-500"
-              aria-label="Notifications"
-            >
-              <Bell size={18} />
-              <span
-                className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"
-                aria-hidden="true"
-              />
-            </button>
-
-            <button className="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-md hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-blue-500 transition-colors">
-              <div className="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold">
-                {initials}
-              </div>
-              <span className="hidden sm:block text-sm font-medium text-slate-700">
-                {displayName.split(" ")[0]}
-              </span>
-              <ChevronRight
-                size={14}
-                className="hidden sm:block text-slate-400"
-              />
-            </button>
           </div>
         </header>
 

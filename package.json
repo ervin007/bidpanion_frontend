@@ -16,6 +16,7 @@
     "db:migrate": "prisma migrate dev",
     "db:push": "prisma db push",
     "db:seed": "bun prisma/seeds/index.ts",
+    "db:seed:demo": "bun prisma/seeds/demo.ts",
     "db:reset": "prisma db push --force-reset",
     "email": "email dev --dir src/email/templates",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mdx,prisma}\" --cache",

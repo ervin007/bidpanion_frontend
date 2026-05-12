@@ -160,3 +160,30 @@ export const adminProcedure = protectedProcedure.use(({ ctx, next }) => {
     },
   });
 });
+
+/**
+ * Workspace procedure — resolves the user's active workspace membership.
+ *
+ * Bidpanion is workspace-scoped. Every domain procedure runs inside the user's
+ * active workspace; `ctx.workspace` and `ctx.member` are guaranteed non-null.
+ */
+export const workspaceProcedure = protectedProcedure.use(async ({ ctx, next }) => {
+  const member = await ctx.db.workspaceMember.findFirst({
+    where: { userId: ctx.session.user.id, status: "ACTIVE" },
+    orderBy: { createdAt: "asc" },
+    include: { workspace: true },
+  });
+  if (!member) {
+    throw new TRPCError({
+      code: "FORBIDDEN",
+      message: "No active workspace membership",
+    });
+  }
+  return next({
+    ctx: {
+      ...ctx,
+      workspace: member.workspace,
+      member,
+    },
+  });
+});

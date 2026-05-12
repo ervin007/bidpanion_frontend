@@ -2,20 +2,15 @@
 import { useHotkeys } from "react-hotkeys-hook";
 import { useTheme } from "next-themes";
 import { type Hotkey, type HotkeyId } from "@/config/hotkeys";
-import { useAiChatDialog } from "@/hooks/useAiChatDialog";
 import { useGlobalStore } from "@/context/GlobalStoreContext";
 
 export const RegisterHotkeys = ({ hotkeys }: { hotkeys: Hotkey[] }) => {
   const { setTheme, theme } = useTheme();
-  const { openAiChat } = useAiChatDialog();
   const { toggleCommandPalette } = useGlobalStore();
 
   // Define all possible handlers using the ID as the key, typed with HotkeyId
   const handlers: Record<HotkeyId, () => void> = {
     toggleTheme: () => setTheme(theme === "dark" ? "light" : "dark"),
-    openAiChat: () => {
-      openAiChat();
-    },
     toggleCommandPalette: toggleCommandPalette,
   };
 
