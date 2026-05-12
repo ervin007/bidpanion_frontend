@@ -1,9 +1,0 @@
-# Nixpacks build config for Coolify / Railway deployments.
-#
-# Prisma's query engine (linux-arm64-openssl-3.0.x.so.node) dynamically links
-# libssl.so.3, so the runtime image needs OpenSSL 3 installed. Without this
-# Prisma fails at first DB call with "Cannot find libssl.so.3".
-
-[phases.setup]
-nixPkgs = ["...", "openssl"]
-aptPkgs = ["...", "openssl", "ca-certificates"]

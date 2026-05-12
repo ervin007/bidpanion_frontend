@@ -25,7 +25,7 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "preview": "rm -rf .next && next build && next start",
-    "start": "npx prisma migrate deploy && next start",
+    "start": "bunx prisma migrate deploy && next start",
     "typecheck": "tsc --noEmit",
     "typewatch": "tsc --noEmit --watch",
     "tunnel": "lt --port 3000 --subdomain zts",
