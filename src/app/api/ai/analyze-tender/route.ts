@@ -79,8 +79,10 @@ export async function POST(req: Request) {
   });
 
   try {
-    // Determine the absolute URL for the webhook callback
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+    // Determine the absolute URL for the webhook callback dynamically
+    const protocol = req.headers.get("x-forwarded-proto") || "http";
+    const host = req.headers.get("host");
+    const baseUrl = host ? `${protocol}://${host}` : "http://localhost:3000";
     const callbackUrl = `${baseUrl}/api/ai/jobs/${job.id}/callback`;
 
     // Prepare form data for the Python backend
