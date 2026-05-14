@@ -12,7 +12,7 @@ const mergedServerSchema = z.intersection(
   z.intersection(emailServerSchema, authServerSchema),
 );
 
-const _serverEnv = mergedServerSchema.safeParse({
+const _serverEnv = !!process.env.SKIP_ENV_VALIDATION ? { success: true, data: process.env as any } : mergedServerSchema.safeParse({
   ...clientEnvRaw,
   ...process.env,
 });

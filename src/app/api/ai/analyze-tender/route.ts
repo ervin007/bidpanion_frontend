@@ -79,14 +79,40 @@ export async function POST(req: Request) {
   });
 
   try {
-    await startTenderAnalysis({
-      jobId: job.id,
-      workspaceId: workspace.id,
-      tenderId: tender.id,
-      language,
-      profile,
-      documentIds: tender.documents.map((d) => d.id),
+    // Determine the absolute URL for the webhook callback
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+    const callbackUrl = `${baseUrl}/api/ai/jobs/${job.id}/callback`;
+
+    // Prepare form data for the Python backend
+    const pythonForm = new FormData();
+    pythonForm.append("file", files[0]);
+    pythonForm.append("callback_url", callbackUrl);
+
+    // Proxy the upload to the Temporal backend
+    const res = await fetch("http://svakd9lmph7uly1dhcg06t4w.49.12.245.219.sslip.io/api/process", {
+      method: "POST",
+      body: pythonForm,
     });
+
+    if (!res.ok) {
+      throw new Error(`Python API responded with ${res.status}`);
+    }
+
+    const payload = (await res.json()) as { workflow_id?: string; filename?: string };
+
+    if (!payload.workflow_id || !payload.filename) {
+      throw new Error("Invalid response from Python API (missing workflow_id or filename)");
+    }
+
+    return NextResponse.json(
+      { 
+        jobId: job.id, 
+        tenderId: tender.id,
+        workflow_id: payload.workflow_id,
+        filename: payload.filename 
+      },
+      { status: 202 },
+    );
   } catch (err) {
     await db.analysisJob.update({
       where: { id: job.id },
@@ -102,16 +128,11 @@ export async function POST(req: Request) {
     });
     return NextResponse.json(
       {
-        error: "AI pipeline is not reachable. Set AI_PIPELINE_URL.",
+        error: "AI pipeline is not reachable. " + (err instanceof Error ? err.message : ""),
         jobId: job.id,
         tenderId: tender.id,
       },
       { status: 502 },
     );
   }
-
-  return NextResponse.json(
-    { jobId: job.id, tenderId: tender.id },
-    { status: 202 },
-  );
 }

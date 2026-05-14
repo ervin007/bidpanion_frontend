@@ -241,4 +241,39 @@ export const tenderRouter = createTRPCRouter({
       await ctx.db.tender.delete({ where: { id: input.id } });
       return { ok: true };
     }),
+
+  saveQuickAnalysisResult: workspaceProcedure
+    .input(
+      z.object({
+        tenderId: z.string(),
+        payload: z.any(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      const p = input.payload as any;
+      const title = p?.issuer?.name ? `${p.issuer.name} Tender` : undefined;
+
+      const tender = await ctx.db.tender.update({
+        where: { id: input.tenderId },
+        data: {
+          processingStatus: "COMPLETED",
+          ...(title ? { title: title.slice(0, 200) } : {}),
+        },
+      });
+
+      await ctx.db.tenderSummary.upsert({
+        where: { tenderId: input.tenderId },
+        create: {
+          tenderId: input.tenderId,
+          payload: input.payload,
+          language: "EN",
+          profile: "standard",
+        },
+        update: {
+          payload: input.payload,
+        },
+      });
+
+      return tender;
+    }),
 });
