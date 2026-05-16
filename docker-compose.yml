@@ -25,7 +25,7 @@ services:
     # ports:
     #   - "5432:5432" # Removed public exposure to prevent hack attempts
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data_v2:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d bidpanion"]
       interval: 5s
@@ -33,4 +33,4 @@ services:
       retries: 5
 
 volumes:
-  postgres_data:
+  postgres_data_v2:
