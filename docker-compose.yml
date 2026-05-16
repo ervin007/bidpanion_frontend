@@ -7,7 +7,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/bidpanion
+      - DATABASE_URL=postgresql://postgres:vK9pX2mQ5wR8zL4nJ7bH1tY3@db:5432/bidpanion
       - NEXT_PUBLIC_ENABLE_STRIPE=false
       - BETTER_AUTH_SECRET=f9150624-f48d-4b25-8cbe-5dd8609c2b2a
       - BETTER_AUTH_URL=${BETTER_AUTH_URL:-http://localhost:3000}
@@ -20,10 +20,10 @@ services:
     image: postgres:15-alpine
     environment:
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_PASSWORD=vK9pX2mQ5wR8zL4nJ7bH1tY3
       - POSTGRES_DB=bidpanion
-    ports:
-      - "5432:5432"
+    # ports:
+    #   - "5432:5432" # Removed public exposure to prevent hack attempts
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
