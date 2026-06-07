@@ -305,21 +305,26 @@ export const tenderRouter = createTRPCRouter({
         });
       }
 
-      // Helper function to format requirements
-      const requirements: Record<string, string> = {};
-      const recurse = (obj: any, currentKey = "") => {
-        if (!obj || typeof obj !== "object") return;
-        for (const [k, v] of Object.entries(obj)) {
-          if (k === "citations") continue;
-          const key = currentKey ? `${currentKey} -> ${k}` : k;
-          if (typeof v === "object" && v !== null) {
-            recurse(v, key);
-          } else if (v !== null && v !== undefined) {
-            requirements[key] = String(v);
-          }
-        }
-      };
-      recurse(tender.summary.payload);
+      // Create an AnalysisJob to track the Temporal workflow progress
+      const job = await ctx.db.analysisJob.create({
+        data: {
+          workspaceId: ctx.workspace.id,
+          tenderId: tender.id,
+          language: tender.summary.language ?? "DE",
+          profile: tender.summary.profile ?? "standard",
+          status: "QUEUED",
+        },
+      });
+
+      // Update tender processingStatus to PROCESSING
+      await ctx.db.tender.update({
+        where: { id: tender.id },
+        data: { processingStatus: "PROCESSING" },
+      });
+
+      // Construct dynamic callback URL
+      const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+      const callbackUrl = `${appUrl}/api/ai/jobs/${job.id}/callback`;
 
       const backendUrl = "http://svakd9lmph7uly1dhcg06t4w.49.12.245.219.sslip.io/api/calculate-fit-score";
       try {
@@ -327,8 +332,10 @@ export const tenderRouter = createTRPCRouter({
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            requirements,
+            summary_payload: tender.summary.payload,
             company_profile: JSON.stringify(profile),
+            callback_url: callbackUrl,
+            workflow_id: job.id,
           }),
         });
 
@@ -336,57 +343,24 @@ export const tenderRouter = createTRPCRouter({
           throw new Error(`Backend API returned HTTP ${response.status}: ${await response.text()}`);
         }
 
-        const evalResult = (await response.json()) as {
-          fitScore: number;
-          recommendation: "BID" | "REVIEW" | "NO_BID";
-          fitCategories: Array<{
-            slug: string;
-            label: string;
-            weight: number;
-            score: number;
-            status: "MATCHED" | "PARTIAL" | "UNMATCHED" | "NA";
-            details?: string | null;
-            matchedItems?: string[];
-            unmatchedItems?: string[];
-          }>;
-        };
-
-        await ctx.db.$transaction(async (tx) => {
-          await tx.tender.update({
-            where: { id: tender.id },
-            data: {
-              fitScore: evalResult.fitScore,
-              recommendation: evalResult.recommendation,
-            },
-          });
-
-          if (evalResult.fitCategories && evalResult.fitCategories.length > 0) {
-            await tx.fitCategory.deleteMany({
-              where: { tenderId: tender.id },
-            });
-
-            await tx.fitCategory.createMany({
-              data: evalResult.fitCategories.map((c, index) => ({
-                tenderId: tender.id,
-                slug: c.slug,
-                label: c.label,
-                weight: c.weight,
-                score: c.score,
-                status: c.status,
-                details: c.details ?? null,
-                matchedItems: c.matchedItems ?? [],
-                unmatchedItems: c.unmatchedItems ?? [],
-                order: index,
-              })),
-            });
-          }
-        });
-
-        return { success: true, fitScore: evalResult.fitScore };
+        return { success: true, jobId: job.id };
       } catch (err) {
+        // Rollback processing status to completed/failed depending on state
+        await ctx.db.tender.update({
+          where: { id: tender.id },
+          data: { processingStatus: "COMPLETED" },
+        });
+        await ctx.db.analysisJob.update({
+          where: { id: job.id },
+          data: {
+            status: "FAILED",
+            errorCode: "UPSTREAM_UNAVAILABLE",
+            errorMessage: err instanceof Error ? err.message : "Failed to start Temporal workflow",
+          },
+        });
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
-          message: err instanceof Error ? err.message : "Failed to calculate fit score upstream.",
+          message: err instanceof Error ? err.message : "Failed to trigger fit score calculation in Temporal.",
         });
       }
     }),
