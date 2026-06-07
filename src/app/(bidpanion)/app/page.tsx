@@ -27,6 +27,7 @@ import {
   Database,
   Building2,
   ExternalLink,
+  Trash2,
 } from "lucide-react";
 import { STATIC_TENDERS } from "@/data/tender-sources-data";
 import { api } from "@/trpc/react";
@@ -530,6 +531,20 @@ export default function DashboardPage() {
   const router = useRouter();
   const me = api.user.getCurrentUser.useQuery();
   const tenderQuery = api.tender.list.useQuery({ includeDeleted: false });
+  const utils = api.useUtils();
+
+  const softDelete = api.tender.softDelete.useMutation({
+    onSuccess: () => {
+      void utils.tender.list.invalidate();
+    },
+  });
+
+  const handleDelete = (e: React.MouseEvent, tenderId: string, title: string) => {
+    e.stopPropagation();
+    if (confirm(`Are you sure you want to delete "${title}"?`)) {
+      softDelete.mutate({ id: tenderId });
+    }
+  };
 
   const [search, setSearch] = useState("");
   const [viewMode, setViewMode] = useState<ViewMode>("all");
@@ -923,6 +938,7 @@ export default function DashboardPage() {
                           { label: "Owner", key: null },
                           { label: "Uploaded", key: "uploadDate" as SortKey },
                           { label: "Fit Score", key: "fitScore" as SortKey },
+                          { label: "Actions", key: null, className: "w-[80px]" },
                         ].map((col, i) => (
                           <th
                             key={i}
@@ -948,7 +964,7 @@ export default function DashboardPage() {
                     <tbody className="divide-y divide-slate-100">
                       {paged.length === 0 ? (
                         <tr>
-                          <td colSpan={8} className="px-6 py-12 text-center">
+                          <td colSpan={9} className="px-6 py-12 text-center">
                             <p className="text-slate-500 text-sm">
                               No tenders match the current filters.
                             </p>
@@ -1044,6 +1060,15 @@ export default function DashboardPage() {
                               </td>
                               <td className="px-4 py-3 whitespace-nowrap">
                                 <FitScoreCell score={tender.fitScore} />
+                              </td>
+                              <td className="px-4 py-3 whitespace-nowrap">
+                                <button
+                                  onClick={(e) => handleDelete(e, tender.id, tender.title)}
+                                  className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
+                                  aria-label={`Delete ${tender.title}`}
+                                >
+                                  <Trash2 size={14} />
+                                </button>
                               </td>
                             </tr>
                           );
