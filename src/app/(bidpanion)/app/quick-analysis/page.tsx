@@ -170,7 +170,7 @@ export default function QuickAnalysisPage() {
             <h1 className="text-slate-900 text-2xl font-bold">Quick Analysis</h1>
           </div>
           <p className="text-slate-500 text-sm max-w-2xl">
-            Upload a tender text file. The AI pipeline parses
+            Upload a tender ZIP file. The AI pipeline parses
             the document and produces a structured one-pager summary.
           </p>
         </div>
@@ -209,15 +209,15 @@ export default function QuickAnalysisPage() {
                 <Upload size={20} className="text-blue-600" />
               </div>
               <p className="text-slate-900 font-semibold text-sm">
-                Drop a tender TXT here, or click to browse
+                Drop a tender ZIP here, or click to browse
               </p>
               <p className="text-slate-500 text-xs mt-1">
-                TXT only — single file supported.
+                ZIP only — single file supported.
               </p>
               <input
                 ref={inputRef}
                 type="file"
-                accept=".txt"
+                accept=".zip"
                 className="hidden"
                 onChange={(e) => e.target.files && handleFiles(e.target.files)}
               />
