@@ -24,7 +24,11 @@ import {
   Users2,
   Eye,
   FolderOpen,
+  Database,
+  Building2,
+  ExternalLink,
 } from "lucide-react";
+import { STATIC_TENDERS } from "@/data/tender-sources-data";
 import { api } from "@/trpc/react";
 import {
   BOARD_COLUMN_LABEL,
@@ -233,7 +237,294 @@ function SkeletonRow() {
 
 type SortKey = "title" | "deadline" | "status" | "fitScore" | "uploadDate";
 type SortDir = "asc" | "desc";
-type ViewMode = "all" | "watching" | "in-progress" | "submitted";
+type ViewMode = "all" | "watching" | "in-progress" | "submitted" | "tender-sources";
+
+const SOURCE_COLORS_STATIC: Record<string, string> = {
+  Ankoe: "bg-violet-600 text-white",
+  DTVP: "bg-slate-700 text-white",
+  USP: "bg-blue-700 text-white",
+  Provia: "bg-teal-600 text-white",
+  "Provia Prüfsysteme": "bg-orange-600 text-white",
+};
+
+function StaticSourceBadge({ source }: { source: string }) {
+  const colorClass = SOURCE_COLORS_STATIC[source] ?? "bg-slate-500 text-white";
+  return (
+    <span
+      className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-bold tracking-wide ${colorClass}`}
+    >
+      {source.toUpperCase()}
+    </span>
+  );
+}
+
+function TenderSourcesView() {
+  const [search, setSearch] = useState("");
+  const [sourceFilter, setSourceFilter] = useState<string[]>([]);
+  const [sort, setSort] = useState<{ key: "title" | "source" | "deadline" | "uploaded"; dir: "asc" | "desc" }>({
+    key: "uploaded",
+    dir: "desc",
+  });
+  const [page, setPage] = useState(1);
+  const PER_PAGE = 15;
+
+  const allTenders = STATIC_TENDERS;
+
+  const sourceStats = useMemo(() => {
+    const counts: Record<string, number> = {};
+    allTenders.forEach((t) => {
+      counts[t.source] = (counts[t.source] ?? 0) + 1;
+    });
+    return counts;
+  }, [allTenders]);
+
+  const uniqueSources = useMemo(() => Object.keys(sourceStats).sort(), [sourceStats]);
+
+  const toggleSource = (s: string) => {
+    setSourceFilter((f) =>
+      f.includes(s) ? f.filter((x) => x !== s) : [...f, s]
+    );
+    setPage(1);
+  };
+
+  const sortedAndFiltered = useMemo(() => {
+    let data = [...allTenders];
+
+    if (search) {
+      const q = search.toLowerCase();
+      data = data.filter((t) => t.title.toLowerCase().includes(q));
+    }
+
+    if (sourceFilter.length > 0) {
+      data = data.filter((t) => sourceFilter.includes(t.source));
+    }
+
+    data.sort((a, b) => {
+      const dir = sort.dir === "asc" ? 1 : -1;
+      
+      if (sort.key === "deadline") {
+        const aVal = a.submissionDeadline || "";
+        const bVal = b.submissionDeadline || "";
+        return aVal.localeCompare(bVal) * dir;
+      }
+      if (sort.key === "uploaded") {
+        const aVal = a.uploadedDate || "";
+        const bVal = b.uploadedDate || "";
+        return aVal.localeCompare(bVal) * dir;
+      }
+      if (sort.key === "source") {
+        return a.source.localeCompare(b.source) * dir;
+      }
+      return a.title.localeCompare(b.title) * dir;
+    });
+
+    return data;
+  }, [allTenders, search, sourceFilter, sort]);
+
+  const totalPages = Math.max(1, Math.ceil(sortedAndFiltered.length / PER_PAGE));
+  const paged = sortedAndFiltered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+
+  const sortBy = (key: "title" | "source" | "deadline" | "uploaded") => {
+    setSort((s) => ({
+      key,
+      dir: s.key === key && s.dir === "asc" ? "desc" : "asc",
+    }));
+    setPage(1);
+  };
+
+  const SortIcon = ({ k }: { k: "title" | "source" | "deadline" | "uploaded" }) => {
+    if (sort.key !== k) return <span className="text-slate-300 ml-1">↕</span>;
+    return sort.dir === "asc" ? (
+      <ChevronUp size={12} className="ml-0.5 inline text-blue-600" />
+    ) : (
+      <ChevronDown size={12} className="ml-0.5 inline text-blue-600" />
+    );
+  };
+
+  return (
+    <div className="space-y-5">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <KpiCard
+          label="Total Sources Tenders"
+          value={allTenders.length}
+          icon={<Database size={20} className="text-blue-600" />}
+          accent="bg-blue-50"
+        />
+        <KpiCard
+          label="Ankoe"
+          value={sourceStats["Ankoe"] ?? 0}
+          icon={<FileText size={20} className="text-violet-600" />}
+          accent="bg-violet-50"
+        />
+        <KpiCard
+          label="DTVP"
+          value={sourceStats["DTVP"] ?? 0}
+          icon={<Building2 size={20} className="text-slate-600" />}
+          accent="bg-slate-50"
+        />
+        <KpiCard
+          label="USP & Provia"
+          value={(sourceStats["USP"] ?? 0) + (sourceStats["Provia"] ?? 0) + (sourceStats["Provia Prüfsysteme"] ?? 0)}
+          icon={<Database size={20} className="text-teal-600" />}
+          accent="bg-teal-50"
+        />
+      </div>
+
+      <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4 space-y-4">
+        <div className="flex items-center gap-3 flex-wrap">
+          <div className="relative flex-1 min-w-[280px]">
+            <Search
+              size={15}
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
+            />
+            <input
+              type="search"
+              placeholder="Search by tender title…"
+              value={search}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                setPage(1);
+              }}
+              className="w-full pl-9 pr-4 py-2 border border-slate-200 rounded-lg text-sm bg-slate-50 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white"
+            />
+          </div>
+
+          <div className="flex flex-wrap gap-1.5 items-center">
+            <span className="text-slate-400 text-xs font-medium uppercase tracking-wider mr-1">Filter Source:</span>
+            {uniqueSources.map((s) => (
+              <button
+                key={s}
+                onClick={() => toggleSource(s)}
+                className={`px-2.5 py-1 rounded-lg text-xs font-semibold border transition-colors focus-visible:ring-1 focus-visible:ring-blue-500 ${
+                  sourceFilter.includes(s)
+                    ? "bg-blue-600 text-white border-blue-600"
+                    : "bg-white text-slate-600 border-slate-200 hover:border-slate-300"
+                }`}
+              >
+                {s} ({sourceStats[s]})
+              </button>
+            ))}
+          </div>
+
+          {(search || sourceFilter.length > 0) && (
+            <button
+              onClick={() => {
+                setSearch("");
+                setSourceFilter([]);
+                setPage(1);
+              }}
+              className="text-slate-400 hover:text-slate-600 text-sm underline-offset-2 hover:underline focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
+            >
+              Reset filters
+            </button>
+          )}
+        </div>
+
+        <div className="overflow-x-auto border border-slate-100 rounded-lg">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="bg-slate-50 border-b border-slate-200">
+                {[
+                  { label: "Title", key: "title" as const, className: "min-w-[400px]" },
+                  { label: "Source", key: "source" as const, className: "w-[150px]" },
+                  { label: "Submission Deadline", key: "deadline" as const, className: "w-[200px]" },
+                  { label: "Uploaded Date", key: "uploaded" as const, className: "w-[200px]" },
+                ].map((col) => (
+                  <th
+                    key={col.label}
+                    onClick={() => sortBy(col.key)}
+                    className={`px-4 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider cursor-pointer hover:text-slate-700 select-none ${col.className}`}
+                  >
+                    {col.label}
+                    <SortIcon k={col.key} />
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100">
+              {paged.length === 0 ? (
+                <tr>
+                  <td colSpan={4} className="px-6 py-12 text-center text-slate-500">
+                    No matching tenders found.
+                  </td>
+                </tr>
+              ) : (
+                paged.map((tender, index) => (
+                  <tr key={index} className="hover:bg-slate-50/80 transition-colors">
+                    <td className="px-4 py-3 font-medium text-slate-900">
+                      {tender.url ? (
+                        <a
+                          href={tender.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:text-blue-600 inline-flex items-center gap-1 group"
+                        >
+                          <span>{tender.title}</span>
+                          <ExternalLink size={12} className="text-slate-400 group-hover:text-blue-500 flex-shrink-0" />
+                        </a>
+                      ) : (
+                        <span>{tender.title}</span>
+                      )}
+                    </td>
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      <StaticSourceBadge source={tender.source} />
+                    </td>
+                    <td className="px-4 py-3 whitespace-nowrap text-slate-600 font-mono text-xs">
+                      {tender.submissionDeadline}
+                    </td>
+                    <td className="px-4 py-3 whitespace-nowrap text-slate-500 font-mono text-xs">
+                      {tender.uploadedDate}
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+
+        {sortedAndFiltered.length > PER_PAGE && (
+          <div className="flex items-center justify-between pt-2">
+            <p className="text-slate-500 text-xs">
+              Showing {paged.length} of {sortedAndFiltered.length} records · Page {page} of {totalPages}
+            </p>
+            <div className="flex items-center gap-1">
+              <button
+                disabled={page === 1}
+                onClick={() => setPage((p) => p - 1)}
+                className="p-1.5 rounded text-slate-500 hover:bg-slate-200 disabled:opacity-30 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-blue-500"
+                aria-label="Previous page"
+              >
+                <ChevronLeft size={16} />
+              </button>
+              {Array.from({ length: Math.min(totalPages, 5) }).map((_, i) => {
+                const p = i + 1;
+                return (
+                  <button
+                    key={p}
+                    onClick={() => setPage(p)}
+                    className={`w-7 h-7 rounded text-xs font-medium focus-visible:ring-2 focus-visible:ring-blue-500 transition-colors ${
+                      page === p ? "bg-blue-600 text-white" : "text-slate-600 hover:bg-slate-200"
+                    }`}
+                  >
+                    {p}
+                  </button>
+                );
+              })}
+              <button
+                disabled={page === totalPages}
+                onClick={() => setPage((p) => p + 1)}
+                className="p-1.5 rounded text-slate-500 hover:bg-slate-200 disabled:opacity-30 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-blue-500"
+                aria-label="Next page"
+              >
+                <ChevronRight size={16} />
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -416,6 +707,12 @@ export default function DashboardPage() {
             icon: <CheckCircle2 size={14} />,
             count: submittedCount,
           },
+          {
+            id: "tender-sources" as ViewMode,
+            label: "Tender Sources",
+            icon: <Database size={14} />,
+            count: STATIC_TENDERS.length,
+          },
         ].map((tab) => (
           <button
             key={tab.id}
@@ -440,361 +737,367 @@ export default function DashboardPage() {
         ))}
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <KpiCard
-          label="Total"
-          value={total}
-          sub="Tenders"
-          icon={<FileText size={20} className="text-blue-600" />}
-          accent="bg-blue-50"
-        />
-        <KpiCard
-          label="Active Bids"
-          value={activeBids}
-          sub="Bid + Submitted"
-          icon={<TrendingUp size={20} className="text-emerald-600" />}
-          accent="bg-emerald-50"
-        />
-        <KpiCard
-          label="In Review"
-          value={inReview}
-          sub="Pending Decisions"
-          icon={<Clock size={20} className="text-amber-600" />}
-          accent="bg-amber-50"
-        />
-        <KpiCard
-          label="Avg Fit Score"
-          value={scored.length ? avgFit : "—"}
-          sub={scored.length ? "Scored tenders" : "No scored tenders"}
-          icon={<CheckCircle2 size={20} className="text-violet-600" />}
-          accent="bg-violet-50"
-        />
-      </div>
-
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm">
-        <div className="flex items-center gap-3 p-3 flex-wrap">
-          <div className="relative flex-1 min-w-[200px]">
-            <Search
-              size={15}
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
+      {viewMode === "tender-sources" ? (
+        <TenderSourcesView />
+      ) : (
+        <>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <KpiCard
+              label="Total"
+              value={total}
+              sub="Tenders"
+              icon={<FileText size={20} className="text-blue-600" />}
+              accent="bg-blue-50"
             />
-            <input
-              type="search"
-              placeholder="Search title or authority…"
-              value={search}
-              onChange={(e) => {
-                setSearch(e.target.value);
-                setPage(1);
-              }}
-              className="w-full pl-9 pr-4 py-2 border border-slate-200 rounded-lg text-sm bg-slate-50 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white"
+            <KpiCard
+              label="Active Bids"
+              value={activeBids}
+              sub="Bid + Submitted"
+              icon={<TrendingUp size={20} className="text-emerald-600" />}
+              accent="bg-emerald-50"
+            />
+            <KpiCard
+              label="In Review"
+              value={inReview}
+              sub="Pending Decisions"
+              icon={<Clock size={20} className="text-amber-600" />}
+              accent="bg-amber-50"
+            />
+            <KpiCard
+              label="Avg Fit Score"
+              value={scored.length ? avgFit : "—"}
+              sub={scored.length ? "Scored tenders" : "No scored tenders"}
+              icon={<CheckCircle2 size={20} className="text-violet-600" />}
+              accent="bg-violet-50"
             />
           </div>
 
-          <button
-            onClick={() => {
-              setMyTenders(!myTenders);
-              setPage(1);
-            }}
-            className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium border transition-colors focus-visible:ring-2 focus-visible:ring-blue-500 ${
-              myTenders
-                ? "bg-blue-600 text-white border-blue-600"
-                : "text-slate-600 border-slate-200 hover:bg-slate-50"
-            }`}
-          >
-            <Users2 size={14} />
-            My Tenders
-          </button>
-
-          <button
-            onClick={() => setFilterOpen(!filterOpen)}
-            className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium border transition-colors focus-visible:ring-2 focus-visible:ring-blue-500 ${
-              filterOpen || statusFilter.length || sourceFilter.length
-                ? "bg-blue-50 text-blue-700 border-blue-200"
-                : "text-slate-600 border-slate-200 hover:bg-slate-50"
-            }`}
-          >
-            <SlidersHorizontal size={14} />
-            Filters
-            {statusFilter.length + sourceFilter.length > 0 && (
-              <span className="ml-1 bg-blue-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                {statusFilter.length + sourceFilter.length}
-              </span>
-            )}
-          </button>
-
-          {(search || statusFilter.length || sourceFilter.length || myTenders) && (
-            <button
-              onClick={() => {
-                setSearch("");
-                setStatusFilter([]);
-                setSourceFilter([]);
-                setMyTenders(false);
-                setPage(1);
-              }}
-              className="text-slate-400 hover:text-slate-600 text-sm underline-offset-2 hover:underline focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
-            >
-              Reset filters
-            </button>
-          )}
-        </div>
-
-        {filterOpen && (
-          <div className="border-t border-slate-100 p-4 bg-slate-50/50 grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <div>
-              <p className="text-slate-600 text-xs font-semibold uppercase tracking-wider mb-2">
-                Status
-              </p>
-              <div className="flex flex-wrap gap-1.5">
-                {TENDER_STATUSES.map((s) => (
-                  <button
-                    key={s}
-                    onClick={() => {
-                      toggleStatus(s);
-                      setPage(1);
-                    }}
-                    className={`px-2 py-1 rounded text-xs font-medium border transition-colors focus-visible:ring-1 focus-visible:ring-blue-500 ${
-                      statusFilter.includes(s)
-                        ? "bg-blue-600 text-white border-blue-600"
-                        : "bg-white text-slate-600 border-slate-200 hover:border-slate-300"
-                    }`}
-                  >
-                    {TENDER_STATUS_LABEL[s]}
-                  </button>
-                ))}
+          <div className="bg-white rounded-xl border border-slate-200 shadow-sm">
+            <div className="flex items-center gap-3 p-3 flex-wrap">
+              <div className="relative flex-1 min-w-[200px]">
+                <Search
+                  size={15}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
+                />
+                <input
+                  type="search"
+                  placeholder="Search title or authority…"
+                  value={search}
+                  onChange={(e) => {
+                    setSearch(e.target.value);
+                    setPage(1);
+                  }}
+                  className="w-full pl-9 pr-4 py-2 border border-slate-200 rounded-lg text-sm bg-slate-50 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white"
+                />
               </div>
+
+              <button
+                onClick={() => {
+                  setMyTenders(!myTenders);
+                  setPage(1);
+                }}
+                className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium border transition-colors focus-visible:ring-2 focus-visible:ring-blue-500 ${
+                  myTenders
+                    ? "bg-blue-600 text-white border-blue-600"
+                    : "text-slate-600 border-slate-200 hover:bg-slate-50"
+                }`}
+              >
+                <Users2 size={14} />
+                My Tenders
+              </button>
+
+              <button
+                onClick={() => setFilterOpen(!filterOpen)}
+                className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium border transition-colors focus-visible:ring-2 focus-visible:ring-blue-500 ${
+                  filterOpen || statusFilter.length || sourceFilter.length
+                    ? "bg-blue-50 text-blue-700 border-blue-200"
+                    : "text-slate-600 border-slate-200 hover:bg-slate-50"
+                }`}
+              >
+                <SlidersHorizontal size={14} />
+                Filters
+                {statusFilter.length + sourceFilter.length > 0 && (
+                  <span className="ml-1 bg-blue-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+                    {statusFilter.length + sourceFilter.length}
+                  </span>
+                )}
+              </button>
+
+              {(search || statusFilter.length || sourceFilter.length || myTenders) && (
+                <button
+                  onClick={() => {
+                    setSearch("");
+                    setStatusFilter([]);
+                    setSourceFilter([]);
+                    setMyTenders(false);
+                    setPage(1);
+                  }}
+                  className="text-slate-400 hover:text-slate-600 text-sm underline-offset-2 hover:underline focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
+                >
+                  Reset filters
+                </button>
+              )}
             </div>
-            {sources.length > 0 && (
-              <div>
-                <p className="text-slate-600 text-xs font-semibold uppercase tracking-wider mb-2">
-                  Source
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {sources.map((s) => (
-                    <button
-                      key={s}
-                      onClick={() => {
-                        toggleSource(s);
-                        setPage(1);
-                      }}
-                      className={`px-2 py-1 rounded text-xs font-medium border transition-colors focus-visible:ring-1 focus-visible:ring-blue-500 ${
-                        sourceFilter.includes(s)
-                          ? "bg-blue-600 text-white border-blue-600"
-                          : "bg-white text-slate-600 border-slate-200 hover:border-slate-300"
-                      }`}
-                    >
-                      {SOURCE_LABEL[s]}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-      </div>
 
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-        {tenderQuery.isLoading ? (
-          <table className="w-full text-sm">
-            <tbody className="divide-y divide-slate-100">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <SkeletonRow key={i} />
-              ))}
-            </tbody>
-          </table>
-        ) : tenders.length === 0 ? (
-          <EmptyState />
-        ) : (
-          <>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm" role="table" aria-label="Tender Pipeline">
-                <thead>
-                  <tr className="bg-slate-50 border-b border-slate-200">
-                    {[
-                      {
-                        label: "Title / Authority",
-                        key: "title" as SortKey,
-                        className: "min-w-[280px]",
-                      },
-                      { label: "Source", key: null },
-                      { label: "Deadline", key: "deadline" as SortKey },
-                      { label: "Status", key: "status" as SortKey },
-                      { label: "Processing", key: null },
-                      { label: "Owner", key: null },
-                      { label: "Uploaded", key: "uploadDate" as SortKey },
-                      { label: "Fit Score", key: "fitScore" as SortKey },
-                    ].map((col, i) => (
-                      <th
-                        key={i}
-                        className={`px-4 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider whitespace-nowrap ${col.className ?? ""} ${
-                          col.key ? "cursor-pointer hover:text-slate-700 select-none" : ""
+            {filterOpen && (
+              <div className="border-t border-slate-100 p-4 bg-slate-50/50 grid grid-cols-1 lg:grid-cols-2 gap-5">
+                <div>
+                  <p className="text-slate-600 text-xs font-semibold uppercase tracking-wider mb-2">
+                    Status
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {TENDER_STATUSES.map((s) => (
+                      <button
+                        key={s}
+                        onClick={() => {
+                          toggleStatus(s);
+                          setPage(1);
+                        }}
+                        className={`px-2 py-1 rounded text-xs font-medium border transition-colors focus-visible:ring-1 focus-visible:ring-blue-500 ${
+                          statusFilter.includes(s)
+                            ? "bg-blue-600 text-white border-blue-600"
+                            : "bg-white text-slate-600 border-slate-200 hover:border-slate-300"
                         }`}
-                        onClick={() => col.key && sortBy(col.key)}
-                        scope="col"
-                        aria-sort={
-                          col.key && sort.key === col.key
-                            ? sort.dir === "asc"
-                              ? "ascending"
-                              : "descending"
-                            : undefined
-                        }
                       >
-                        {col.label}
-                        {col.key && <SortIcon k={col.key} />}
-                      </th>
+                        {TENDER_STATUS_LABEL[s]}
+                      </button>
                     ))}
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100">
-                  {paged.length === 0 ? (
-                    <tr>
-                      <td colSpan={8} className="px-6 py-12 text-center">
-                        <p className="text-slate-500 text-sm">
-                          No tenders match the current filters.
-                        </p>
+                  </div>
+                </div>
+                {sources.length > 0 && (
+                  <div>
+                    <p className="text-slate-600 text-xs font-semibold uppercase tracking-wider mb-2">
+                      Source
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {sources.map((s) => (
                         <button
+                          key={s}
                           onClick={() => {
-                            setSearch("");
-                            setStatusFilter([]);
-                            setSourceFilter([]);
-                            setMyTenders(false);
+                            toggleSource(s);
                             setPage(1);
                           }}
-                          className="mt-2 text-blue-600 text-sm hover:underline"
+                          className={`px-2 py-1 rounded text-xs font-medium border transition-colors focus-visible:ring-1 focus-visible:ring-blue-500 ${
+                            sourceFilter.includes(s)
+                              ? "bg-blue-600 text-white border-blue-600"
+                              : "bg-white text-slate-600 border-slate-200 hover:border-slate-300"
+                          }`}
                         >
-                          Reset filters
+                          {SOURCE_LABEL[s]}
                         </button>
-                      </td>
-                    </tr>
-                  ) : (
-                    paged.map((tender) => {
-                      const days = daysUntil(tender.deadline);
-                      const rowUrgency =
-                        tender.deadline && days !== null && days <= 7 && days >= 0
-                          ? "bg-red-50/50"
-                          : "";
-                      return (
-                        <tr
-                          key={tender.id}
-                          onClick={() => router.push(`/app/tenders/${tender.id}`)}
-                          className={`hover:bg-blue-50/40 cursor-pointer transition-colors group ${rowUrgency}`}
-                          role="row"
-                          tabIndex={0}
-                          onKeyDown={(e) =>
-                            e.key === "Enter" && router.push(`/app/tenders/${tender.id}`)
-                          }
-                          aria-label={`Tender: ${tender.title}`}
-                        >
-                          <td className="px-4 py-3 max-w-xs">
-                            <div className="font-medium text-slate-900 truncate group-hover:text-blue-700 transition-colors">
-                              {tender.title}
-                            </div>
-                            <div className="text-slate-500 text-xs mt-0.5 truncate">
-                              {tender.authority}
-                            </div>
-                            {tender.boardColumn && (
-                              <div className="text-slate-400 text-xs mt-1">
-                                Board: {BOARD_COLUMN_LABEL[tender.boardColumn]}
-                              </div>
-                            )}
-                          </td>
-                          <td className="px-4 py-3 whitespace-nowrap">
-                            <SourceBadge source={tender.source} />
-                          </td>
-                          <td className="px-4 py-3 whitespace-nowrap">
-                            <div className="flex flex-col gap-0.5">
-                              <DeadlineChip deadline={tender.deadline} />
-                              {tender.deadline && (
-                                <span className="text-slate-400 text-xs font-mono">
-                                  {new Date(tender.deadline).toLocaleDateString("en-US", {
-                                    day: "2-digit",
-                                    month: "2-digit",
-                                    year: "2-digit",
-                                  })}
-                                </span>
-                              )}
-                            </div>
-                          </td>
-                          <td className="px-4 py-3 whitespace-nowrap">
-                            <StatusBadge status={tender.status} />
-                          </td>
-                          <td className="px-4 py-3 whitespace-nowrap">
-                            <ProcessingBadge status={tender.processingStatus} />
-                          </td>
-                          <td className="px-4 py-3 whitespace-nowrap">
-                            {tender.owner ? (
-                              <div className="flex items-center gap-1.5">
-                                <div className="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-slate-600 text-xs font-bold flex-shrink-0">
-                                  {tender.owner.name?.[0] ?? "?"}
-                                </div>
-                                <span className="text-slate-600 text-xs truncate max-w-[90px]">
-                                  {tender.owner.name?.split(" ")[0] ?? "—"}
-                                </span>
-                              </div>
-                            ) : (
-                              <span className="text-slate-300 text-xs italic">Unassigned</span>
-                            )}
-                          </td>
-                          <td className="px-4 py-3 whitespace-nowrap text-slate-500 text-xs font-mono">
-                            {new Date(tender.uploadDate).toLocaleDateString("en-US", {
-                              day: "2-digit",
-                              month: "2-digit",
-                              year: "2-digit",
-                            })}
-                          </td>
-                          <td className="px-4 py-3 whitespace-nowrap">
-                            <FitScoreCell score={tender.fitScore} />
-                          </td>
-                        </tr>
-                      );
-                    })
-                  )}
-                </tbody>
-              </table>
-            </div>
-
-            {sorted.length > PER_PAGE && (
-              <div className="flex items-center justify-between px-4 py-3 border-t border-slate-100 bg-slate-50/50">
-                <p className="text-slate-500 text-xs">
-                  {sorted.length} tenders · Page {page} of {totalPages}
-                </p>
-                <div className="flex items-center gap-1">
-                  <button
-                    disabled={page === 1}
-                    onClick={() => setPage((p) => p - 1)}
-                    className="p-1.5 rounded text-slate-500 hover:bg-slate-200 disabled:opacity-30 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-blue-500"
-                    aria-label="Previous page"
-                  >
-                    <ChevronLeft size={16} />
-                  </button>
-                  {Array.from({ length: Math.min(totalPages, 5) }).map((_, i) => {
-                    const p = i + 1;
-                    return (
-                      <button
-                        key={p}
-                        onClick={() => setPage(p)}
-                        className={`w-7 h-7 rounded text-xs font-medium focus-visible:ring-2 focus-visible:ring-blue-500 transition-colors ${
-                          page === p ? "bg-blue-600 text-white" : "text-slate-600 hover:bg-slate-200"
-                        }`}
-                        aria-current={page === p ? "page" : undefined}
-                      >
-                        {p}
-                      </button>
-                    );
-                  })}
-                  <button
-                    disabled={page === totalPages}
-                    onClick={() => setPage((p) => p + 1)}
-                    className="p-1.5 rounded text-slate-500 hover:bg-slate-200 disabled:opacity-30 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-blue-500"
-                    aria-label="Next page"
-                  >
-                    <ChevronRight size={16} />
-                  </button>
-                </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             )}
-          </>
-        )}
-      </div>
+          </div>
+
+          <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+            {tenderQuery.isLoading ? (
+              <table className="w-full text-sm">
+                <tbody className="divide-y divide-slate-100">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <SkeletonRow key={i} />
+                  ))}
+                </tbody>
+              </table>
+            ) : tenders.length === 0 ? (
+              <EmptyState />
+            ) : (
+              <>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm" role="table" aria-label="Tender Pipeline">
+                    <thead>
+                      <tr className="bg-slate-50 border-b border-slate-200">
+                        {[
+                          {
+                            label: "Title / Authority",
+                            key: "title" as SortKey,
+                            className: "min-w-[280px]",
+                          },
+                          { label: "Source", key: null },
+                          { label: "Deadline", key: "deadline" as SortKey },
+                          { label: "Status", key: "status" as SortKey },
+                          { label: "Processing", key: null },
+                          { label: "Owner", key: null },
+                          { label: "Uploaded", key: "uploadDate" as SortKey },
+                          { label: "Fit Score", key: "fitScore" as SortKey },
+                        ].map((col, i) => (
+                          <th
+                            key={i}
+                            className={`px-4 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider whitespace-nowrap ${col.className ?? ""} ${
+                              col.key ? "cursor-pointer hover:text-slate-700 select-none" : ""
+                            }`}
+                            onClick={() => col.key && sortBy(col.key)}
+                            scope="col"
+                            aria-sort={
+                              col.key && sort.key === col.key
+                                ? sort.dir === "asc"
+                                  ? "ascending"
+                                  : "descending"
+                                : undefined
+                            }
+                          >
+                            {col.label}
+                            {col.key && <SortIcon k={col.key} />}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {paged.length === 0 ? (
+                        <tr>
+                          <td colSpan={8} className="px-6 py-12 text-center">
+                            <p className="text-slate-500 text-sm">
+                              No tenders match the current filters.
+                            </p>
+                            <button
+                              onClick={() => {
+                                setSearch("");
+                                setStatusFilter([]);
+                                setSourceFilter([]);
+                                setMyTenders(false);
+                                setPage(1);
+                              }}
+                              className="mt-2 text-blue-600 text-sm hover:underline"
+                            >
+                              Reset filters
+                            </button>
+                          </td>
+                        </tr>
+                      ) : (
+                        paged.map((tender) => {
+                          const days = daysUntil(tender.deadline);
+                          const rowUrgency =
+                            tender.deadline && days !== null && days <= 7 && days >= 0
+                              ? "bg-red-50/50"
+                              : "";
+                          return (
+                            <tr
+                              key={tender.id}
+                              onClick={() => router.push(`/app/tenders/${tender.id}`)}
+                              className={`hover:bg-blue-50/40 cursor-pointer transition-colors group ${rowUrgency}`}
+                              role="row"
+                              tabIndex={0}
+                              onKeyDown={(e) =>
+                                e.key === "Enter" && router.push(`/app/tenders/${tender.id}`)
+                              }
+                              aria-label={`Tender: ${tender.title}`}
+                            >
+                              <td className="px-4 py-3 max-w-xs">
+                                <div className="font-medium text-slate-900 truncate group-hover:text-blue-700 transition-colors">
+                                  {tender.title}
+                                </div>
+                                <div className="text-slate-500 text-xs mt-0.5 truncate">
+                                  {tender.authority}
+                                </div>
+                                {tender.boardColumn && (
+                                  <div className="text-slate-400 text-xs mt-1">
+                                    Board: {BOARD_COLUMN_LABEL[tender.boardColumn]}
+                                  </div>
+                                )}
+                              </td>
+                              <td className="px-4 py-3 whitespace-nowrap">
+                                <SourceBadge source={tender.source} />
+                              </td>
+                              <td className="px-4 py-3 whitespace-nowrap">
+                                <div className="flex flex-col gap-0.5">
+                                  <DeadlineChip deadline={tender.deadline} />
+                                  {tender.deadline && (
+                                    <span className="text-slate-400 text-xs font-mono">
+                                      {new Date(tender.deadline).toLocaleDateString("en-US", {
+                                        day: "2-digit",
+                                        month: "2-digit",
+                                        year: "2-digit",
+                                      })}
+                                    </span>
+                                  )}
+                                </div>
+                              </td>
+                              <td className="px-4 py-3 whitespace-nowrap">
+                                <StatusBadge status={tender.status} />
+                              </td>
+                              <td className="px-4 py-3 whitespace-nowrap">
+                                <ProcessingBadge status={tender.processingStatus} />
+                              </td>
+                              <td className="px-4 py-3 whitespace-nowrap">
+                                {tender.owner ? (
+                                  <div className="flex items-center gap-1.5">
+                                    <div className="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-slate-600 text-xs font-bold flex-shrink-0">
+                                      {tender.owner.name?.[0] ?? "?"}
+                                    </div>
+                                    <span className="text-slate-600 text-xs truncate max-w-[90px]">
+                                      {tender.owner.name?.split(" ")[0] ?? "—"}
+                                    </span>
+                                  </div>
+                                ) : (
+                                  <span className="text-slate-300 text-xs italic">Unassigned</span>
+                                )}
+                              </td>
+                              <td className="px-4 py-3 whitespace-nowrap text-slate-500 text-xs font-mono">
+                                {new Date(tender.uploadDate).toLocaleDateString("en-US", {
+                                  day: "2-digit",
+                                  month: "2-digit",
+                                  year: "2-digit",
+                                })}
+                              </td>
+                              <td className="px-4 py-3 whitespace-nowrap">
+                                <FitScoreCell score={tender.fitScore} />
+                              </td>
+                            </tr>
+                          );
+                        })
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+
+                {sorted.length > PER_PAGE && (
+                  <div className="flex items-center justify-between px-4 py-3 border-t border-slate-100 bg-slate-50/50">
+                    <p className="text-slate-500 text-xs">
+                      {sorted.length} tenders · Page {page} of {totalPages}
+                    </p>
+                    <div className="flex items-center gap-1">
+                      <button
+                        disabled={page === 1}
+                        onClick={() => setPage((p) => p - 1)}
+                        className="p-1.5 rounded text-slate-500 hover:bg-slate-200 disabled:opacity-30 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-blue-500"
+                        aria-label="Previous page"
+                      >
+                        <ChevronLeft size={16} />
+                      </button>
+                      {Array.from({ length: Math.min(totalPages, 5) }).map((_, i) => {
+                        const p = i + 1;
+                        return (
+                          <button
+                            key={p}
+                            onClick={() => setPage(p)}
+                            className={`w-7 h-7 rounded text-xs font-medium focus-visible:ring-2 focus-visible:ring-blue-500 transition-colors ${
+                              page === p ? "bg-blue-600 text-white" : "text-slate-600 hover:bg-slate-200"
+                            }`}
+                            aria-current={page === p ? "page" : undefined}
+                          >
+                            {p}
+                          </button>
+                        );
+                      })}
+                      <button
+                        disabled={page === totalPages}
+                        onClick={() => setPage((p) => p + 1)}
+                        className="p-1.5 rounded text-slate-500 hover:bg-slate-200 disabled:opacity-30 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-blue-500"
+                        aria-label="Next page"
+                      >
+                        <ChevronRight size={16} />
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
+          </div>
+        </>
+      )}
     </div>
   );
 }
