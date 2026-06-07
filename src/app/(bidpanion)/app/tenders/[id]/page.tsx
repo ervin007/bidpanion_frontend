@@ -480,19 +480,59 @@ function FitScoreTab({
       ? "bg-amber-400"
       : "bg-red-500";
 
+  const utils = api.useUtils();
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+  const calculateMutation = api.tender.calculateFitScore.useMutation({
+    onSuccess: () => {
+      setErrorMsg(null);
+      void utils.tender.get.invalidate({ id: tender.id });
+    },
+    onError: (err) => {
+      setErrorMsg(err.message);
+    },
+  });
+
+  const handleCalculate = () => {
+    setErrorMsg(null);
+    calculateMutation.mutate({ tenderId: tender.id });
+  };
+
   return (
     <div className="p-5 space-y-5">
       <div className="bg-white rounded-xl border border-slate-200 p-6">
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
           <div>
-            <h3 className="text-slate-800 mb-1">Overall Fit Score</h3>
+            <h3 className="text-slate-800 font-semibold mb-1">Overall Fit Score</h3>
             <p className="text-slate-500 text-sm">
               {fitScore == null
                 ? "No score yet — the AI pipeline hasn't run a match against your company profile."
                 : "Based on company profile matching."}
             </p>
           </div>
-          <div className={`text-5xl font-bold ${scoreColor}`}>{fitScore ?? "—"}</div>
+          <div className="flex items-center gap-4 self-end md:self-center">
+            <button
+              onClick={handleCalculate}
+              disabled={calculateMutation.isLoading || tender.processingStatus === "PROCESSING" || tender.processingStatus === "QUEUED"}
+              className={`px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 flex items-center gap-2 ${
+                calculateMutation.isLoading
+                  ? "bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200"
+                  : "bg-blue-600 text-white hover:bg-blue-700 shadow-sm border border-transparent"
+              }`}
+            >
+              {calculateMutation.isLoading ? (
+                <>
+                  <Loader2 size={16} className="animate-spin" />
+                  Calculating...
+                </>
+              ) : fitScore == null ? (
+                "Calculate Fit Score"
+              ) : (
+                "Recalculate Fit Score"
+              )}
+            </button>
+            <div className={`text-5xl font-bold ${scoreColor}`}>{fitScore ?? "—"}</div>
+          </div>
         </div>
         <div className="h-3 bg-slate-100 rounded-full overflow-hidden mb-4">
           <div
@@ -500,6 +540,12 @@ function FitScoreTab({
             style={{ width: `${fitScore ?? 0}%` }}
           />
         </div>
+        {errorMsg && (
+          <div className="mb-4 p-3 bg-red-50 text-red-700 rounded-lg text-sm flex items-start gap-2 border border-red-100">
+            <AlertCircle size={16} className="mt-0.5 shrink-0" />
+            <span>{errorMsg}</span>
+          </div>
+        )}
         {recommendation && (
           <div
             className={`flex items-center gap-2 px-4 py-3 rounded-lg ${

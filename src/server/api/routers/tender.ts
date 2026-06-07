@@ -276,4 +276,118 @@ export const tenderRouter = createTRPCRouter({
 
       return tender;
     }),
+
+  calculateFitScore: workspaceProcedure
+    .input(z.object({ tenderId: cuid }))
+    .mutation(async ({ ctx, input }) => {
+      const tender = await ctx.db.tender.findFirst({
+        where: { id: input.tenderId, workspaceId: ctx.workspace.id },
+        include: { summary: true },
+      });
+      if (!tender) {
+        throw new TRPCError({ code: "NOT_FOUND", message: "Tender not found" });
+      }
+      if (!tender.summary) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: "Tender summary has not been generated yet. Please wait for processing to finish.",
+        });
+      }
+
+      const profile = await ctx.db.companyProfile.findUnique({
+        where: { workspaceId: ctx.workspace.id },
+        include: { sections: { orderBy: { order: "asc" } } },
+      });
+      if (!profile || profile.sections.length === 0) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: "Please set up and save your Company Profile first.",
+        });
+      }
+
+      // Helper function to format requirements
+      const requirements: Record<string, string> = {};
+      const recurse = (obj: any, currentKey = "") => {
+        if (!obj || typeof obj !== "object") return;
+        for (const [k, v] of Object.entries(obj)) {
+          if (k === "citations") continue;
+          const key = currentKey ? `${currentKey} -> ${k}` : k;
+          if (typeof v === "object" && v !== null) {
+            recurse(v, key);
+          } else if (v !== null && v !== undefined) {
+            requirements[key] = String(v);
+          }
+        }
+      };
+      recurse(tender.summary.payload);
+
+      const backendUrl = "http://svakd9lmph7uly1dhcg06t4w.49.12.245.219.sslip.io/api/calculate-fit-score";
+      try {
+        const response = await fetch(backendUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            requirements,
+            company_profile: JSON.stringify(profile),
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error(`Backend API returned HTTP ${response.status}: ${await response.text()}`);
+        }
+
+        const evalResult = (await response.json()) as {
+          fitScore: number;
+          recommendation: "BID" | "REVIEW" | "NO_BID";
+          fitCategories: Array<{
+            slug: string;
+            label: string;
+            weight: number;
+            score: number;
+            status: "MATCHED" | "PARTIAL" | "UNMATCHED" | "NA";
+            details?: string | null;
+            matchedItems?: string[];
+            unmatchedItems?: string[];
+          }>;
+        };
+
+        await ctx.db.$transaction(async (tx) => {
+          await tx.tender.update({
+            where: { id: tender.id },
+            data: {
+              fitScore: evalResult.fitScore,
+              recommendation: evalResult.recommendation,
+            },
+          });
+
+          if (evalResult.fitCategories && evalResult.fitCategories.length > 0) {
+            await tx.fitCategory.deleteMany({
+              where: { tenderId: tender.id },
+            });
+
+            await tx.fitCategory.createMany({
+              data: evalResult.fitCategories.map((c, index) => ({
+                tenderId: tender.id,
+                slug: c.slug,
+                label: c.label,
+                weight: c.weight,
+                score: c.score,
+                status: c.status,
+                details: c.details ?? null,
+                matchedItems: c.matchedItems ?? [],
+                unmatchedItems: c.unmatchedItems ?? [],
+                order: index,
+              })),
+            });
+          }
+        });
+
+        return { success: true, fitScore: evalResult.fitScore };
+      } catch (err) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: err instanceof Error ? err.message : "Failed to calculate fit score upstream.",
+        });
+      }
+    }),
 });
