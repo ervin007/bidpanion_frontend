@@ -61,6 +61,22 @@ const callbackSchema = z.object({
       description: z.string().optional(),
     })
     .optional(),
+  fitScore: z.number().int().min(0).max(100).optional().nullable(),
+  recommendation: z.enum(["BID", "REVIEW", "NO_BID"]).optional().nullable(),
+  fitCategories: z
+    .array(
+      z.object({
+        slug: z.string(),
+        label: z.string(),
+        weight: z.number().int(),
+        score: z.number().int(),
+        status: z.enum(["MATCHED", "PARTIAL", "UNMATCHED", "NA"]),
+        details: z.string().optional().nullable(),
+        matchedItems: z.array(z.string()).optional(),
+        unmatchedItems: z.array(z.string()).optional(),
+      })
+    )
+    .optional(),
 });
 
 export async function POST(
@@ -85,7 +101,7 @@ export async function POST(
       { status: 400 },
     );
   }
-  const { status, progress, result, error, enrichTender } = parsed.data;
+  const { status, progress, result, error, enrichTender, fitScore, recommendation, fitCategories } = parsed.data;
 
   const job = await db.analysisJob.findUnique({ where: { id } });
   if (!job) {
@@ -117,6 +133,8 @@ export async function POST(
         where: { id: job.tenderId },
         data: {
           processingStatus: tenderProcessing,
+          fitScore: fitScore ?? undefined,
+          recommendation: recommendation ?? undefined,
           ...(enrichTender
             ? {
                 title: enrichTender.title ?? undefined,
@@ -135,21 +153,44 @@ export async function POST(
         },
       });
 
-      if (status === "completed" && result) {
-        await tx.tenderSummary.upsert({
-          where: { tenderId: job.tenderId },
-          create: {
-            tenderId: job.tenderId,
-            payload: result,
-            language: job.language,
-            profile: job.profile,
-          },
-          update: {
-            payload: result,
-            language: job.language,
-            profile: job.profile,
-          },
-        });
+      if (status === "completed") {
+        if (result) {
+          await tx.tenderSummary.upsert({
+            where: { tenderId: job.tenderId },
+            create: {
+              tenderId: job.tenderId,
+              payload: result,
+              language: job.language,
+              profile: job.profile,
+            },
+            update: {
+              payload: result,
+              language: job.language,
+              profile: job.profile,
+            },
+          });
+        }
+
+        if (fitCategories && fitCategories.length > 0) {
+          await tx.fitCategory.deleteMany({
+            where: { tenderId: job.tenderId },
+          });
+
+          await tx.fitCategory.createMany({
+            data: fitCategories.map((c, index) => ({
+              tenderId: job.tenderId!,
+              slug: c.slug,
+              label: c.label,
+              weight: c.weight,
+              score: c.score,
+              status: c.status,
+              details: c.details,
+              matchedItems: c.matchedItems ?? [],
+              unmatchedItems: c.unmatchedItems ?? [],
+              order: index,
+            })),
+          });
+        }
       }
     }
   });

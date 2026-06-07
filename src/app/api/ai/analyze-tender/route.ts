@@ -90,6 +90,15 @@ export async function POST(req: Request) {
     pythonForm.append("file", files[0]);
     pythonForm.append("callback_url", callbackUrl);
 
+    // Fetch workspace company profile if it exists and pass to python backend
+    const companyProfile = await db.companyProfile.findUnique({
+      where: { workspaceId: workspace.id },
+      include: { sections: { orderBy: { order: "asc" } } },
+    });
+    if (companyProfile) {
+      pythonForm.append("company_profile", JSON.stringify(companyProfile));
+    }
+
     // Proxy the upload to the Temporal backend
     const res = await fetch("http://svakd9lmph7uly1dhcg06t4w.49.12.245.219.sslip.io/api/process", {
       method: "POST",
