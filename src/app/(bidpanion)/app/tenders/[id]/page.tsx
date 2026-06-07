@@ -514,9 +514,9 @@ function FitScoreTab({
           <div className="flex items-center gap-4 self-end md:self-center">
             <button
               onClick={handleCalculate}
-              disabled={calculateMutation.isLoading || tender.processingStatus === "PROCESSING" || tender.processingStatus === "QUEUED"}
+              disabled={calculateMutation.isLoading || tender.processingStatus === "PROCESSING" || tender.processingStatus === "QUEUED" || !tender.summary}
               className={`px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 flex items-center gap-2 ${
-                calculateMutation.isLoading
+                (calculateMutation.isLoading || tender.processingStatus === "PROCESSING" || tender.processingStatus === "QUEUED" || !tender.summary)
                   ? "bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200"
                   : "bg-blue-600 text-white hover:bg-blue-700 shadow-sm border border-transparent"
               }`}
@@ -524,7 +524,12 @@ function FitScoreTab({
               {calculateMutation.isLoading ? (
                 <>
                   <Loader2 size={16} className="animate-spin" />
-                  Calculating...
+                  Triggering...
+                </>
+              ) : (tender.processingStatus === "PROCESSING" || tender.processingStatus === "QUEUED") ? (
+                <>
+                  <Loader2 size={16} className="animate-spin" />
+                  Processing in Temporal...
                 </>
               ) : fitScore == null ? (
                 "Calculate Fit Score"
