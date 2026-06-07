@@ -323,8 +323,10 @@ export const tenderRouter = createTRPCRouter({
       });
 
       // Construct dynamic callback URL
-      const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-      const callbackUrl = `${appUrl}/api/ai/jobs/${job.id}/callback`;
+      const protocol = ctx.headers.get("x-forwarded-proto") || "http";
+      const host = ctx.headers.get("host");
+      const baseUrl = host ? `${protocol}://${host}` : "http://localhost:3000";
+      const callbackUrl = `${baseUrl}/api/ai/jobs/${job.id}/callback`;
 
       const backendUrl = "http://svakd9lmph7uly1dhcg06t4w.49.12.245.219.sslip.io/api/calculate-fit-score";
       try {
