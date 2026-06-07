@@ -484,9 +484,10 @@ function FitScoreTab({
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const calculateMutation = api.tender.calculateFitScore.useMutation({
-    onSuccess: () => {
+    onSuccess: async () => {
       setErrorMsg(null);
-      void utils.tender.get.invalidate({ id: tender.id });
+      await utils.tender.get.invalidate({ id: tender.id });
+      await utils.tender.get.refetch({ id: tender.id });
     },
     onError: (err) => {
       setErrorMsg(err.message);
